@@ -1,0 +1,148 @@
+.navTop{
+    display: flex;
+    justify-content: space-evenly;
+    height: 40px;
+    text-decoration: none;
+    background: #030000;
+    padding: .5rem;
+    position: fixed;
+    width: 100%;
+  }
+
+.contacto{
+  color: rgb(58, 0, 24);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  transition: all .5s;
+  font-family: 'Quintessential';
+  font-weight: 700;
+    
+}
+.contacto:hover{
+    color: rgb(51, 0, 0);
+    transform: scale(1.09);
+}
+.divContacto {
+  display: flex;
+  align-items: center;
+}
+
+.contactoMail{
+  border-radius: 3px;
+    
+}
+.contactoTel{
+    border-radius: 3px;
+    margin-right: 20px;
+}
+.redesSociales{
+    width: 100%;
+    margin-left: 15px;
+    display: flex;
+    align-items: center; 
+    transition: transform .5s;
+  margin-top: 4px;
+   
+}
+.redesSociales:hover{
+    transform: scale(1.3);
+}
+
+.redFacebook{
+    margin-right: 20px;
+}
+.redInsta{
+    color: #2d002d;
+}
+
+.direc{
+    color: #3a0018;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+    transition: all .5s;
+    font-family: 'Quintessential';
+  }
+  .dir{
+    margin-right: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+    transition: all .5s;
+    color: #1a010b;
+    font-weight: 700;
+
+
+  }
+  .dir:hover{
+    transform: scale(1.09);
+    color: rgb(2, 48, 47);
+  }
+
+
+  @media screen and (max-width: 800px) {
+
+    .navTop{
+        display: flex;
+        background: linear-gradient(rgb(255 255 255 / 77%), rgb(255 187 187 / 70%));;
+        justify-content: space-around;
+        text-decoration: none;
+        font-size: 50%;
+    }
+
+    .divContacto{
+        
+    display: flex;
+    flex-direction: row;
+
+    }
+    .contacto{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all .5s;
+        margin-left: 10px;
+        margin-right: 5px;
+        font-family: 'Lato', sans-serif;
+
+    }
+
+    .direc{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all .5s;
+        margin-left: 0px;
+      }
+
+      .dir{
+        margin-right: .5%;
+        margin-left: .5%;
+        text-decoration: none;
+        transition: all .5s;
+        font-family: 'Lato', sans-serif;
+      }
+
+      .redesSociales{
+        width: 100%;
+        margin-left: 0px;
+        display: flex;
+        align-items: center; 
+        transition: transform .5s;   
+    }
+    .redFacebook{
+      margin-right: 20px;
+      font-size: medium;
+
+  }
+  .redInsta{
+      font-size: medium;
+      
+  }
+  }
