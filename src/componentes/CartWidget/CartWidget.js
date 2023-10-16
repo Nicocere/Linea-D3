@@ -5,11 +5,11 @@ const CartWidget = () => {
   const { cart } = useContext(CartContext);
 
   return (
-    <div>
+    <div className="cart-widget-container" >
       <img src={'../assets/cart.png'} alt="cart-logo" ></img>
-      <button className="boton-abrircarrito">
+      <div className="boton-abrircarrito">
         <span className="contadorCarrito"> {cart ? cart.length : 0} </span>
-      </button>
+      </div>
     </div>
   )
 }

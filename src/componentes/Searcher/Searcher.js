@@ -28,7 +28,7 @@ const Searcher = ({ items }) => {
   return (
     <div className="div-buscador-chg-usd">
       <div className="buscador-div">
-        <h5 className="buscador-title">Busque el producto que desea</h5>
+        {/* <h5 className="buscador-title">Busque el producto que desea</h5> */}
         <form className="form-buscador"   >
           <input
             type="text"
