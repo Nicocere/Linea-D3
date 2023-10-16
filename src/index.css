@@ -17,6 +17,16 @@
 
 /* HEADER Y NAVBAR */
 
+.cart-widget-container{
+  position: absolute;
+  display: flex;
+  right: 2rem;
+}
+
+.cart-widget-container img{
+  margin-right: 3.5rem;
+}
+
 .barMovil {
   display: none;
 }
@@ -29,8 +39,10 @@
   align-items: flex-end;
   flex-wrap: nowrap;
   justify-content: space-between;
+  justify-content: center;
 }
 .buscador-div {
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
   padding-left: 15px;
@@ -57,17 +69,18 @@
 }
 
 .buscador-btn {
-  background: pink;
+  background: black;
   border-radius: 5px;
-  border: rgb(253, 65, 97);
   padding: 3%;
   margin-left: 10px;
   transition: all .3s;
+  color: #fac584;
+  cursor: pointer;
 }
 
 .buscador-btn:hover {
-  background: rgb(226, 52, 81);
-  color: white;
+  background: #fac584;
+  color: black;
   box-shadow: 0px 4px 5px 1px #000000ad;
 }
 
@@ -218,14 +231,11 @@ background: rgb(240, 148, 163);
 }
 
 .boton-abrircarrito:hover {
-  background-color: #b30b61;
-  color: white;
+
 }
 
 .boton-abrircarrito:active {
-  background-color: #ac1060;
-  box-shadow: 0 0px #666;
-  transform: translateY(4px);
+
 }
 
 .fa-shopping-cart {

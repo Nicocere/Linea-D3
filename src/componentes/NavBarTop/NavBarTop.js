@@ -37,13 +37,13 @@ const NavBarTop = () => {
           <NavLink className='seccionLi' to="/categoria/Recursos" onClick={() => setShowMobileMenu(!showMobileMenu)}>Recursos</NavLink>
 
           <NavLink className='seccionLi' to="/categoria/Especiales" onClick={() => setShowMobileMenu(!showMobileMenu)}>Planes y Precios</NavLink>
-
-          <NavLink to="/cart">
-            <CartWidget />
-          </NavLink>
         </div>
 
       </ul>
+
+      <NavLink to="/cart">
+        <CartWidget />
+      </NavLink>
 
 
     </div>
