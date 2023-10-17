@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d28b9a0f.css",
+    "main.js": "/static/js/main.6f543156.js",
+    "static/media/imperioShirt.png": "/static/media/imperioShirt.26e84cc5c17ae1f1d094.png",
+    "static/media/blackDesign.png": "/static/media/blackDesign.783b2569945b9c8c6fd7.png",
+    "static/media/hawks.png": "/static/media/hawks.baa6c1690818c9e9af2b.png",
+    "static/media/LineaLogoOrange.png": "/static/media/LineaLogoOrange.41a83fbc030b085b8642.png",
+    "static/media/LineaLogo.png": "/static/media/LineaLogo.eda0cb585c2c24a85076.png",
+    "index.html": "/index.html",
+    "main.d28b9a0f.css.map": "/static/css/main.d28b9a0f.css.map",
+    "main.6f543156.js.map": "/static/js/main.6f543156.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d28b9a0f.css",
+    "static/js/main.6f543156.js"
+  ]
+}
