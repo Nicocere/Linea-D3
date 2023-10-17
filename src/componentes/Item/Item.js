@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount'
 
 const Item = ({ items }) => {
+  console.log("ITEM ", items)
 
   return (
     <div className="product-item">
 
 
-      <Link to={`/detail/${items._id}`} className="link-producto">
-        <img src={'../assets/bannerBasquet.jpeg'} alt="" />
+      <Link to={`/detail/${items.id}`} className="link-producto">
+        <img src={items.imagen} alt="" />
       </Link>
 
       <h4 className="tituloProducto">Nombre producto</h4>
@@ -21,16 +22,15 @@ const Item = ({ items }) => {
       </div>
 
       <ItemCount
-        optionId={items.opciones[0]._id}
-        optionSize={items.opciones[0].size}
-        optionPrecio={items.opciones[0].precio}
+        optionId={items.id}
+        optionSize={items.talla}
+        optionPrecio={items.precio}
         item={items}
       />
       {/* {
 
-
-        items.opciones.length > 1
-          ? <Link to={`/detail/${items._id}`} className="link-producto">
+        items.length > 1
+          ? <Link to={`/detail/${items.id}`} className="link-producto">
             <button className='btn-verMas'>Ver más opciones del producto</button>
           </Link>
           : null
