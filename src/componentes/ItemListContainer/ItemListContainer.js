@@ -8,6 +8,10 @@ import Searcher from "../Searcher/Searcher";
 import axios from "axios";
 import Pagination from "../Pagination/Pagination";
 
+import { baseDeDatos } from "../../firebaseConfig";
+import { collection, getDocs, query, where } from 'firebase/firestore'; // Importa los módulos necesarios de Firebase
+
+
 
 const ItemListContainer = () => {
 
@@ -19,41 +23,39 @@ const ItemListContainer = () => {
     const [paginationInfo, setPaginationInfo] = useState(null);
     // const [categoria, setCategoryName] = useState(null);
 
+
     useEffect(() => {
         async function fetchData() {
-
-            try {
-                let result;
-                if (categoryName) {
-                    // Si existe una categoría seleccionada, realizamos la petición a /post/pagination
-                    // result = await axios.get(`http://localhost:8080/productos/post/pagination`, {
-                    result = await axios.get(`https://envioflores-backend.vercel.app/productos/post/pagination`, {
-                        params: {
-                            categoria: categoryName,
-                            page: page
-                        }
-                    });
-                } else {
-                    // Si no hay categoría seleccionada, realizamos la petición a /productos
-                    // result = await axios.get('http://localhost:8080/productos');
-                    result = await axios.get(`https://envioflores-backend.vercel.app/productos`);
-                }
-                setPaginationInfo(result.data.info);
-
-                const productos = result.data.prods.map((prod) => {
-                    return { ...prod }
-                });
-
-                if (productos) {
-                    setIsLoading(false)
-                }
-                setItems(productos)
-            } catch (error) {
-                console.log("No se pudo obtener la base de datos:", error)
+          try {
+            const productosRef = collection(baseDeDatos, "productos");
+    
+            let queryRef = query(productosRef);
+    
+            if (categoryName) {
+              // Si hay una categoría seleccionada, agrega una condición a la consulta
+              queryRef = query(productosRef, where("tipo", "==", categoryName));
             }
+            
+            const snapshot = await getDocs(queryRef);
+            
+            const productos = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            
+            console.log("productos REF", productos)
+            if (productos) {
+              setIsLoading(false);
+            }
+    
+         setItems(productos);
+          } catch (error) {
+            console.log("No se pudieron obtener los productos:", error);
+          }
         }
-        fetchData()
-    }, [categoryName, page]);
+        fetchData();
+      }, [categoryName, page]);
+
 
     return (
         <div className="productos">

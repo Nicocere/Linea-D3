@@ -32,11 +32,10 @@ const NavBarTop = () => {
 
           <NavLink className='seccionLi' to='/categoria/Productos' onClick={() => setShowMobileMenu(!showMobileMenu)}>Productos </NavLink>
 
-          <NavLink className='seccionLi' to="/categoria/Funcionalidades" onClick={() => setShowMobileMenu(!showMobileMenu)}>Funcionalidades</NavLink>
+          <NavLink className='seccionLi' to="/categoria/Funcionalidades" onClick={() => setShowMobileMenu(!showMobileMenu)}>Contacto</NavLink>
 
-          <NavLink className='seccionLi' to="/categoria/Recursos" onClick={() => setShowMobileMenu(!showMobileMenu)}>Recursos</NavLink>
+          <NavLink className='seccionLi' to="/categoria/Recursos" onClick={() => setShowMobileMenu(!showMobileMenu)}>Quienes Somos</NavLink>
 
-          <NavLink className='seccionLi' to="/categoria/Especiales" onClick={() => setShowMobileMenu(!showMobileMenu)}>Planes y Precios</NavLink>
         </div>
 
       </ul>

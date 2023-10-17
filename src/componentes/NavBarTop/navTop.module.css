@@ -1,6 +1,6 @@
 .navTop{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     height: 40px;
     text-decoration: none;
     background: #030000;
