@@ -6,12 +6,12 @@ const Header = () => {
 
     return (
         <>
-        <header className="div-header-dinamic">
+            <header className="div-header-dinamic">
 
-                    <NavBarTop/>
-                    <NavBar/>
-        </header>
-    </>
+                <NavBarTop />
+                {/* <NavBar/> */}
+            </header>
+        </>
     );
 };
 

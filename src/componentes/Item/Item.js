@@ -9,13 +9,13 @@ const Item = ({ items }) => {
 
 
       <Link to={`/detail/${items._id}`} className="link-producto">
-        <img src={items.img} alt="" />
+        <img src={'../assets/bannerBasquet.jpeg'} alt="" />
       </Link>
 
-      <h4 className="tituloProducto">{items.nombre}</h4>
+      <h4 className="tituloProducto">Nombre producto</h4>
       <div className="div-prod-details-indx">
 
-        <p className="prod-details-index">Tamaño: <strong className='strong-prod-details'> {items.opciones[0].size} </strong></p>
+        {/* <p className="prod-details-index">Tamaño: <strong className='strong-prod-details'> {items.opciones[0].size} </strong></p> */}
 
 
       </div>
@@ -25,8 +25,8 @@ const Item = ({ items }) => {
         optionSize={items.opciones[0].size}
         optionPrecio={items.opciones[0].precio}
         item={items}
-         />
-      {
+      />
+      {/* {
 
 
         items.opciones.length > 1
@@ -34,7 +34,7 @@ const Item = ({ items }) => {
             <button className='btn-verMas'>Ver más opciones del producto</button>
           </Link>
           : null
-      }
+      } */}
     </div>
   )
 }

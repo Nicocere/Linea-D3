@@ -1,12 +1,17 @@
 .navTop{
     display: flex;
     justify-content: space-evenly;
-    height: 40px;
+    height: 100px;
     text-decoration: none;
     background: #030000;
-    padding: .5rem;
     position: fixed;
     width: 100%;
+    z-index: 100;
+  }
+
+  .imgNavBar {
+    width: 120px;
+    margin: 5px;
   }
 
 .contacto{
@@ -17,8 +22,9 @@
   justify-content: space-between;
   margin-left: 20px;
   transition: all .5s;
-  font-family: 'Quintessential';
   font-weight: 700;
+  font-family: monospace;
+  font-size: 14px;
     
 }
 .contacto:hover{
@@ -66,7 +72,9 @@
     justify-content: space-between;
     margin-left: 20px;
     transition: all .5s;
-    font-family: 'Quintessential';
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
   }
   .dir{
     margin-right: 20px;
@@ -108,7 +116,9 @@
         transition: all .5s;
         margin-left: 10px;
         margin-right: 5px;
-        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
 
     }
 
@@ -126,7 +136,9 @@
         margin-left: .5%;
         text-decoration: none;
         transition: all .5s;
-        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
       }
 
       .redesSociales{

@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
+
+
 const Searcher = ({ items }) => {
 
   const { changeList } = useContext(SearchContext)
@@ -11,6 +13,9 @@ const Searcher = ({ items }) => {
     setBusqueda(evento.target.value)
     filtrado(evento.target.value)
   };
+
+  // const serchAlt = document.querySelector('.div-buscador-chg-usd');
+  // console.log(serchAlt.getBoundingClientRect().bottom)
 
   const filtrado = (prodBuscado) => {
     const restultadoBusqueda = items.filter((prod) => {
@@ -37,7 +42,7 @@ const Searcher = ({ items }) => {
             placeholder="Buscar Producto"
             onChange={handleChange}
           />
-          <button className="buscador-btn">Refrescar</button>
+          <button className="buscador-btn">Buscar</button>
         </form>
       </div>
 

@@ -32,7 +32,9 @@ transition: width .6s ease-in;
 }
 
 .name{
-    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
     
 }
 .divBtn{
@@ -45,7 +47,9 @@ transition: width .6s ease-in;
     width: 100%;
 }
 .btnIrCarrito{
-    font-family: "Quintessential";
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
     margin: 3%;
     color: white;
     background: rgb(230, 54, 107);
@@ -59,7 +63,9 @@ transition: width .6s ease-in;
     transition: all 0.5s;
 }
 .btnSeguir{
-    font-family: "Quintessential";
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
     margin: 3%;
     color: white;
     background: rgb(75, 62, 255);
@@ -88,12 +94,16 @@ transition: width .6s ease-in;
     border-radius: 2px;
     place-content: center;
     transition: border .5s;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
 
 }
 
 .categories{
-    font-family: "Quintessential";
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
 margin-bottom: 5px;
 }
 .descrProd:hover{
@@ -109,7 +119,9 @@ margin-bottom: 5px;
     border-radius: 2px;
     place-content: center;
     transition: border .5s;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
     justify-content: center;
 }
 
@@ -119,7 +131,9 @@ margin-bottom: 5px;
 }
 
 .aviso{
-    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 800px) {

@@ -1,0 +1,21 @@
+/* Carousel  */
+
+.carousel-container{
+    padding: 100px 15% 0 15%;
+    background-color: #fac584;
+    overflow: hidden;
+  }
+
+.carousel-container .thumbs-wrapper{
+    display: none !important;
+}
+
+.carousel-container .carousel-status{
+    display: none !important;
+
+}
+
+.carousel-container img{
+    overflow: hidden;
+    height: 60vh;
+}

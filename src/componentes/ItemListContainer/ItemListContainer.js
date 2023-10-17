@@ -60,7 +60,7 @@ const ItemListContainer = () => {
 
             {
                 categoryName ?
-                    <h3 className="cat-selected">Estás viendo la Categoría: 
+                    <h3 className="cat-selected">Estás viendo la Categoría:
                     <strong className="cat-selected-strong" > {categoryName} </strong> </h3> : null
             }
 
@@ -70,18 +70,18 @@ const ItemListContainer = () => {
                     <FadeLoader className="fadeLoader" color="rgb(255, 255, 255)" />
                 </>
             ) : (
-                <>
-                    <Searcher items={items} />
-                    {categoryName ?
-                    <Pagination info={paginationInfo} 
-                                setPage={setPage} 
+                    <>
+                        {/* <Searcher items={items} /> */}
+                        {categoryName ?
+                            <Pagination info={paginationInfo}
+                                setPage={setPage}
                                 category={categoryName}
-                    /> 
-                    : null}
-                    
-                    <ItemList items={items} prodEncontrado={prodEncontrado} />
-                </>
-            )}
+                            />
+                            : null}
+
+                        <ItemList items={items} prodEncontrado={prodEncontrado} />
+                    </>
+                )}
         </div>
     );
 
