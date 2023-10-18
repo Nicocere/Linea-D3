@@ -16,10 +16,6 @@ const CarouselComponent = () => {
         <div className="carousel-container" >
             <Carousel autoPlay={2000} infiniteLoop={true} >
                 <div>
-                    <img src={HawksImage} />
-                    <p className="legend">Legend 1</p>
-                </div>
-                <div>
                     <img src={blackDesign} />
                     <p className="legend">Legend 2</p>
                 </div>

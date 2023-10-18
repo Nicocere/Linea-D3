@@ -33,7 +33,7 @@ transition: width .6s ease-in;
 
 .name{
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
     
 }
@@ -48,7 +48,7 @@ transition: width .6s ease-in;
 }
 .btnIrCarrito{
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
     margin: 3%;
     color: white;
@@ -64,7 +64,7 @@ transition: width .6s ease-in;
 }
 .btnSeguir{
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
     margin: 3%;
     color: white;
@@ -95,14 +95,14 @@ transition: width .6s ease-in;
     place-content: center;
     transition: border .5s;
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
 
 }
 
 .categories{
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
 margin-bottom: 5px;
 }
@@ -120,7 +120,7 @@ margin-bottom: 5px;
     place-content: center;
     transition: border .5s;
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
     justify-content: center;
 }
@@ -132,7 +132,7 @@ margin-bottom: 5px;
 
 .aviso{
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
 }
 

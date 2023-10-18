@@ -3,23 +3,37 @@
   grid-template-columns: 24% 24% 24% 24%;
   grid-column-gap: .5%;
   padding-top: 28px;
-  color: rgb(255 255 255);
-  background: linear-gradient(180deg, rgb(60 27 32 / 91%), transparent);
+  color: #dddbde;
+  background: black;
   font-weight: 700;
-  font-family: monospace;
+  font-family: sans-serif;
   font-size: 14px;
-  border-top: 0.5px #ffffff42 solid;
-
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
   }
   
   .linkFot {
     margin: 1%;
     border-right: 1px solid rgb(255, 255, 255);
+
   }
   .linkFot .webAflorar {
     font-size: x-large;
-    color: #ff68b6;
+    color: #dddbde;
 
+  }
+
+  .navigation{
+    display: grid;
+    text-align: center;
+    padding: 0;
+  }
+
+  .navigation a{
+    text-decoration: none;
+    color: #dddbde;
+    margin-bottom: .3rem;
   }
   
   .mediosDePago {
@@ -38,13 +52,13 @@
   .contactoTel {
     font-size: large;
     text-decoration: none;
-    color: #ff68b6;
+    color: #dddbde;
   }
   
   .contactoMail {
     font-size: large;
     text-decoration: none;
-    color: #ff68b6;
+    color: #dddbde;
 
   }
   
@@ -68,7 +82,7 @@
   
   .instFoot {
     font-size: x-large;
-    color: #d11476;
+    color: #dddbde;
     text-decoration: none;
   }
   
@@ -80,7 +94,7 @@
   
   .fbFoot {
     font-size: x-large;
-    color: blue;
+    color: #dddbde;
     text-decoration: none;
   }
   

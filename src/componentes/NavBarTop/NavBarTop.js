@@ -18,8 +18,9 @@ const NavBarTop = () => {
 
       <img className={style.imgNavBar} src={'../assets/logo/LineaD3Logo.png'} alt="logo lineaD3" />
 
-      <div>
-        <ul className={openMenu}>
+      <div className={style.sercherContainer} >
+        <Searcher />
+        <ul className="seccionCerrada">
 
           <div className='categoriaMovil' >
             {
@@ -44,12 +45,15 @@ const NavBarTop = () => {
           </div>
 
         </ul>
-        <Searcher />
       </div>
-      <div>
-        <NavLink to="/cart">
+      <div className={style.loginWidgetContainer} >
+        <NavLink className={style.cartLink} to="/cart">
           <CartWidget />
         </NavLink>
+        <div className={style.loginContainer} >
+          <NavLink to="/sigin">Crear Cuenta</NavLink>
+          <NavLink to="/login">Iniciar Sesión</NavLink>
+        </div>
       </div>
     </div>
   )

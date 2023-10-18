@@ -1,18 +1,56 @@
 .navTop{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 100px;
     text-decoration: none;
     background: #030000;
     position: fixed;
     width: 100%;
     z-index: 100;
+    top: 0;
   }
 
   .imgNavBar {
     width: 120px;
     margin: 5px;
   }
+
+.cartLink{
+  position: relative;
+  right: 1rem;
+}  
+
+.loginWidgetContainer{
+  width: initial;
+  display: flex;
+    flex-flow: column;
+    justify-content: end;
+}
+
+ .loginContainer{
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   margin-top: 1rem;
+ } 
+
+ .loginContainer a{
+  list-style: none;
+  color: white;
+  align-self: center;
+  padding: 15px 5px;
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all .5s;
+ }
+
+ .loginContainer a:hover{
+  background: white;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+ }
 
 .contacto{
   color: rgb(58, 0, 24);
@@ -23,7 +61,7 @@
   margin-left: 20px;
   transition: all .5s;
   font-weight: 700;
-  font-family: monospace;
+  font-family: sans-serif;
   font-size: 14px;
     
 }
@@ -73,7 +111,7 @@
     margin-left: 20px;
     transition: all .5s;
     font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
   }
   .dir{
@@ -90,6 +128,12 @@
     transform: scale(1.09);
     color: rgb(2, 48, 47);
   }
+
+ .sercherContainer{
+  display: flex;
+  flex-flow: column;
+  justify-content: end;
+ } 
 
 
   @media screen and (max-width: 800px) {
@@ -117,7 +161,7 @@
         margin-left: 10px;
         margin-right: 5px;
         font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
 
     }
@@ -137,7 +181,7 @@
         text-decoration: none;
         transition: all .5s;
         font-weight: 700;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: 14px;
       }
 

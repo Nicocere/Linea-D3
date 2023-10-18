@@ -13,7 +13,7 @@ const Item = ({ items }) => {
         <img src={items.imagen} alt="" />
       </Link>
 
-      <h4 className="tituloProducto">Nombre producto</h4>
+      <h4 className="tituloProducto">{items.nombre}</h4>
       <div className="div-prod-details-indx">
 
         {/* <p className="prod-details-index">Tamaño: <strong className='strong-prod-details'> {items.opciones[0].size} </strong></p> */}
