@@ -4,6 +4,7 @@ import ItemListContainer from '../ItemListContainer/ItemListContainer';
 import { Routes, Route } from 'react-router-dom'
 import Cart from '../Cart/Cart';
 import Home from '../Home/Home';
+import Products from '../../pages/Products/Products';
 
 const Main = () => {
 
@@ -13,6 +14,8 @@ const Main = () => {
       <Routes>
 
         <Route path='/' element={<Home />} />
+
+        <Route path='/productos' element={<Products />} />
 
         <Route path='/categoria/:categoryName' element={<ItemListContainer />} />
 

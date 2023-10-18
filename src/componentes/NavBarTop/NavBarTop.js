@@ -3,6 +3,7 @@ import style from './navTop.module.css'
 import CartWidget from '../CartWidget/CartWidget'
 import { NavLink } from 'react-router-dom'
 import Searcher from '../Searcher/Searcher';
+import NavSeccions from '../NavSeccions/NavSeccions'
 
 
 const NavBarTop = () => {
@@ -10,7 +11,6 @@ const NavBarTop = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   const openMenu = showMobileMenu ? 'seccion' : 'seccionCerrada';
-  const openCategory = showMobileMenu ? 'catOpen' : 'catClosed'
 
 
   return (
@@ -20,31 +20,7 @@ const NavBarTop = () => {
 
       <div className={style.sercherContainer} >
         <Searcher />
-        <ul className="seccionCerrada">
-
-          <div className='categoriaMovil' >
-            {
-              showMobileMenu ? <p className={openCategory} >Categorias </p> : <p className={openCategory} >Categorias </p>
-            }
-          </div>
-
-
-          <div className='barMovil' onClick={() => setShowMobileMenu(!showMobileMenu)}>
-          </div>
-
-          <div className={style.navBarSeccions}>
-            <NavLink className='seccionLi' to='/' onClick={() => setShowMobileMenu(!showMobileMenu)}> Inicio </NavLink>
-
-            <NavLink className='seccionLi' to='/categoria/Productos' onClick={() => setShowMobileMenu(!showMobileMenu)}>Productos </NavLink>
-
-            <NavLink className='seccionLi' to="/categoria/Funcionalidades" onClick={() => setShowMobileMenu(!showMobileMenu)}>Promociones</NavLink>
-
-            <NavLink className='seccionLi' to="/categoria/Recursos" onClick={() => setShowMobileMenu(!showMobileMenu)}>Contacto</NavLink>
-
-            <NavLink className='seccionLi' to="/categoria/Especiales" onClick={() => setShowMobileMenu(!showMobileMenu)}>Quienes somos</NavLink>
-          </div>
-
-        </ul>
+        <NavSeccions />
       </div>
       <div className={style.loginWidgetContainer} >
         <NavLink className={style.cartLink} to="/cart">

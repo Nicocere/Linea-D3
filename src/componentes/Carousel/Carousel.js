@@ -17,19 +17,19 @@ const CarouselComponent = () => {
             <Carousel autoPlay={2000} infiniteLoop={true} >
                 <div>
                     <img src={blackDesign} />
-                    <p className="legend">Legend 2</p>
+                    {/* <p className="legend">Legend 2</p> */}
                 </div>
                 <div>
                     <img src={imperioShirt} />
-                    <p className="legend">Legend 3</p>
+                    {/* <p className="legend">Legend 3</p> */}
                 </div>
                 <div>
                     <img src={LineaLogo} />
-                    <p className="legend">Legend 3</p>
+                    {/* <p className="legend">Legend 3</p> */}
                 </div>
                 <div>
                     <img src={LineaLogoOrange} />
-                    <p className="legend">Legend 3</p>
+                    {/* <p className="legend">Legend 3</p> */}
                 </div>
             </Carousel>
         </div>

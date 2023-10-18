@@ -42,7 +42,7 @@ const Searcher = ({ items }) => {
             // placeholder="Buscar Producto"
             onChange={handleChange}
           />
-          <button className="buscador-btn">Buscar</button>
+          <button className="buscador-btn">BUSCAR</button>
         </form>
       </div>
 

@@ -8,7 +8,7 @@ const MySwal = withReactContent(Swal);
 const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptionalSize, quantity, stock, initial = 1 }) => {
 
   const [count, setCount] = useState(initial);
-  const { cart, setCart, priceDolar,dolar, CartID, UserID } = useContext(CartContext);
+  const { cart, setCart, priceDolar, dolar, CartID, UserID } = useContext(CartContext);
 
   const agregarAlCarrito = async () => {
     try {
@@ -16,46 +16,46 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
       // Guardar datos de la compra del producto en el front local storage para reducir las
       // peticiones . 
 
-        // Guardar producto en el estado y localStorage
-        const newProduct = {
-          _id: item._id,
-          idOption: optionId,
-          size: optionSize,
-          precio: optionPrecio,
-          name: nameOptionalSize || item.nombre ,
-          img: item.img,
-          item: item,
-          quantity: count,
-          CartID: CartID,
-          UserID: UserID
+      // Guardar producto en el estado y localStorage
+      const newProduct = {
+        _id: item._id,
+        idOption: optionId,
+        size: optionSize,
+        precio: optionPrecio,
+        name: nameOptionalSize || item.nombre,
+        img: item.img,
+        item: item,
+        quantity: count,
+        CartID: CartID,
+        UserID: UserID
       };
-        // Verifica si el producto ya está en el carrito y si el tamaño es el mismo
-        const existingProductIndex = cart.findIndex((product) => 
-            product._id.toString() === newProduct._id.toString() && 
-            product.size === newProduct.size
-        );
+      // Verifica si el producto ya está en el carrito y si el tamaño es el mismo
+      const existingProductIndex = cart.findIndex((product) =>
+        product.id === newProduct.id &&
+        product.size === newProduct.size
+      );
 
-        let updatedCart;
+      let updatedCart;
 
-        if (existingProductIndex !== -1) {
-            // Si el producto ya existe en el carrito y es del mismo tamaño, incrementa su cantidad
-            updatedCart = [...cart];
-            updatedCart[existingProductIndex].quantity += newProduct.quantity;
-        } else {
-            // Si el producto no está en el carrito o es de un tamaño diferente, lo añade al carrito
-            updatedCart = [...cart, newProduct];
-        }
+      if (existingProductIndex !== -1) {
+        // Si el producto ya existe en el carrito y es del mismo tamaño, incrementa su cantidad
+        updatedCart = [...cart];
+        updatedCart[existingProductIndex].quantity += newProduct.quantity;
+      } else {
+        // Si el producto no está en el carrito o es de un tamaño diferente, lo añade al carrito
+        updatedCart = [...cart, newProduct];
+      }
 
-        // Actualiza el carrito en el estado y en localStorage
-        setCart(updatedCart);
-        localStorage.setItem('carrito', JSON.stringify(updatedCart));
+      // Actualiza el carrito en el estado y en localStorage
+      setCart(updatedCart);
+      localStorage.setItem('carrito', JSON.stringify(updatedCart));
 
-    //   setCart(prevCart => {
-    //     const updatedCart = [...prevCart, newProduct];
-    //     localStorage.setItem('carrito', JSON.stringify(updatedCart));
-    //     return updatedCart;
-    // });
-    
+      //   setCart(prevCart => {
+      //     const updatedCart = [...prevCart, newProduct];
+      //     localStorage.setItem('carrito', JSON.stringify(updatedCart));
+      //     return updatedCart;
+      // });
+
       // // Guarda el carrito actualizado en localStorage 
       // const updatedCart = [...cart, newProduct];
       // localStorage.setItem('carrito', JSON.stringify(updatedCart));
@@ -76,7 +76,7 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
 
       // setCart(result.data.cart.products)
 
-      const priceInUsd = (optionPrecio / dolar ).toFixed(2)
+      const priceInUsd = (optionPrecio / dolar).toFixed(2)
       const displayPrice = priceDolar ? `USD$${priceInUsd}` : `$${optionPrecio.toLocaleString('es-AR')}`;
 
       // SweetAlert2
@@ -107,7 +107,7 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
 
   return (
     <div className='btnAgregarQuitar'>
-      <button onClick={agregarAlCarrito} className="agregarAlCarrito"> Agregar al carrito</button>
+      <button onClick={agregarAlCarrito} className="agregarAlCarrito"> AGREGAR AL CARRITO</button>
     </div>
   );
 }

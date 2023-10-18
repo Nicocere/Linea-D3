@@ -1,8 +1,9 @@
 /* Carousel  */
 
 .carousel-container{
-    padding: 100px 15% 0 15%;
+    padding-top: 100px;
     overflow: hidden;
+    padding-bottom: 50px;
   }
 
 .carousel-container .thumbs-wrapper{

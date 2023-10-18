@@ -1,0 +1,48 @@
+.home-categories-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 3rem 0;
+}
+
+.home-categories-container .banner{
+    width: 30%;
+    overflow: hidden;
+    height: 300px;
+    position: relative;
+    text-align: center;
+}
+
+.home-categories-container .banner img{
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.home-categories-container .banner img:hover{
+  transform: scale(1.1);
+}
+
+.home-categories-container .banner button{
+position: absolute;
+top: 50%; /* Lo posiciona en el 50% del contenedor */
+left: 50%; /* Lo posiciona en el 50% del contenedor */
+transform: translate(-50%, -50%); 
+cursor: pointer;
+background: white;
+padding: 10px;
+margin-bottom: 10px;
+color: black;
+border-radius: 6px;
+width: -moz-fit-content;
+width: fit-content;
+transition: all 0.4s ease-in-out;
+font-weight: 700;
+z-index: 10;
+}
+
+.home-categories-container .banner button:hover{
+    background-color: black;
+    color: white;
+}
