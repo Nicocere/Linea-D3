@@ -19,8 +19,7 @@
   padding: 0 8% 0 8%;
 }
 
-
-/* ADMINISTRADOR */
+/* --------------------------------------ADMINISTRADOR ------------------ */
 .login-form{
   padding: 167px;
   position: relative;
@@ -40,8 +39,60 @@
   color: darkred;
 }
 .perfil-usuario{
-  padding: 200px;
+  padding: 150px;
 }
+
+.div-add-edit-prods{
+  padding-top: 150px;
+}
+.div-addProd{
+padding-top: 45px;
+}
+.form-addProd{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  text-align: justify;
+}
+.add-prod-btn{
+  margin: 20px;
+  transition: all .5s;
+}
+.add-prod-btn:hover{
+  background: rgb(148, 126, 0);
+  color: white;
+}
+.thead-table{
+  background: rgba(128, 128, 128, 0.553);
+}
+.td-tbody{
+  border: .8px solid black;
+  font-family: monospace;
+}
+.btns-table{
+  display: flex;
+}
+
+.btn-table-delete{
+  margin: 5px;
+  background: darkred;
+  color: white;
+  transition: background .4s ;
+}
+.btn-table-delete:hover{
+  background: rgb(214, 1, 1);
+}
+.btn-table-edit{
+  margin: 5px;
+  background: rgba(0, 0, 219, 0.763);
+  color: white;
+  transition: background .4s ;
+
+}
+.btn-table-edit:hover{
+  background: darkblue;
+}
+/* --------------------------------------------------------------- */
 
 /* HEADER Y NAVBAR */
 
@@ -545,6 +596,8 @@ transition: all .3s;
 /* FIN HEADER Y NAVBAR */
 
 /* PRODUCTOS ---------------------*/
+
+
 .productos {
   justify-items: center;
   padding-bottom: 50px;

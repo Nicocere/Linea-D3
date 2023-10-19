@@ -9,6 +9,8 @@ import Login from '../Login/Session-Login/login';
 import RegistroUser from '../Login/Registro/registro';
 import PerfilUser from '../Login/Perfil/perfilUser';
 import Admin from '../../admin/componentes/AdminSesion/sessionAdmin';
+import AddProds from '../../admin/componentes/Productos/addProds';
+import EditProds from '../../admin/componentes/Productos/editProds';
 
 const Main = () => {
 
@@ -35,6 +37,9 @@ const Main = () => {
 
         <Route path="/admin" element={<Admin />} />
 
+        <Route path="/admin/addProds" element={<AddProds />} />
+        
+        <Route path="/admin/editProds/:productId" element={<EditProds />} />
 
         
       </Routes>

@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
 import style from './navTop.module.css'
 import CartWidget from '../CartWidget/CartWidget'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Searcher from '../Searcher/Searcher';
 import NavSeccions from '../NavSeccions/NavSeccions'
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth, baseDeDatos } from "../../firebaseConfig.mjs";
 import { useEffect } from "react";
 import { doc, getDoc } from 'firebase/firestore';
+import useLogout from '../Login/LogOut/LogOut';
 
 
 const NavBarTop = () => {
 
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [userData, setUserData] = useState(null);
-
+  const logout = useLogout()
   const openMenu = showMobileMenu ? 'seccion' : 'seccionCerrada';
-
   const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate()
+
+  const handleProfileNavigation = () => {
+    if (userData.rol === 'administrador') {
+        navigate('/admin');
+    } else {
+        navigate('/perfil');
+    }
+};
 
   useEffect(() => {
       // Establecer el observador en el estado de autenticación
@@ -66,7 +75,9 @@ const NavBarTop = () => {
         {currentUser && userData ? (
                 <div className={style.loginWelcome}>
                     Bienvenido <strong className={style.strongUsername}>{userData.username}</strong>
-                    {/* Aquí podrías tener también un botón para cerrar sesión */}
+                    <button className={style.buttonLogout} onClick={logout}>Cerrar Sesión</button>
+                    <button className={style.buttonProfile} onClick={handleProfileNavigation}>Ir a mi perfil</button>
+
                 </div>
             ) : (
               <div className={style.loginContainer} >

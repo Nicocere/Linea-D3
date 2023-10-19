@@ -4,11 +4,12 @@ import { doc, getDoc } from "firebase/firestore";
 import { baseDeDatos } from '../../../firebaseConfig.mjs';
 import { onAuthStateChanged } from '@firebase/auth';
 import useLogout from '../../../componentes/Login/LogOut/LogOut';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function PerfilUser() {
     const [userData, setUserData] = useState(null);
     const logout = useLogout();
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -35,6 +36,12 @@ function PerfilUser() {
         return <Navigate to="/login" replace />;
     }
 
+
+    const handleNavigateToAddProds = () => {
+        navigate('/admin/addProds');
+
+    }
+
     return (
         <>
             {
@@ -44,8 +51,15 @@ function PerfilUser() {
 
                         <h4>Bienvenido, {userData.nombre} {userData.apellido}</h4>
                         <p>Email: {userData.email}</p>
-                        {/* ... otros detalles del usuario ... */}
                         <button onClick={logout}>Cerrar Sesión</button>
+
+
+                        <p>Que deseas hacer ?</p>
+
+                        <button onClick={handleNavigateToAddProds}>Agregar Productos</button>
+                        <button >Administrar Usuarios</button>
+                        <button >Cambiar / Crear Promociones</button>
+
                     </div>
                 ) : (
                     <div className='perfil-usuario'>Cargando...</div>

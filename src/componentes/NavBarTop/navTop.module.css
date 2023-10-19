@@ -20,6 +20,32 @@
   position: relative;
   right: 75px;
 }
+
+.buttonLogout{
+  margin: 5px;
+  background: black;
+  transition: background .4s;
+  color: white;
+  border-radius: 5px;
+
+}
+.buttonLogout:hover{
+  background: darkred;
+  color: white;
+}
+
+.buttonProfile{
+  margin: 5px;
+  background: black;
+  transition: background .4s;
+  color: white;
+  border-radius: 5px;
+}
+.buttonProfile:hover{
+  background: gold;
+  color: black;
+}
+
 .strongUsername{
   color: gold;
 }
