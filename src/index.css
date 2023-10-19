@@ -19,6 +19,30 @@
   padding: 0 8% 0 8%;
 }
 
+
+/* ADMINISTRADOR */
+.login-form{
+  padding: 167px;
+  position: relative;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-group{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.span-passw{
+  font-size: xx-small;
+  color: darkred;
+}
+.perfil-usuario{
+  padding: 200px;
+}
+
 /* HEADER Y NAVBAR */
 
 .cart-widget-container{
@@ -990,9 +1014,13 @@ transition: all .3s;
 .input-email {
   margin: 8px;
   margin-bottom: 16px;
-  width: 55%;
-
 }
+
+.input-password{
+  margin: 8px;
+  margin-bottom: 16px;
+}
+
 
 .input-nombreComprador {
   margin: 8px;

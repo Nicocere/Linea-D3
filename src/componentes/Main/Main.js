@@ -5,6 +5,10 @@ import { Routes, Route } from 'react-router-dom'
 import Cart from '../Cart/Cart';
 import Home from '../Home/Home';
 import Products from '../../pages/Products/Products';
+import Login from '../Login/Session-Login/login';
+import RegistroUser from '../Login/Registro/registro';
+import PerfilUser from '../Login/Perfil/perfilUser';
+import Admin from '../../admin/componentes/AdminSesion/sessionAdmin';
 
 const Main = () => {
 
@@ -23,6 +27,16 @@ const Main = () => {
 
         <Route path="/cart" element={<Cart />} />
 
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/sigin" element={<RegistroUser />} />
+
+        <Route path="/perfil" element={<PerfilUser />} />
+
+        <Route path="/admin" element={<Admin />} />
+
+
+        
       </Routes>
     </main>
   );
