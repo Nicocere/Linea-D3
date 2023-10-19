@@ -1,3 +1,16 @@
 .products{
     padding-top: 100px;
 }
+
+.products-content{
+ display: flex;
+}
+
+.products-list-container{
+ flex: 3;
+ padding-left: 25%;
+}
+
+.products-list-container .product-item{
+    width: calc(33% - 30px);
+}

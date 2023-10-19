@@ -1,0 +1,29 @@
+.categories{
+ flex: 1;
+ padding-top: 2rem;
+ text-align: -webkit-left;
+  position: fixed;
+  width: 25%;
+}
+
+.categories h3{
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.categories ul{
+    display: inline-grid;
+    padding: 0;
+}
+
+.categories ul a{
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.categories ul a:hover{
+    transform: scale(1.2);
+    padding-left: 30px;
+}

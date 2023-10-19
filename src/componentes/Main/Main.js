@@ -21,7 +21,7 @@ const Main = () => {
 
         <Route path='/' element={<Home />} />
 
-        <Route path='/productos' element={<Products />} />
+        <Route path='/productos/:categoria?' element={<Products />} />
 
         <Route path='/categoria/:categoryName' element={<ItemListContainer />} />
 
@@ -38,10 +38,10 @@ const Main = () => {
         <Route path="/admin" element={<Admin />} />
 
         <Route path="/admin/addProds" element={<AddProds />} />
-        
+
         <Route path="/admin/editProds/:productId" element={<EditProds />} />
 
-        
+
       </Routes>
     </main>
   );
