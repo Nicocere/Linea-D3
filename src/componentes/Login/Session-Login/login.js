@@ -42,12 +42,15 @@ function Login() {
                     Swal.fire({
                         icon: 'error',
                         title: 'Usuario No encontrado',
-                        text: 'Su E-mail o su contraseña son incorrectos.',
+                        text: 'Su E-mail o contraseña son incorrectos.',
                     });
                 });
         } else {
-            alert("Por favor, rellena todos los campos.");
-        }
+            Swal.fire({
+                icon: 'error',
+                title: 'Datos Faltantes',
+                text: 'Ingrese su E-mail y contraseña.',
+            });        }
     };
     
 
@@ -67,7 +70,7 @@ function Login() {
                         name="email"
                         className='input-email'
                     />
-                    {errors.email && <p>El email es requerido</p>}
+                    {errors.email && <p className='message-error' >El E-mail es requerido</p>}
                 </div>
 
                 <div className="input-group">
@@ -79,7 +82,7 @@ function Login() {
                         className='input-password'
                         name="password"
                     />
-                    {errors.password && <p>La contraseña es requerida</p>}
+                    {errors.password && <p className='message-error' >La contraseña es requerida</p>}
                 </div>
 
 

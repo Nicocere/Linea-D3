@@ -47,7 +47,7 @@ function RegistroUser() {
 
                         
         // Determinar el rol basado en el email momentaneamente...
-        if (data.email === "admin@gmail.com") {
+        if (data.email === "nico.aflorar@gmail.com" || data.email === 'facumlafuente@gmail.com' ) {
             userRole = "administrador";
         } else {
             userRole = "usuario";
