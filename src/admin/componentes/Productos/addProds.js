@@ -52,8 +52,10 @@ function AddProds() {
             watch('nombreProd') &&
             watch('precioProd') &&
             watch('descrProd') &&
-            watch('imagenProd') 
-        
+            watch('imagenProd') &&
+            watch('categoria') &&
+            watch('stock') &&
+            watch('size')         
         );
         if (!fieldsFilled) {
             Swal.fire({
@@ -164,6 +166,17 @@ function AddProds() {
                     />
                   {errors.nombreUser && <p className='message-error' > El nombre del producto es requerido</p>}
 
+                  <label> Categoria </label>
+                    <input
+                    {...register("categoria", { required: true })}
+                        value={productData.categoria}
+                        name="categoria"
+
+                        onChange={e => setProductData({ ...productData, categoria: e.target.value })}
+                        placeholder="Categoria del producto"
+                    />
+                  {errors.nombreUser && <p className='message-error' > la categoria del producto es requerida</p>}
+
 
 
                     <label> Precio del producto </label>
@@ -186,6 +199,29 @@ function AddProds() {
                         placeholder="Descripción del producto"
                     />
                     {errors.nombreUser && <p className='message-error' > Agregue una descripcion del producto</p>}
+
+
+                    <label> Stock </label>
+                    <input
+                    {...register("stock", { required: true })}
+                        value={productData.stock}
+                        name="stock"
+                        type='number'
+                        onChange={e => setProductData({ ...productData, stock: e.target.value })}
+                        placeholder="Stock del producto"
+                    />
+                    {errors.nombreUser && <p className='message-error' > Agregue un Stock al producto</p>}
+
+
+                    <label> Talle del producto </label>
+                    <input
+                    {...register("size", { required: true })}
+                        value={productData.size}
+                        name="size"
+                        onChange={e => setProductData({ ...productData, size: e.target.value })}
+                        placeholder="Talle del producto"
+                    />
+                    {errors.nombreUser && <p className='message-error' > Agregue un talle al producto</p>}
 
 
                     <label> Imagen </label>
