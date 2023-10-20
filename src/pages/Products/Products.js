@@ -7,14 +7,14 @@ import Categories from '../../componentes/Categories/Categories';
 const Products = () => {
 
     return (
-        <main className='products'>
+        <div className='products'>
             <div className="products-content" >
                 <Categories />
                 <div className="products-list-container" >
                     <ItemListContainer />
                 </div>
             </div>
-        </main>
+        </div>
     );
 
 

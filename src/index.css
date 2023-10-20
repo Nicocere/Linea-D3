@@ -611,15 +611,16 @@ transition: all .3s;
 .listadeproductos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .product-item {
-  width: calc(25% - 30px);
+  width: calc(22% - 30px);
   margin-bottom: 40px;
   box-sizing: border-box;
   border-radius: 5px;
   background-color: white;
+  margin: 20px;
 }
 
 .product-item:hover {
