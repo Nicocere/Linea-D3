@@ -707,6 +707,26 @@ transition: all .3s;
   flex-direction: column;
 }
 
+.div-presupuestos{
+  padding: 140px 0px 100px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-presupuesto{
+  display: flex;
+  flex-direction: column;
+}
+.input-presup{
+  margin: 15px;
+}
+
+.text-presup{
+  margin: 15px;
+  height: 100px;
+}
+
+
 /* agregar y quitar productos ----------------------*/
 
 .btnAgregarQuitar {
