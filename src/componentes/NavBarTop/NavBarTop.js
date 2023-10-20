@@ -22,40 +22,40 @@ const NavBarTop = () => {
 
   const handleProfileNavigation = () => {
     if (userData.rol === 'administrador') {
-        navigate('/admin');
+      navigate('/admin');
     } else {
-        navigate('/perfil');
+      navigate('/perfil');
     }
-};
+  };
 
   useEffect(() => {
-      // Establecer el observador en el estado de autenticación
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (user) {
-              setCurrentUser(user);
-              const fetchData = async () => {
-                if (auth.currentUser) {
-                    const uid = auth.currentUser.uid;
-                    const userDocRef = doc(baseDeDatos, "users", uid);
-                    const userDoc = await getDoc(userDocRef);
-                    console.log("USER DOC", userDoc.data())
-                    if (userDoc.exists()) {
-                        setUserData(userDoc.data());
-                    } else {
-                        console.error("No se encontró el usuario en Firestore");
-                    }
-                }
-            };
-    
-            fetchData();
-               console.log("esto pasa pq existe user", user)
-          } else {
-              setCurrentUser(null);
+    // Establecer el observador en el estado de autenticación
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+        const fetchData = async () => {
+          if (auth.currentUser) {
+            const uid = auth.currentUser.uid;
+            const userDocRef = doc(baseDeDatos, "users", uid);
+            const userDoc = await getDoc(userDocRef);
+            console.log("USER DOC", userDoc.data())
+            if (userDoc.exists()) {
+              setUserData(userDoc.data());
+            } else {
+              console.error("No se encontró el usuario en Firestore");
+            }
           }
-      });
+        };
 
-      // Limpiar el observador cuando el componente se desmonte
-      return () => unsubscribe();
+        fetchData();
+        console.log("esto pasa pq existe user", user)
+      } else {
+        setCurrentUser(null);
+      }
+    });
+
+    // Limpiar el observador cuando el componente se desmonte
+    return () => unsubscribe();
 
   }, []);
 
@@ -73,20 +73,24 @@ const NavBarTop = () => {
           <CartWidget />
         </NavLink>
         {currentUser && userData ? (
-                <div className={style.loginWelcome}>
-                    Bienvenido <strong className={style.strongUsername}>{userData.username}</strong>
-                    <button className={style.buttonLogout} onClick={logout}>Cerrar Sesión</button>
-                    <button className={style.buttonProfile} onClick={handleProfileNavigation}>Ir a mi perfil</button>
+          <div className={style.loginWelcome}>
+            <div className={style.containerUser} >
+              Bienvenido <strong className={style.strongUsername}>{userData.username}</strong>
+            </div>
+            <div className={style.userButtons} >
+              <button className={style.buttonUser} onClick={logout}>Cerrar Sesión</button>
+              <button className={style.buttonUser} onClick={handleProfileNavigation}>Ir a mi perfil</button>
+            </div>
 
-                </div>
-            ) : (
-              <div className={style.loginContainer} >
+          </div>
+        ) : (
+            <div className={style.loginContainer} >
               <NavLink to="/sigin">Crear Cuenta</NavLink>
               <NavLink to="/login">Iniciar Sesión</NavLink>
-            </div>    
-            
-            )}
-     
+            </div>
+
+          )}
+
       </div>
     </div>
   )

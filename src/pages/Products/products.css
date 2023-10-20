@@ -12,5 +12,5 @@
 }
 
 .products-list-container .product-item{
-    width: calc(33% - 30px);
+    width: calc(30% - 30px);
 }

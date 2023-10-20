@@ -10,7 +10,7 @@ const NavSeccions = () => {
     return (
         <ul className="seccionCerrada">
 
-            <div className='categoriaMovil' >
+            {/* <div className='categoriaMovil' >
                 {
                     showMobileMenu ? <p className={openCategory} >Categorias </p> : <p className={openCategory} >Categorias </p>
                 }
@@ -18,7 +18,7 @@ const NavSeccions = () => {
 
 
             <div className='barMovil' onClick={() => setShowMobileMenu(!showMobileMenu)}>
-            </div>
+            </div> */}
 
             <div >
                 <NavLink className='seccionLi' to='/' onClick={() => setShowMobileMenu(!showMobileMenu)}> Inicio </NavLink>
@@ -27,7 +27,7 @@ const NavSeccions = () => {
 
                 <NavLink className='seccionLi' to="/categoria/Funcionalidades" onClick={() => setShowMobileMenu(!showMobileMenu)}>Promociones</NavLink>
 
-                {/* <NavLink className='seccionLi' to="/categoria/Recursos" onClick={() => setShowMobileMenu(!showMobileMenu)}>Contacto</NavLink> */}
+                <NavLink className='seccionLi' to="/presupuestos" onClick={() => setShowMobileMenu(!showMobileMenu)}>Presupuestos</NavLink>
 
                 <NavLink className='seccionLi' to="/categoria/Especiales" onClick={() => setShowMobileMenu(!showMobileMenu)}>Quienes somos</NavLink>
             </div>
