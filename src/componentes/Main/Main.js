@@ -11,6 +11,7 @@ import PerfilUser from '../Login/Perfil/perfilUser';
 import Admin from '../../admin/componentes/AdminSesion/sessionAdmin';
 import AddProds from '../../admin/componentes/Productos/addProds';
 import EditProds from '../../admin/componentes/Productos/editProds';
+import Presupuestos from '../../Presupuestos/presupuestos';
 
 const Main = () => {
 
@@ -41,6 +42,7 @@ const Main = () => {
 
         <Route path="/admin/editProds/:productId" element={<EditProds />} />
 
+        <Route path="/presupuestos" element={<Presupuestos />} />
 
       </Routes>
     </main>
