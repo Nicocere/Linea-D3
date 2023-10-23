@@ -105,7 +105,7 @@ const Cart = () => {
                                                             <td className='detailsInCart'>{prod.quantity}</td>
                                                             <td className='detailsInCart'>{prod.size}</td>
                                                             <td className='detailsInCart'>
-                                                                {priceDolar ? `USD$${prodPrecioUsd}` : `$${prod.precio.toLocaleString('es-AR')}`}
+                                                                {priceDolar ? `USD$${prodPrecioUsd}` : `$${prod.precio}`}
                                                             </td>
                                                             <td>
                                                                 <button className='btn-eliminarProd'
@@ -129,7 +129,7 @@ const Cart = () => {
                                         priceDolar ?
                                             <h3 className='totalPrecio'> USD${total}</h3>
                                             :
-                                            <h3 className='totalPrecio'> ${total.toLocaleString('es-AR')}</h3>
+                                            <h3 className='totalPrecio'> ${total}</h3>
                                     }
 
                                     <div className='formulario'>

@@ -19,6 +19,7 @@ const NavBarTop = () => {
   const openMenu = showMobileMenu ? 'seccion' : 'seccionCerrada';
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate()
+  const storageProducts = JSON.parse(localStorage.getItem('productos'));
 
   const handleProfileNavigation = () => {
     if (userData.rol === 'administrador') {
@@ -65,7 +66,7 @@ const NavBarTop = () => {
       <img className={style.imgNavBar} src={'../assets/logo/LineaD3Logo.png'} alt="logo lineaD3" />
 
       <div className={style.sercherContainer} >
-        <Searcher />
+        <Searcher items={storageProducts} />
         <NavSeccions />
       </div>
       <div className={style.loginWidgetContainer} >

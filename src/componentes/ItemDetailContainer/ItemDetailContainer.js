@@ -11,38 +11,46 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
     const [isLoading, setIsLoading] = useState(true)
     const { prodId } = useParams()
+    console.log(prodId)
+    const storageProducts = JSON.parse(localStorage.getItem('productos'));
+
 
     useEffect(() => {
 
-        async function fetchData() {
-            try {
-                // const result = await axios(`http://localhost:8080/productos/${prodId}`);
-                const result = await axios.get(`https://envioflores-backend.vercel.app/productos/${prodId}`);
+        // async function fetchData() {
+        //     try {
+        //         // const result = await axios(`http://localhost:8080/productos/${prodId}`);
+        //         const result = await axios.get(`https://envioflores-backend.vercel.app/productos/${prodId}`);
 
-                if (result.data.prodID) {
-                    setIsLoading(false)
-                }
-                setItem(result.data.prodID)
-            } catch (error) {
-                console.log("No se pudo obtener la base de datos:", error)
-            }
+        //         if (result.data.prodID) {
+        //             setIsLoading(false)
+        //         }
+        //         setItem(result.data.prodID)
+        //     } catch (error) {
+        //         console.log("No se pudo obtener la base de datos:", error)
+        //     }
+        // }
+        // fetchData()
+        if (storageProducts) {
+            const product = storageProducts.filter(prod => prod.id == prodId)
+            console.log(product)
+            setItem(product[0])
         }
-        fetchData()
     }, [prodId]);
 
     return (
-        <div key={item._id} className="prodDetailContainer">
-            {isLoading ? (
+        <div key={item.id} className="prodDetailContainer">
+            {/* {isLoading ? (
                 <>
                     <h2 className="loadDetailProd">Cargando Productos....</h2>
                     <FadeLoader color="white" />
                 </>
             ) : (
-                <>
-                    <ItemDetail item={item} />
-                </>
-            )}
+                    <>
+                    </>
+                )} */}
 
+            <ItemDetail item={item} />
         </div>
     );
 

@@ -23,7 +23,7 @@ const Main = () => {
 
         <Route path='/productos/:categoryName?' element={<Products />} />
 
-        <Route path='/categoria/:categoryName' element={<ItemListContainer />} />
+        <Route path='/busqueda/:searchParam' element={<ItemListContainer />} />
 
         <Route path='/detail/:prodId' element={<ItemDetailContainer />} />
 

@@ -1,0 +1,11 @@
+.item-detail{
+    display: flex;
+}
+
+.item-detail img{
+    width: 400px;
+}
+
+.detail-content{
+    padding: 40px;
+}

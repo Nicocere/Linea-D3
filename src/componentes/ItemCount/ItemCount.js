@@ -77,13 +77,14 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
       // setCart(result.data.cart.products)
 
       const priceInUsd = (optionPrecio / dolar).toFixed(2)
-      const displayPrice = priceDolar ? `USD$${priceInUsd}` : `$${optionPrecio.toLocaleString('es-AR')}`;
+      console.log(optionPrecio)
+      // const displayPrice = priceDolar ? `USD$${priceInUsd}` : `$${optionPrecio.toLocaleString('es-AR')}`;
 
       // SweetAlert2
       MySwal.fire({
         toast: true, // Activamos el modo "toast"
         title: `<strong>Producto Agregado</strong>`,
-        text: `${nameOptionalSize || item.nombre} (${optionSize}) - ${displayPrice}`, // Aquí agregamos el nombre, tamaño y precio
+        text: `${nameOptionalSize || item.nombre} (${optionSize}) - ${item.precio}`, // Aquí agregamos el nombre, tamaño y precio
         icon: 'success',
         showConfirmButton: false,
         timer: 4000, // Duración de 3 segundos
