@@ -47,23 +47,24 @@ function PerfilUser() {
             {
                 userData ? (
                     <div className='perfil-usuario'>
-                        <h1>Estas en el Perfil del Administrador</h1>
+                        {/* <h1>Estas en el Perfil del Administrador</h1> */}
 
                         <h4>Bienvenido, {userData.nombre} {userData.apellido}</h4>
-                        <p>Email: {userData.email}</p>
-                        <button onClick={logout}>Cerrar Sesión</button>
+                        {/* <p>Email: {userData.email}</p> */}
+                        {/* <button onClick={logout}>Cerrar Sesión</button> */}
 
 
-                        <p>Que deseas hacer ?</p>
+                        <p>Opciones de Administrador</p>
 
                         <button onClick={handleNavigateToAddProds}>Agregar Productos</button>
                         <button >Administrar Usuarios</button>
                         <button >Cambiar / Crear Promociones</button>
+                        <button >Editar Perfil</button>
 
                     </div>
                 ) : (
-                    <div className='perfil-usuario'>Cargando...</div>
-                )
+                        <div className='perfil-usuario'>Cargando...</div>
+                    )
             }
         </>
     );

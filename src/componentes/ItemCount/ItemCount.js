@@ -3,12 +3,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import "./itemCount.css"
 const MySwal = withReactContent(Swal);
 
-const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptionalSize, quantity, stock, initial = 1 }) => {
+const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptionalSize, quantity, stock }) => {
 
-  const [count, setCount] = useState(initial);
   const { cart, setCart, priceDolar, dolar, CartID, UserID } = useContext(CartContext);
+
 
   const agregarAlCarrito = async () => {
     try {
@@ -25,7 +26,7 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
         name: nameOptionalSize || item.nombre,
         img: item.img,
         item: item,
-        quantity: count,
+        quantity: quantity ? quantity : 1,
         CartID: CartID,
         UserID: UserID
       };
@@ -102,9 +103,7 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
     }
   }
 
-  useEffect(() => {
-    setCount(initial);
-  }, [initial]);
+
 
   return (
     <div className='btnAgregarQuitar'>

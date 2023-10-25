@@ -18,10 +18,7 @@ const ItemListContainer = () => {
   const { prodEncontrado } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { categoryName } = useParams("categoria")
-  console.log(categoryName)
-  const [page, setPage] = useState(1);
-  const [paginationInfo, setPaginationInfo] = useState(null);
+  const { categoryName, searchParam } = useParams()
   const storageProducts = JSON.parse(localStorage.getItem('productos'));
   // const [categoria, setCategoryName] = useState(null);
 
@@ -43,6 +40,9 @@ const ItemListContainer = () => {
         const filterItems = productos.filter(prod => prod.categoria && prod.categoria.toLowerCase().includes(categoryName.toLowerCase()))
 
         setItems(filterItems)
+      } else if (searchParam) {
+        const searchProducts = productos.filter(prod => prod.categoria && prod.categoria.toLowerCase().includes(searchParam.toLowerCase()) || prod.nombre.toLowerCase().includes(searchParam.toLowerCase()))
+        setItems(searchProducts)
       } else {
         setItems(productos);
         localStorage.setItem('productos', JSON.stringify(productos))
@@ -58,7 +58,6 @@ const ItemListContainer = () => {
   }
 
   useEffect(() => {
-
     if (storageProducts && !categoryName) {
       setItems(storageProducts)
       setIsLoading(false)
@@ -70,18 +69,26 @@ const ItemListContainer = () => {
     } else {
       fetchData();
     }
-  }, [categoryName, page]);
+  }, [categoryName]);
+
+  useEffect(() => {
+    if (storageProducts && searchParam) {
+      const searchProducts = storageProducts.filter(prod => prod.categoria && prod.categoria.toLowerCase().includes(searchParam.toLowerCase()) || prod.nombre.toLowerCase().includes(searchParam.toLowerCase()))
+      setItems(searchProducts)
+      setIsLoading(false)
+    }
+  }, [searchParam]);
 
   console.log(items)
 
   return (
     <div className="productos">
 
-      {
+      {/* {
         categoryName ?
           <h3 className="cat-selected">Estás viendo la Categoría:
                     <strong className="cat-selected-strong" > {categoryName} </strong> </h3> : null
-      }
+      } */}
 
       {isLoading ? (
         <>
@@ -91,12 +98,12 @@ const ItemListContainer = () => {
       ) : (
           <>
             {/* <Searcher items={items} /> */}
-            {categoryName ?
+            {/* {categoryName ?
               <Pagination info={paginationInfo}
                 setPage={setPage}
                 category={categoryName}
               />
-              : null}
+              : null} */}
 
             <ItemList items={items} prodEncontrado={prodEncontrado} />
           </>

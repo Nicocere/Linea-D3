@@ -42,50 +42,50 @@ function Presupuestos() {
     return (
         <div className='div-presupuestos'>
             <form className='form-presupuesto' onSubmit={handleSubmit}>
-                <label>Tu Nombre y Apellido</label>
+                <label>Nombre y Apellido</label>
                 <input className='input-presup'
-                    type="text" 
-                    name="from_name" 
-                    placeholder="Nombre y apellido..." 
-                    value={formData.from_name} 
-                    onChange={handleInputChange} 
+                    type="text"
+                    name="from_name"
+                    placeholder="Nombre y apellido..."
+                    value={formData.from_name}
+                    onChange={handleInputChange}
                     required
                 />
 
-                <label>Tu E-mail</label>
+                <label>E-mail</label>
                 <input className='input-presup'
-                    type="email" 
-                    name="from_email" 
-                    placeholder="Email..." 
-                    value={formData.from_email} 
-                    onChange={handleInputChange} 
+                    type="email"
+                    name="from_email"
+                    placeholder="Email..."
+                    value={formData.from_email}
+                    onChange={handleInputChange}
                     required
                 />
 
-                <label>Tu n° de Teléfono </label>
+                <label>Teléfono </label>
                 <input className='input-presup'
-                    type="text" 
-                    name="phone" 
-                    placeholder="Teléfono...." 
-                    value={formData.phone} 
-                    onChange={handleInputChange} 
+                    type="text"
+                    name="phone"
+                    placeholder="Teléfono...."
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     required
                 />
 
                 <label>¿Qué presupuesto desea pedir?</label>
                 <textarea className='text-presup'
-                    name="message" 
-                    placeholder="Detalles del presupuesto" 
-                    value={formData.message} 
+                    name="message"
+                    placeholder="Detalles del presupuesto"
+                    value={formData.message}
                     onChange={handleInputChange}
                     required
                 ></textarea>
                 {
-                    isLoading ? 
-                    <div className="spinner">
-                    Enviando su mail, aguarde....
+                    isLoading ?
+                        <div className="spinner">
+                            Enviando su mail, aguarde....
                     <FadeLoader color="black" />
-                </div>:   <button type="submit">Enviar</button>
+                        </div> : <button className="black-btn" type="submit">Enviar</button>
 
                 }
             </form>

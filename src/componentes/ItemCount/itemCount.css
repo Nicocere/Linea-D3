@@ -1,0 +1,28 @@
+.contador{
+    display: flex;
+    justify-content: center;
+}
+
+.contador p{
+    font-size: 14px;
+    align-self: center;
+}
+
+.contador button{
+    background: black;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    width: -moz-fit-content;
+    width: fit-content;
+    transition: all 0.4s ease-in-out;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.contador button:hover{
+    background: white;
+    color: black;
+}

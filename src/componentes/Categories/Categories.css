@@ -27,3 +27,14 @@
     transform: scale(1.2);
     padding-left: 30px;
 }
+
+
+.categories-navigation{
+    display: flex;
+    margin-left: 10px;
+}
+
+.categories-navigation a{
+    text-decoration: none;
+    color: black;
+}

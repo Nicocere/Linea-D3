@@ -29,7 +29,7 @@ function AddProds() {
         stock: '',
         talle: '',
         categoria: '',
-        });
+    });
 
     const fetchProducts = async () => {
         const productsCollection = query(collection(baseDeDatos, "productos"));
@@ -69,7 +69,7 @@ function AddProds() {
             });
             return;  // Salir de la función
         }
-        
+
         try {
             // Subir la imagen a Firebase Storage
             if (imageFile) {
@@ -103,7 +103,7 @@ function AddProds() {
                             text: `Has agregado correctamente un nuevo Producto`,
                         });
                         fetchProducts()
-                        
+
                         // Luego de agregar el producto puedes limpiar el estado
                         setProductData({
                             nombre: '',
@@ -116,7 +116,7 @@ function AddProds() {
                         });
                     }
                 );
-               
+
             }
             setIsLoading(false)
         } catch (e) {
@@ -142,16 +142,16 @@ function AddProds() {
             // Si el usuario confirmó la eliminación
             if (result.isConfirmed) {
                 // Aquí colocas tu código para eliminar el producto
-               
-                    await deleteDoc(doc(baseDeDatos, "productos", productId));
-                    console.log("Producto eliminado");
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Producto Eliminado',
-                        text: `Has eliminado un producto`,
-                    });
-                    fetchProducts()
-                }
+
+                await deleteDoc(doc(baseDeDatos, "productos", productId));
+                console.log("Producto eliminado");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Producto Eliminado',
+                    text: `Has eliminado un producto`,
+                });
+                fetchProducts()
+            }
 
         } catch (e) {
             console.error("Error al eliminar el producto: ", e);
@@ -255,7 +255,7 @@ function AddProds() {
                                 Agregando Nuevo Producto, aguarde....
                                 <FadeLoader color="black" />
                             </div>
-                        ) : <button className='add-prod-btn' type="submit">Agregar Producto</button>
+                        ) : <button className='add-prod-btn black-btn' type="submit">Agregar Producto</button>
                     }
                 </form>
             </div>

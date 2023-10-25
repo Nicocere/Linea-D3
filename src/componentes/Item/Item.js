@@ -14,6 +14,7 @@ const Item = ({ items }) => {
       </Link>
 
       <h4 className="tituloProducto">{items.nombre}</h4>
+      <h3>${items.precio}</h3>
       <div className="div-prod-details-indx">
 
         {/* <p className="prod-details-index">Tamaño: <strong className='strong-prod-details'> {items.opciones[0].size} </strong></p> */}
