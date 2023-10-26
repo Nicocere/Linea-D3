@@ -15,7 +15,13 @@
     margin: 5px;
   }
 
-.buttonUser{
+.divNav{
+  display: flex;
+  width: 85%;
+  justify-content: space-evenly;
+}
+
+  .buttonUser{
   margin: 5px;
     background: black;
     padding: 7px;
