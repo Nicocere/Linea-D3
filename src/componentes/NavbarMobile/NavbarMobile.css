@@ -1,0 +1,25 @@
+.nav-mobile{
+background: black;
+display: flex;
+justify-content: space-between;
+}
+
+.nav-mobile .logo{
+    width: 80px;
+}
+
+.nav-mobile .menu-container{
+    margin: 10px;
+    align-self: center;
+    display: flex;
+    place-items: center;
+}
+
+.nav-mobile .menu-icon{
+    width: 20px;
+    padding: 5px;
+}
+
+.nav-mobile span{
+    color: white;
+}
