@@ -27,6 +27,8 @@ const Categories = () => {
                 </NavLink>
                 <h4>{categoryroute}</h4>
             </div>
+            <div className="categories-div">
+
             <h3>Categorias</h3>
             <ul>
                 <NavLink to="/productos/hombre">Hombre</NavLink>
@@ -37,6 +39,7 @@ const Categories = () => {
                 <NavLink to="/productos/musculosas">Musculosas</NavLink>
                 <NavLink to="/productos/short">Short</NavLink>
             </ul>
+            </div>
         </div>
     );
 

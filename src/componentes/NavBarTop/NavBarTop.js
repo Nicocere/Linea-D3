@@ -63,12 +63,19 @@ const NavBarTop = () => {
   return (
     <div className={style.navTop}>
 
+      <div className={style.divNav}>
+
+
       <img className={style.imgNavBar} src={'../assets/logo/LineaD3Logo.png'} alt="logo lineaD3" />
 
       <div className={style.sercherContainer} >
         <Searcher items={storageProducts} />
         <NavSeccions />
       </div>
+
+      </div>
+
+
       <div className={style.loginWidgetContainer} >
         <NavLink className={style.cartLink} to="/cart">
           <CartWidget />
