@@ -9,6 +9,7 @@ import { auth, baseDeDatos } from "../../firebaseConfig.mjs";
 import { useEffect } from "react";
 import { doc, getDoc } from 'firebase/firestore';
 import useLogout from '../Login/LogOut/LogOut';
+import { SubMenuUsers } from '../SubMenuUsers/SubMenuUsers';
 
 
 const NavBarTop = () => {
@@ -18,16 +19,15 @@ const NavBarTop = () => {
   const logout = useLogout()
   const openMenu = showMobileMenu ? 'seccion' : 'seccionCerrada';
   const [currentUser, setCurrentUser] = useState(null);
-  const navigate = useNavigate()
+  const [showSubMenu, setShowSubMenu] = useState(false);
+
+  const toggleSubMenu = () => {
+    setShowSubMenu(!showSubMenu);
+};
+
+
   const storageProducts = JSON.parse(localStorage.getItem('productos'));
 
-  const handleProfileNavigation = () => {
-    if (userData.rol === 'administrador') {
-      navigate('/admin');
-    } else {
-      navigate('/perfil');
-    }
-  };
 
   useEffect(() => {
     // Establecer el observador en el estado de autenticación
@@ -66,12 +66,12 @@ const NavBarTop = () => {
       <div className={style.divNav}>
 
 
-      <img className={style.imgNavBar} src={'../assets/logo/LineaD3Logo.png'} alt="logo lineaD3" />
+        <img className={style.imgNavBar} src={'../assets/logo/LineaD3Logo.png'} alt="logo lineaD3" />
 
-      <div className={style.sercherContainer} >
-        <Searcher items={storageProducts} />
-        <NavSeccions />
-      </div>
+        <div className={style.sercherContainer} >
+          <Searcher items={storageProducts} />
+          <NavSeccions />
+        </div>
 
       </div>
 
@@ -81,23 +81,24 @@ const NavBarTop = () => {
           <CartWidget />
         </NavLink>
         {currentUser && userData ? (
-          <div className={style.loginWelcome}>
+          
+         
+          <div className={style.loginWelcome} onClick={toggleSubMenu} >
             <div className={style.containerUser} >
-              Bienvenido <strong className={style.strongUsername}>{userData.username}</strong>
-            </div>
-            <div className={style.userButtons} >
-              <button className={style.buttonUser} onClick={logout}>Cerrar Sesión</button>
-              <button className={style.buttonUser} onClick={handleProfileNavigation}>Ir a mi perfil</button>
-            </div>
+          Bienvenido <strong className={style.strongUsername}>{userData.username}</strong>
+        </div>
+              {showSubMenu && <SubMenuUsers userData={userData}  />}
+          </div> 
+     
+       
 
-          </div>
         ) : (
-            <div className={style.loginContainer} >
-              <NavLink to="/sigin">Crear Cuenta</NavLink>
-              <NavLink to="/login">Iniciar Sesión</NavLink>
-            </div>
+          <div className={style.loginContainer} >
+            <NavLink to="/sigin">Crear Cuenta</NavLink>
+            <NavLink to="/login">Iniciar Sesión</NavLink>
+          </div>
 
-          )}
+        )}
 
       </div>
     </div>

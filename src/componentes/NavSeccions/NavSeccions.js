@@ -7,17 +7,19 @@ const NavSeccions = () => {
 
     const [showMobileMenu, setShowMobileMenu] = useState(false)
     const [showSubMenu, setShowSubMenu] = useState(false);
-    
+
 
     return (
         <ul className="seccionCerrada">
 
 
-            <div >
+            <div  className='div-seccions' >
                 <NavLink className='seccionLi' to='/' onClick={() => setShowMobileMenu(!showMobileMenu)}> Inicio </NavLink>
 
-                <NavLink  className='seccionLi'  to='/productos'  
-                onMouseEnter={() => setShowSubMenu(true)}  onMouseLeave={() => setShowSubMenu(false)}>  Productos {showSubMenu && <CategoriesSubMenu />}</NavLink>
+                <div className='div-seccionProds'>
+                    <NavLink className='seccionLi' to='/productos'
+                        onMouseEnter={() => setShowSubMenu(true)} onMouseLeave={() => setShowSubMenu(false)}>  Productos {showSubMenu && <CategoriesSubMenu />}</NavLink>
+                </div>
                 {/* <NavLink className='seccionLi' to='/productos' onClick={() => setShowMobileMenu(!showMobileMenu)}>Productos </NavLink> */}
 
                 <NavLink className='seccionLi' to="/categoria/Funcionalidades" onClick={() => setShowMobileMenu(!showMobileMenu)}>Promociones</NavLink>

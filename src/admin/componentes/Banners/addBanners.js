@@ -2,43 +2,40 @@ import React, { useEffect, useState } from 'react';
 import { addDoc, collection, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { baseDeDatos, storage } from '../../../firebaseConfig.mjs';
 import { query, getDocs } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
+import CarouselComponent from '../../../componentes/Carousel/Carousel';
 
-function AddProds() {
+function AddBanners() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
-    const [products, setProducts] = useState([]);
+    const [banners, setBanners] = useState([]);
     const [imageFile, setImageFile] = useState(null);
-
-
+    
+    
     const handleNavigateToEdit = (productId) => {
-        navigate(`/admin/editProds/${productId}`);
-
+        navigate(`/admin/edit/banners/${productId}`);
+        
     }
 
-    const [productData, setProductData] = useState({
+    const [bannerData, setBannerData] = useState({
         nombre: '',
-        precio: '',
-        descripcion: '',
-        imagen: '',
-        stock: '',
-        talle: '',
-        categoria: '',
+        imagen:'',
     });
-
+    
     const fetchProducts = async () => {
-        const productsCollection = query(collection(baseDeDatos, "productos"));
+        const productsCollection = query(collection(baseDeDatos, "banners"));
         const productSnapshot = await getDocs(productsCollection);
         const productList = productSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-        setProducts(productList);
+        setBanners(productList);
     };
-
+    
     useEffect(() => {
+        console.log("ESTO PASA")
         fetchProducts();
     }, []);
 
@@ -54,12 +51,7 @@ function AddProds() {
 
         const fieldsFilled = (
             watch('nombreProd') &&
-            watch('precioProd') &&
-            watch('descrProd') &&
-            watch('imagenProd') &&
-            watch('categoria') &&
-            watch('stock') &&
-            watch('talle')
+            watch('imagenProd') 
         );
         if (!fieldsFilled) {
             Swal.fire({
@@ -73,7 +65,7 @@ function AddProds() {
         try {
             // Subir la imagen a Firebase Storage
             if (imageFile) {
-                const storageRef = ref(storage, 'productos/' + imageFile.name);
+                const storageRef = ref(storage, 'banners/' + imageFile.name);
                 const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
                 uploadTask.on('state_changed',
@@ -88,13 +80,14 @@ function AddProds() {
                         // Upload completado exitosamente, obtener la URL de descarga
                         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                         // Guardar la URL de la imagen junto con otros datos del producto
-                        const productDataWithImage = {
-                            ...productData,
-                            imagen: downloadURL
+                        const bannerDataWithImage = {
+                            ...bannerData,
+                            imagen: downloadURL,
+                            status: true,
                         };
 
                         // Ahora puedes agregar el producto a Firestore
-                        const docRef = await addDoc(collection(baseDeDatos, "productos"), productDataWithImage);
+                        const docRef = await addDoc(collection(baseDeDatos, "banners"), bannerDataWithImage);
                         console.log("Producto agregado con foto y con ID: ", docRef.id);
 
                         Swal.fire({
@@ -102,16 +95,12 @@ function AddProds() {
                             title: 'Producto Agregado',
                             text: `Has agregado correctamente un nuevo Producto`,
                         });
-                        fetchProducts()
 
+                        fetchProducts()
+                        
                         // Luego de agregar el producto puedes limpiar el estado
-                        setProductData({
+                        setBannerData({
                             nombre: '',
-                            precio: '',
-                            descripcion: '',
-                            stock: '',
-                            talle: '',
-                            categoria: '',
                             imagen: '',
                         });
                     }
@@ -165,7 +154,7 @@ function AddProds() {
 
     return (
         < div className='div-add-edit-prods'>
-
+            <h2 className='banner-title'>Banners</h2>
             <div className='perfil-usuario-btns'>
                 <button onClick={() => navigate(-1)}>Volver atrás</button>
                 <button >Administrar Usuarios</button>
@@ -174,76 +163,19 @@ function AddProds() {
             </div>
             
             <div className='div-addProd' >
-                <h3>Agregar Nuevos Productos</h3>
+                <h3>Agregar Nuevos Banners</h3>
 
                 <form className='form-addProd' onSubmit={handleSubmit(onSubmit)}>
-                    <label> Nombre del producto </label>
+                    <label> Nombre del Banner </label>
                     <input
                         {...register("nombreProd", { required: true })}
-                        value={productData.nombre}
+                        value={bannerData.nombre}
                         name="nombreProd"
 
-                        onChange={e => setProductData({ ...productData, nombre: e.target.value })}
+                        onChange={e => setBannerData({ ...bannerData, nombre: e.target.value })}
                         placeholder="Nombre del producto"
                     />
                     {errors.nombreProd && <p className='message-error' > El nombre del producto es requerido</p>}
-
-                    <label> Categoria </label>
-                    <input
-                        {...register("categoria", { required: true })}
-                        value={productData.categoria}
-                        name="categoria"
-
-                        onChange={e => setProductData({ ...productData, categoria: e.target.value })}
-                        placeholder="Categoria del producto"
-                    />
-                    {errors.categoria && <p className='message-error' > la categoria del producto es requerida</p>}
-
-
-
-                    <label> Precio del producto </label>
-                    <input
-                        {...register("precioProd", { required: true })}
-                        value={productData.precio}
-                        name="precioProd"
-
-                        onChange={e => setProductData({ ...productData, precio: e.target.value })}
-                        placeholder="Precio del producto"
-                    />
-                    {errors.precioProd && <p className='message-error' > El precio del producto es requerido</p>}
-
-                    <label> Descripción del producto </label>
-                    <textarea
-                        {...register("descrProd", { required: true })}
-                        value={productData.descripcion}
-                        name="descrProd"
-                        onChange={e => setProductData({ ...productData, descripcion: e.target.value })}
-                        placeholder="Descripción del producto"
-                    />
-                    {errors.descrProd && <p className='message-error' > Agregue una descripcion del producto</p>}
-
-
-                    <label> Stock </label>
-                    <input
-                        {...register("stock", { required: true })}
-                        value={productData.stock}
-                        name="stock"
-                        type='number'
-                        onChange={e => setProductData({ ...productData, stock: e.target.value })}
-                        placeholder="Stock del producto"
-                    />
-                    {errors.stock && <p className='message-error' > Agregue un Stock al producto</p>}
-
-
-                    <label> Talle del producto </label>
-                    <input
-                        {...register("talle", { required: true })}
-                        value={productData.talle}
-                        name="talle"
-                        onChange={e => setProductData({ ...productData, talle: e.target.value })}
-                        placeholder="Talle del producto"
-                    />
-                    {errors.talle && <p className='message-error' > Agregue un talle al producto</p>}
 
 
                     <label> Imagen </label>
@@ -259,33 +191,35 @@ function AddProds() {
                     {
                         isLoading ? (
                             <div className="spinner">
-                                Agregando Nuevo Producto, aguarde....
+                                Agregando Nuevo Banner, aguarde....
                                 <FadeLoader color="black" />
                             </div>
-                        ) : <button className='add-prod-btn black-btn' type="submit">Agregar Producto</button>
+                        ) : <button className='add-prod-btn black-btn' type="submit">Agregar Banner</button>
                     }
                 </form>
             </div>
 
+                <div>
+                    <h1>Banner Actual:</h1>
+                    <CarouselComponent />
+
+                </div>
 
             <div>
-                <h3>Editar / Eliminar Productos</h3>
+                <h3>Editar / Eliminar Banners</h3>
                 <table className="products-table">
                     <thead className="thead-table">
                         <tr>
                             <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Descripción</th>
+                        
                             <th>Imagen</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map(product => (
-                            <tr key={product.id}>
+                        {banners.map((product, index) => (
+                            <tr key={index}>
                                 <td className="td-tbody">{product.nombre}</td>
-                                <td className="td-tbody">{product.precio}</td>
-                                <td className="td-tbody">{product.descripcion}</td>
                                 <td className="td-tbody"><img src={product.imagen} alt={product.nombre} width="50" /></td>
                                 <td className="td-tbody">
                                     <div className='btns-table'>
@@ -308,4 +242,4 @@ function AddProds() {
 }
 
 
-export default AddProds
+export default AddBanners

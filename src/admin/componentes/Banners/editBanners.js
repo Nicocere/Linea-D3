@@ -8,7 +8,7 @@ import { query, getDocs } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import Swal from 'sweetalert2';
 
-function EditProds() {
+function EditBanner() {
     const { register, watch, handleSubmit, setValue, formState: { errors } } = useForm();
     const navigate = useNavigate()
     const { productId } = useParams();
@@ -147,6 +147,7 @@ function EditProds() {
             setIsLoading(false);
 
         }
+    
     };
 
     useEffect(() => {
@@ -252,4 +253,4 @@ function EditProds() {
     );
 }
 
-export default EditProds;
+export default EditBanner;
