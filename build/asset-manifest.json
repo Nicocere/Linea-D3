@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.d28b9a0f.css",
-    "main.js": "/static/js/main.6f543156.js",
+    "main.css": "/static/css/main.bc21fe5f.css",
+    "main.js": "/static/js/main.1a544f56.js",
     "static/media/imperioShirt.png": "/static/media/imperioShirt.26e84cc5c17ae1f1d094.png",
     "static/media/blackDesign.png": "/static/media/blackDesign.783b2569945b9c8c6fd7.png",
+    "static/media/camisetaLinea.jpeg": "/static/media/camisetaLinea.232334499f1fc019495d.jpeg",
+    "static/media/equipoLinea.jpeg": "/static/media/equipoLinea.1fc0e63a02860f375d0c.jpeg",
     "static/media/hawks.png": "/static/media/hawks.baa6c1690818c9e9af2b.png",
+    "static/media/conjuntoLinea.jpeg": "/static/media/conjuntoLinea.e4d2c5aa0b9fea578b27.jpeg",
     "static/media/LineaLogoOrange.png": "/static/media/LineaLogoOrange.41a83fbc030b085b8642.png",
     "static/media/LineaLogo.png": "/static/media/LineaLogo.eda0cb585c2c24a85076.png",
     "index.html": "/index.html",
-    "main.d28b9a0f.css.map": "/static/css/main.d28b9a0f.css.map",
-    "main.6f543156.js.map": "/static/js/main.6f543156.js.map"
+    "main.bc21fe5f.css.map": "/static/css/main.bc21fe5f.css.map",
+    "main.1a544f56.js.map": "/static/js/main.1a544f56.js.map"
   },
   "entrypoints": [
-    "static/css/main.d28b9a0f.css",
-    "static/js/main.6f543156.js"
+    "static/css/main.bc21fe5f.css",
+    "static/js/main.1a544f56.js"
   ]
 }

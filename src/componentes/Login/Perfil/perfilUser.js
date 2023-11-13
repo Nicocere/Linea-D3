@@ -12,6 +12,7 @@ function PerfilUser() {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            console.log("user", user)
             if (user) {
                 const uid = user.uid;
                 const userDocRef = doc(baseDeDatos, "users", uid);
