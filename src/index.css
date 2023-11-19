@@ -302,7 +302,7 @@ textarea {
   color: white;
   top: 100%;
   left: 0;
-  background-color: rgb(45, 45, 45);
+  background-color: black;
   border: 1px solid #ccc;
   z-index: 1;
   transition: all 1s ease-in-out;
@@ -320,8 +320,9 @@ textarea {
 }
 
 .submenu a:hover{
-  background-color: rgb(0, 0, 0);
-  padding: 21px;
+  background-color: white;
+  color: black;
+  padding: 20px;
 
 }
 
@@ -846,10 +847,14 @@ textarea {
 
 }
 
+.products .listadeproductos{
+  padding-left: 50px;
+}
+
 .listadeproductos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 
 }
 
@@ -906,7 +911,6 @@ textarea {
   align-items: center;
   flex-direction: column;
   border-radius: 14px;
-  margin-top: 100px;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -945,7 +949,7 @@ textarea {
 }
 
 .div-presupuestos {
-  padding: 100px 0px 100px 0px;
+  padding: 50px 0px 100px 0px;
   display: flex;
   flex-direction: column;
 }
@@ -1219,9 +1223,9 @@ textarea {
 }
 
 .formulario input {
+  color: black;
   height: 25px;
   background: transparent;
-  color: white;
   border: 1px solid black;
   border-radius: 6px;
 }

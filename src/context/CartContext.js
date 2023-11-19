@@ -34,10 +34,10 @@ const CartProvider = ({ children }) => {
     const totalPrecio = () => {
         let acumulador = 0;
         let acumuladorInUsd = 0
-        cart?.forEach((prod) => {
-            const precioInUsd = (prod.precio / dolar).toFixed(2)
+        cart ?.forEach((prod) => {
+            const precioInUsd = (prod.item.precio / dolar).toFixed(2)
 
-            acumulador += prod.quantity * prod.precio
+            acumulador += prod.quantity * prod.item.precio
             acumuladorInUsd += prod.quantity * precioInUsd
         })
 
@@ -105,8 +105,8 @@ const CartProvider = ({ children }) => {
 
 
     const cantidadProducto = (id) => {
-        const producto = cart?.find((prod) => prod.id === id);
-        return producto?.quantity;
+        const producto = cart ?.find((prod) => prod.id === id);
+        return producto ?.quantity;
     };
 
     const clearCart = async () => {

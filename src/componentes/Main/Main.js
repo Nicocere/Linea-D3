@@ -1,6 +1,9 @@
 import React from 'react'
 import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from '../ItemListContainer/ItemListContainer';
+import SuccessPage from '../MercadoPago/StatusPaymentsMP/SuccessPage';
+import FailurePage from '../MercadoPago/StatusPaymentsMP/FailurePage';
+import PendingPage from '../MercadoPago/StatusPaymentsMP/PendingPage'
 import { Routes, Route } from 'react-router-dom'
 import Cart from '../Cart/Cart';
 import Home from '../Home/Home';
@@ -43,6 +46,11 @@ const Main = () => {
         <Route path="/admin/editProds/:productId" element={<EditProds />} />
 
         <Route path="/presupuestos" element={<Presupuestos />} />
+
+        {/* Rutas para los resultados de MercadoPago */}
+        <Route path="/mercadopago/PagoExitoso" element={<SuccessPage />} />
+        <Route path="/mercadopago/pago-fallido" element={<FailurePage />} />
+        <Route path="/mercadopago/pago-pendiente" element={<PendingPage />} />
 
       </Routes>
     </main>

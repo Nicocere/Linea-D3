@@ -2,6 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { CartContext } from '../../context/CartContext.js';
+import MercadoPagoButton from '../MercadoPago/MercadoPago'
 import Swal from 'sweetalert2';
 
 const Form = ({ itemSelected }) => {
@@ -36,19 +37,19 @@ const Form = ({ itemSelected }) => {
     // Verificar si todos los campos requeridos están completos
     const handleConfirmationClick = () => {
         const fieldsFilled = (
-            watch('nombreDestinatario') &&
-            watch('apellidoDestinatario') &&
-            watch('phoneDestinatario') &&
-            watch('calle') &&
-            watch('altura') &&
-            watch('piso') &&
-            watch('nombreComprador') &&
-            watch('telefonoComprador') &&
-            watch('apellidoComprador') &&
-            watch('mailComprador') &&
-            watch('fechaEnvio') &&
-            watch('selectHorario') &&
-            watch('mailComprador') === watch('validateMail')
+            watch('nombreDestinatario')
+            // watch('apellidoDestinatario') &&
+            // watch('phoneDestinatario') &&
+            // watch('calle') &&
+            // watch('altura') &&
+            // watch('piso') &&
+            // watch('nombreComprador') &&
+            // watch('telefonoComprador') &&
+            // watch('apellidoComprador') &&
+            // watch('mailComprador') &&
+            // watch('fechaEnvio') &&
+            // watch('selectHorario') &&
+            // watch('mailComprador') === watch('validateMail')
         );
         if (fieldsFilled && locationSelect) {
             setConfirmationDone(true);
@@ -235,7 +236,38 @@ const Form = ({ itemSelected }) => {
                     confirmationDone ? (
                         <>
                             <h3 className='metodo-pago-title'>Seleccione un metodo de pago</h3>
-
+                            <div className='mercadopago-div'>
+                                <p className='tarjetas'>Tarjeta Nacionales</p>
+                                <MercadoPagoButton
+                                    nombreDestinatario={watch('nombreDestinatario')}
+                                    apellidoDestinatario={watch('apellidoDestinatario')}
+                                    phoneDestinatario={watch('phoneDestinatario')}
+                                    mailComprador={watch('mailComprador')}
+                                    localidad={location}
+                                    nombreLocalidad={locationName}
+                                    precioLocalidad={locationValue}
+                                    calle={watch('calle')}
+                                    altura={watch('altura')}
+                                    piso={watch('piso')}
+                                    dedicatoria={saveDedicatoria}
+                                    nombreComprador={watch('nombreComprador')}
+                                    phoneComprador={watch('telefonoComprador')}
+                                    apellidoComprador={watch('apellidoComprador')}
+                                    fechaEnvio={watch('fechaEnvio')}
+                                    horarioEnvio={watch('selectHorario')}
+                                    // servicioPremium={isPremium}
+                                    // envioPremium={precioEnvioPremium}
+                                    finalPrice={finalPrice}
+                                    title={cart[0].name}
+                                    description={cart[0].descr}
+                                    picture_url={cart[0].img}
+                                    category_id={cart[0].tipo}
+                                    quantity={cart[0].quantity}
+                                    id={cart[0].id}
+                                    size={cart[0].size}
+                                    products={cart}
+                                />
+                            </div>
                         </>
 
                     ) : hasSelectedLocation ? (

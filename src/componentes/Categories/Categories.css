@@ -18,15 +18,15 @@ color: white;
     padding: 0;
 }
 
-.categories ul:hover{
+/* .categories ul:hover{
   position: fixed;
-}
+} */
 
 .categories ul a{
     padding: 10px;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    transition: all 1.3s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 .categories ul a.active {

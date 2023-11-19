@@ -38,8 +38,9 @@ const Cart = () => {
 
     let itemSelected = cart ?.map((item) => {
         return { ...item }
-    });
+    })
 
+    
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -57,7 +58,7 @@ const Cart = () => {
                 Puedes ir al <Link to="/" className='cart-home'>Inicio</Link>{' '} para seguir viendo otros productos </h4>
         </>
     }
-    console.log(itemSelected)
+    console.log("itemSelected: ", itemSelected)
 
     return (
         <div className='cart'>
@@ -97,20 +98,21 @@ const Cart = () => {
                                         <tbody className='table-body'>
                                             {
                                                 itemSelected ?.map((prod, indx) => {
-                                                    const prodPrecioUsd = (prod.precio / dolar).toFixed(2);
+                                                    const prodPrecioUsd = (prod.item.precio / dolar).toFixed(2);
+                                                    console.log("item", prod)
                                                     return (
                                                         <tr className='table-info' key={indx}>
                                                             <td><img className='imgInCart' src={prod.item.imagen} alt="imagen producto en carrito" /></td>
                                                             <td className='detailsInCart'>{prod.name}</td>
                                                             <td className='detailsInCart'>{prod.quantity}</td>
-                                                            <td className='detailsInCart'>{prod.size}</td>
+                                                            <td className='detailsInCart'>{prod.item.size}</td>
                                                             <td className='detailsInCart'>
-                                                                {priceDolar ? `USD$${prodPrecioUsd}` : `$${prod.precio}`}
+                                                                {priceDolar ? `USD$${prodPrecioUsd}` : `$${prod.item.precio}`}
                                                             </td>
                                                             <td>
                                                                 <button className='btn-eliminarProd'
                                                                     onClick={() => eliminarProd(prod._id,
-                                                                        prod.size,
+                                                                        prod.item.size,
                                                                         prod.idOption,
                                                                         prod.quantity,
                                                                     )}>
