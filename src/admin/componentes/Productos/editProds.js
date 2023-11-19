@@ -15,7 +15,7 @@ function EditProds() {
     const [imageFile, setImageFile] = useState(null);
     const productDocRef = doc(baseDeDatos, "productos", productId);
     const [isLoading, setIsLoading] = useState(false)
-    
+
     const [productData, setProductData] = useState({
         nombre: '',
         precio: '',
@@ -69,7 +69,7 @@ function EditProds() {
             }).then(() => {
                 navigate('/admin/addProds');
             });
-            
+
         } catch (e) {
             console.error("Error al actualizar el producto: ", e);
         }
@@ -111,14 +111,14 @@ function EditProds() {
         const { nombreProd, precioProd, categoria, talle, stock, descrProd, imagenProd } = data;
         setIsLoading(true);
 
-        const fieldsFilled = (                            
+        const fieldsFilled = (
             watch('nombreProd') &&
             watch('precioProd') &&
             watch('descrProd') &&
             watch('imagenProd') &&
             watch('categoria') &&
             watch('stock') &&
-            watch('talle')         
+            watch('talle')
         );
         if (!fieldsFilled) {
             Swal.fire({
@@ -155,6 +155,15 @@ function EditProds() {
 
     return (
         <div className='div-add-edit-prods'>
+
+
+            <div className='perfil-usuario-btns'>
+            <button  onClick={() => navigate(-1)}>Volver atrás</button>
+                <button >Administrar Usuarios</button>
+                <button >Cambiar / Crear Promociones</button>
+                <button >Editar Perfil</button>
+            </div>
+
             <div className='div-addProd'>
                 <h3>Editar Producto</h3>
                 <form className='form-addProd' onSubmit={handleSubmit(onSubmit)}>
@@ -234,8 +243,8 @@ function EditProds() {
                             Actualizando...
                             <FadeLoader color="black" />
                         </div>
-                    ) :  <button className='add-prod-btn' type="submit">Editar Producto</button>
-                         
+                    ) : <button className='add-prod-btn' type="submit">Editar Producto</button>
+
                     }
                 </form>
             </div>

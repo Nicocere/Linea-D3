@@ -15,6 +15,8 @@ import Admin from '../../admin/componentes/AdminSesion/sessionAdmin';
 import AddProds from '../../admin/componentes/Productos/addProds';
 import EditProds from '../../admin/componentes/Productos/editProds';
 import Presupuestos from '../../Presupuestos/presupuestos';
+import EditBanner from '../../admin/componentes/Banners/editBanners';
+import AddBanners from '../../admin/componentes/Banners/addBanners';
 
 const Main = () => {
 
@@ -44,6 +46,11 @@ const Main = () => {
         <Route path="/admin/addProds" element={<AddProds />} />
 
         <Route path="/admin/editProds/:productId" element={<EditProds />} />
+
+        <Route path="/admin/banners/" element={<AddBanners />} />
+
+        <Route path="/admin/edit/banner/:id" element={<EditBanner />} />
+
 
         <Route path="/presupuestos" element={<Presupuestos />} />
 

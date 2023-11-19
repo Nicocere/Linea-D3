@@ -166,6 +166,13 @@ function AddProds() {
     return (
         < div className='div-add-edit-prods'>
 
+            <div className='perfil-usuario-btns'>
+                <button onClick={() => navigate(-1)}>Volver atrás</button>
+                <button >Administrar Usuarios</button>
+                <button >Cambiar / Crear Promociones</button>
+                <button >Editar Perfil</button>
+            </div>
+            
             <div className='div-addProd' >
                 <h3>Agregar Nuevos Productos</h3>
 

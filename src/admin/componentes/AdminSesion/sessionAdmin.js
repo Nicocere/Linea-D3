@@ -39,7 +39,9 @@ function PerfilUser() {
 
     const handleNavigateToAddProds = () => {
         navigate('/admin/addProds');
-
+    }
+    const handleNavigateToAddBanners = () => {
+        navigate('/admin/banners');
     }
 
     return (
@@ -57,6 +59,8 @@ function PerfilUser() {
                         <p>Opciones de Administrador</p>
 
                         <button onClick={handleNavigateToAddProds}>Agregar Productos</button>
+                        <button onClick={handleNavigateToAddBanners}>Editar Banners</button>
+
                         <button >Administrar Usuarios</button>
                         <button >Cambiar / Crear Promociones</button>
                         <button >Editar Perfil</button>

@@ -52,11 +52,11 @@ function App() {
     <BrowserRouter>
 
 <div id="loadingScreen" className={loadingClass} >
-    <div class="logo-container">
+    <div className="logo-container">
     <img className={isLoadingProds ? 'logo-preloader pulse' : 'logo-preloader'} 
 
              src={'../assets/logo/LineaD3Logo.png'} alt="logo envio flores" />
-        <div class="spinner"></div>
+        <div className="spinner"></div>
        
     </div>
 </div>
