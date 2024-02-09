@@ -10,6 +10,7 @@ import Pagination from "../Pagination/Pagination";
 
 import { baseDeDatos } from "../../firebaseConfig";
 import { collection, getDocs, query, where } from 'firebase/firestore'; // Importa los módulos necesarios de Firebase
+import Categorization from "../Categories/Categorizacion";
 
 
 
@@ -83,7 +84,7 @@ const ItemListContainer = () => {
 
   return (
     <div className="productos">
-
+      <Categorization/>
       {/* {
         categoryName ?
           <h3 className="cat-selected">Estás viendo la Categoría:

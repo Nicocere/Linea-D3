@@ -32,8 +32,7 @@ const ItemDetailContainer = () => {
         // }
         // fetchData()
         if (storageProducts) {
-            const product = storageProducts.filter(prod => prod.id == prodId)
-            console.log(product)
+            const product = storageProducts.filter(prod => prod.id === prodId)
             setItem(product[0])
         }
     }, [prodId]);

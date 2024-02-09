@@ -4,11 +4,15 @@ import { CartContext } from '../../context/CartContext';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import "./itemCount.css"
+import { Button } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
+
 const MySwal = withReactContent(Swal);
 
-const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptionalSize, quantity, stock }) => {
+const ItemCount = ({ idProd, optionId, size, optionPrecio, item, nameOptionalSize, quantity, stock }) => {
 
-  const { cart, setCart, priceDolar, dolar, CartID, UserID } = useContext(CartContext);
+  const { cart, setCart, CartID, UserID } = useContext(CartContext);
 
 
   const agregarAlCarrito = async () => {
@@ -19,12 +23,11 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
 
       // Guardar producto en el estado y localStorage
       const newProduct = {
-        _id: item._id,
-        idOption: optionId,
-        size: optionSize,
-        precio: optionPrecio,
+        _id: item._id || item.id,
+        size: size,
+        precio: item.precio,
         name: nameOptionalSize || item.nombre,
-        img: item.img,
+        img: item.imagen,
         item: item,
         quantity: quantity ? quantity : 1,
         CartID: CartID,
@@ -75,17 +78,11 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
       //   UserID: UserID
       // });
 
-      // setCart(result.data.cart.products)
-
-      const priceInUsd = (optionPrecio / dolar).toFixed(2)
-      console.log(optionPrecio)
-      // const displayPrice = priceDolar ? `USD$${priceInUsd}` : `$${optionPrecio.toLocaleString('es-AR')}`;
-
       // SweetAlert2
       MySwal.fire({
         toast: true, // Activamos el modo "toast"
         title: `<strong>Producto Agregado</strong>`,
-        text: `${nameOptionalSize || item.nombre} (${optionSize}) - ${item.precio}`, // Aquí agregamos el nombre, tamaño y precio
+        text: `${nameOptionalSize || item.nombre} (${size}) - ${item.precio}`, // Aquí agregamos el nombre, tamaño y precio
         icon: 'success',
         showConfirmButton: false,
         timer: 4000, // Duración de 3 segundos
@@ -107,7 +104,8 @@ const ItemCount = ({ idProd, optionId, optionSize, optionPrecio, item, nameOptio
 
   return (
     <div className='btnAgregarQuitar'>
-      <button onClick={agregarAlCarrito} className="agregarAlCarrito"> AGREGAR AL CARRITO</button>
+      <Button sx={{background:'black', color:'white' , fontSize:'12px', '&:hover':{background:'grey'} }}  
+      variant='contained' size='small' onClick={agregarAlCarrito} className="agregarAlCarrito" startIcon={<AddShoppingCartIcon/>}> AGREGAR AL CARRITO</Button>
     </div>
   );
 }

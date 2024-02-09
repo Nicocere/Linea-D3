@@ -105,7 +105,7 @@ const Cart = () => {
                                                             <td><img className='imgInCart' src={prod.item.imagen} alt="imagen producto en carrito" /></td>
                                                             <td className='detailsInCart'>{prod.name}</td>
                                                             <td className='detailsInCart'>{prod.quantity}</td>
-                                                            <td className='detailsInCart'>{prod.item.size}</td>
+                                                            <td className='detailsInCart'>{prod.size}</td>
                                                             <td className='detailsInCart'>
                                                                 {priceDolar ? `USD$${prodPrecioUsd}` : `$${prod.item.precio}`}
                                                             </td>

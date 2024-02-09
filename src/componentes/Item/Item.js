@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount'
+import { Button } from '@mui/material'
 
 const Item = ({ items }) => {
   console.log("ITEM ", items)
@@ -28,14 +29,10 @@ const Item = ({ items }) => {
         optionPrecio={items.precio}
         item={items}
       />
-      {/* {
-
-        items.length > 1
-          ? <Link to={`/detail/${items.id}`} className="link-producto">
-            <button className='btn-verMas'>Ver más opciones del producto</button>
+       { <Link to={`/detail/${items.id}`} className="link-producto">
+            <Button variant='text' size='small' sx={{ color:'black', margin:'10px',fontSize:'9.50px', '&:hover':{color:'grey'}}}>Ver más opciones del producto</Button>
           </Link>
-          : null
-      } */}
+      } 
     </div>
   )
 }

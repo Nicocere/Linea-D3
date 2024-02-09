@@ -23,3 +23,93 @@ justify-content: space-between;
 .nav-mobile span{
     color: white;
 }
+
+.img-navbar {
+    width: 100px;
+}
+
+
+/* VISTA MOVIL */
+.divSeccionMobile a {
+    text-decoration: none;
+    margin: 20px 0;
+    border-bottom: 1px solid rgb(33, 33, 33);
+color: white;
+    width: 100%;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    text-decoration: none;}
+
+.divSeccionMobile {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.divSeccionMobile div {
+    display: flex;
+    flex-direction: row;
+}
+
+.list-products{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.div-prods-SeccionMobile{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.div-prods-SeccionMobile a {
+    margin: 20px 0;
+    border-bottom: 1px solid white;
+    color: white;
+    width: 100%;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.15;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all .25s ease-in-out;
+}
+
+
+@media screen and (max-width: 770px) {
+
+    .nav-mobile .menu-container{
+        margin: 0px;
+    
+    }
+    .div-seccionLi{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    
+    }
+    
+    .cart-widget-container{
+        margin-right: 25px;
+    }
+
+    .div-prods-SeccionMobile a {
+        text-decoration: none;
+        font-size: small;
+        margin: 15px 0;
+        border-bottom: 1px solid #303030;
+        font-weight: 700;
+        color: rgb(255, 255, 255);
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    
+
+}
