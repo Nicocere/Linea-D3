@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Categories.css'
 import { useParams } from 'react-router-dom'
+import Categorization from './Categorizacion';
 
 
 const Categories = () => {
@@ -21,14 +22,15 @@ const Categories = () => {
 
     return (
         <div className='categories'>
-            <div className="categories-navigation" >
+            {/* <div className="categories-navigation" >
                 <NavLink to="/" >
                     <h4>Inicio &nbsp;/&nbsp;</h4>
                 </NavLink>
                 <h4>{categoryroute}</h4>
             </div>
-            <div className="categories-div">
+             */}
 
+            <div className="categories-div">
             <h3>Categorias</h3>
             <ul>
                 <NavLink to="/productos/hombre">Hombre</NavLink>

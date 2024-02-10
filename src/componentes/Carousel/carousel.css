@@ -2,7 +2,7 @@
 
 .carousel-container{
     overflow: hidden;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
   }
 
 .carousel-container .thumbs-wrapper{
@@ -16,5 +16,10 @@
 
 .carousel-container img{
     overflow: hidden;
-    height: 60vh;
+    height: 80vh;
+    object-fit: cover;
+}
+
+.carousel.carousel-slider{
+    height: 85vh;
 }

@@ -4,7 +4,6 @@ import ItemCount from '../ItemCount/ItemCount'
 import { Button } from '@mui/material'
 
 const Item = ({ items }) => {
-  console.log("ITEM ", items)
 
   return (
     <div className="product-item">

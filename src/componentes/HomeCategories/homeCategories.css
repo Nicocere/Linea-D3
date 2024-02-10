@@ -6,24 +6,6 @@
     margin: 3rem 0;
 }
 
-.home-categories-container .banner{
-    width: 30%;
-    overflow: hidden;
-    height: 300px;
-    position: relative;
-    text-align: center;
-}
-
-.home-categories-container .banner img{
-    width: 100%;
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
-}
-
-.home-categories-container .banner img:hover{
-  transform: scale(1.1);
-}
-
 .home-categories-container .banner button{
 position: absolute;
 top: 50%; /* Lo posiciona en el 50% del contenedor */
@@ -34,6 +16,7 @@ background: white;
 padding: 10px;
 margin-bottom: 10px;
 color: black;
+border-radius: 8px;
 width: -moz-fit-content;
 width: fit-content;
 transition: all 0.4s ease-in-out;
@@ -45,6 +28,43 @@ z-index: 10;
     background-color: black;
     color: white;
 }
+
+
+.home-categories-container .banner {
+    position: relative;
+    border-radius: 10px;
+    width: 33%;
+    overflow: hidden;
+    height: 70vh;
+    text-align: center;
+  }
+  
+  .home-categories-container .banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidad inicial */
+    transition: background-color 0.4s ease-in-out;
+    z-index: 2; /* Asegúrate de que esté por encima de la imagen */
+  }
+  
+  .home-categories-container .banner:hover::before {
+    background-color: rgba(0, 0, 0, 0); /* Opacidad al pasar el mouse */
+  }
+  
+  .home-categories-container .banner img {
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    z-index: 1; /* Asegúrate de que esté por debajo del pseudo-elemento */
+  }
+  
+  .home-categories-container .banner img:hover {
+    transform: scale(1.1);
+  }
 
 @media screen and (max-width: 750px) {
 

@@ -2,11 +2,11 @@ import Item from '../Item/Item';
 
 const ItemList = ({items, prodEncontrado}) => {
 
-  
-  console.log("ITEMS", items)
   return (   
     <div className='listadeproductos'>   
             {
+
+              
               //  prodEncontrado.length === undefined || prodEncontrado.length === 0  ?
               items?.map((items)=>{
                 return (

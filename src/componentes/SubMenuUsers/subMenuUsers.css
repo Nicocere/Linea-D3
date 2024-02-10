@@ -1,5 +1,5 @@
 .div-submenu{
     color: white;
-    position: relative;
-    right: 75px;
+    position: absolute;
+    bottom: 54vh;
 }
