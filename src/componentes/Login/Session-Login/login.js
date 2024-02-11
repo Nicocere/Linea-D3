@@ -5,6 +5,7 @@ import { auth, baseDeDatos } from '../../../firebaseConfig.mjs';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
+import { Button } from '@mui/material';
 
 
 
@@ -86,7 +87,8 @@ function Login() {
                 </div>
 
 
-                <button type="submit">Iniciar Sesión</button>
+                <Button size='small' variant='contained' sx={{background:'black',margin:'20px', color:'white', transition:' background .22s ease-in-out'
+                                    , '&:hover':{background:'grey', color:'black'}}} type="submit">Iniciar Sesión</Button>
             </form>
 
             <p>No estas registrado?. <a href={'http://localhost:3000/sigin'}>Regristrate aquí</a></p>

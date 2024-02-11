@@ -4,6 +4,7 @@ import ItemCount from '../ItemCount/ItemCount'
 import { Button } from '@mui/material'
 
 const Item = ({ items }) => {
+  console.log("items", items)
 
   return (
     <div className="product-item">
@@ -23,8 +24,8 @@ const Item = ({ items }) => {
       </div>
 
       <ItemCount
-        optionId={items.id}
-        optionSize={items.talla}
+        id={items.id}
+        size={items?.size[1]}
         optionPrecio={items.precio}
         item={items}
       />

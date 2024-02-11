@@ -7,23 +7,24 @@ import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { auth, baseDeDatos } from '../../../firebaseConfig.mjs';
 import { doc, setDoc } from 'firebase/firestore';
+import { Button } from '@mui/material';
 
 function RegistroUser() {
-    const { register, handleSubmit,  watch  , formState: { errors } } = useForm()
+    const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const [confirmationDone, setConfirmationDone] = useState(false);
     const navigate = useNavigate();
     let userRole;
 
 
     const onSubmit = (data) => {
-        
-        const fieldsFilled = (                            
+
+        const fieldsFilled = (
             watch('nombreUser') &&
             watch('apellidoUser') &&
             watch('telUser') &&
             watch('email') &&
             watch('password') &&
-            watch('validatePassword') 
+            watch('validatePassword')
         );
         if (!fieldsFilled) {
             Swal.fire({
@@ -33,66 +34,66 @@ function RegistroUser() {
             });
             return;  // Salir de la función
         }
-      
+
         // Si todo está bien, procede con la lógica de registro
         createUserWithEmailAndPassword(auth, data.email, data.password)
-          .then((userCredential) => {
-            // Usuario registrado con éxito
-            const user = userCredential.user;
-            Swal.fire({
-                icon: 'success',
-                title: 'Usuario registrado',
-                text: `El usuario ha sido registrado con éxito con el email: ${user.email}`,
-              });
+            .then((userCredential) => {
+                // Usuario registrado con éxito
+                const user = userCredential.user;
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuario registrado',
+                    text: `El usuario ha sido registrado con éxito con el email: ${user.email}`,
+                });
 
-                        
-        // Determinar el rol basado en el email momentaneamente...
-        if (data.email === "nico.aflorar@gmail.com" || data.email === 'facumlafuente@gmail.com' ) {
-            userRole = "administrador";
-        } else {
-            userRole = "usuario";
-        }
-              
-        // Guardar el resto de la información en Firestore
-        const userDocRef = doc(baseDeDatos, "users", user.uid);
-         setDoc(userDocRef, {
-            username: data.username,
-            email: data.email,
-            nombre: data.nombreUser,
-            apellido: data.apellidoUser,
-            tel: data.telUser,
-            rol: userRole
-        });
+
+                // Determinar el rol basado en el email momentaneamente...
+                if (data.email === "nico.aflorar@gmail.com" || data.email === 'facumlafuente@gmail.com') {
+                    userRole = "administrador";
+                } else {
+                    userRole = "usuario";
+                }
+
+                // Guardar el resto de la información en Firestore
+                const userDocRef = doc(baseDeDatos, "users", user.uid);
+                setDoc(userDocRef, {
+                    username: data.username,
+                    email: data.email,
+                    nombre: data.nombreUser,
+                    apellido: data.apellidoUser,
+                    tel: data.telUser,
+                    rol: userRole
+                });
 
             }).then(() => {
 
-                if ( userRole === "administrador") {
+                if (userRole === "administrador") {
                     navigate('/admin'); // Redirigete al Administrador
                 } else {
                     navigate('/perfil'); // Redirige al usuario después de cerrar el SweetAlert
                 }
-          })
-          .catch((error) => {
-            // Manejar errores
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error("Error al registrar usuario:", errorMessage);
-      
-            Swal.fire({
-              icon: 'error',
-              title: 'Error al registrar',
-              text: errorMessage,
+            })
+            .catch((error) => {
+                // Manejar errores
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Error al registrar usuario:", errorMessage);
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al registrar',
+                    text: errorMessage,
+                });
             });
-          });
-      };
-      
+    };
+
 
     return (
         <div className="login-form">
             <h3>Crea una cuenta</h3>
             <form onSubmit={handleSubmit(onSubmit)} className='form' >
 
-            <div className="input-group">
+                <div className="input-group">
                     <label>Nombre de Usuario</label>
                     <input
                         {...register("username", { required: true })}
@@ -103,7 +104,7 @@ function RegistroUser() {
                     />
                     {errors.nombreUser && <p className='message-error' > Su nombre de usuario es requerido</p>}
                 </div>
-            <div className="input-group">
+                <div className="input-group">
                     <label>Nombre</label>
                     <input
                         {...register("nombreUser", { required: true })}
@@ -135,7 +136,7 @@ function RegistroUser() {
                         name="telUser"
                         className='input-telUser'
                     />
-                    
+
                 </div>
 
 
@@ -152,7 +153,7 @@ function RegistroUser() {
                 </div>
 
                 <div className="input-group">
-                    <label>Contraseña </label> 
+                    <label>Contraseña </label>
                     <span className='span-passw'>Debe tener minimo 6 digitos</span>
                     <input
                         {...register("password", { required: true })}
@@ -162,10 +163,10 @@ function RegistroUser() {
                         name="password"
                     />
                     {errors.password && <p className='message-error' >La contraseña es requerida</p>}
-                    </div>
+                </div>
 
 
-                    <div className="input-group">
+                <div className="input-group">
                     <label>Repetir Contraseña</label>
 
                     <input
@@ -180,7 +181,11 @@ function RegistroUser() {
 
                 </div>
 
-                <button type="submit">Registrarse</button>
+                <Button size='small' variant='contained' sx={{
+                    background: 'black', margin: '20px', color: 'white', transition: ' background .22s ease-in-out'
+                    , '&:hover': { background: 'grey', color: 'black' }
+                }} type="submit">Registrame</Button>
+
             </form>
 
         </div>

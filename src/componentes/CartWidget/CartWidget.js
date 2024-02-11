@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const CartWidget = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, toggleCart } = useContext(CartContext);
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -19,7 +19,7 @@ const CartWidget = () => {
   }));
 
   return (
-    <div className="cart-widget-container" >
+    <div className="cart-widget-container" onClick={toggleCart} >
           <IconButton aria-label="cart">
       <StyledBadge  badgeContent={cart ? cart.length : 0} color="warning">
         <ShoppingCartIcon size='large' sx={{color:'white', '&:hover':{color:'black'}}} />

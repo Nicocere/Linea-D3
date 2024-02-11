@@ -155,6 +155,8 @@ const NavbarMobile = () => {
         return () => unsubscribe();
 
     }, []);
+
+
     return (
         <div className="nav-mobile" >
             <>
@@ -254,8 +256,7 @@ const NavbarMobile = () => {
                                 <NavLink className='seccionLi' to="/categoria/Especiales" >Quienes somos</NavLink>
                             </div>
 
-
-
+                            {/* SESION DE USUARIO */}
                             {currentUser && userData ? (
                                 <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '15px' }}
                                     onClick={handleToggleSubMenuDrawer}>
@@ -286,7 +287,11 @@ const NavbarMobile = () => {
                                 </div>
                             ) : (
                                 <div>
-                                    <NavLink to="/login">Iniciar Sesión</NavLink>
+                                    <NavLink to="/login" style={{textDecoration:'none'}}>
+                                        <Typography variant='overline' sx={{color:'white', }}>
+                                            Iniciar Sesión
+                                        </Typography>
+                                    </NavLink>
                                 </div>
                             )}
 
@@ -317,7 +322,7 @@ const NavbarMobile = () => {
                     }}>
 
                         <Typography variant="subtitle1" sx={{
-                            margin: 0, fontWeight: '600', color:'white',
+                            margin: 0, fontWeight: '600', color: 'white',
                             position: 'relative', top: '60px', borderBottom: '2px solid silver'
                         }}>
                             Productos
@@ -358,7 +363,7 @@ const NavbarMobile = () => {
                 }
             </SwipeableDrawer >
 
-           
+
             <SwipeableDrawer
                 anchor="left"
                 open={openProfileDrawer}

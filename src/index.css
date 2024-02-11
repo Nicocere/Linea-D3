@@ -10,6 +10,10 @@
   text-transform: uppercase;
 }
 
+.swal2-container {
+  z-index: 9999 !important; /* Ajusta el valor según sea necesario */
+}
+
 
 /* -------------------------------PRE LOADER ------------------------ */
 .logo-preloader {
@@ -165,7 +169,7 @@ button {
 
 /* --------------------------------------ADMINISTRADOR ------------------ */
 .login-form {
-  padding: 167px;
+  padding: 0 0 167px;
   position: relative;
   top: 50px;
   display: flex;
@@ -856,7 +860,7 @@ textarea {
   margin-top: '50px';
   background: #e5e5e5;
   border: 0.5px solid black;
-  margin-top: 140px;
+  margin-top: 80px;
 }
 
 .cartVacio {

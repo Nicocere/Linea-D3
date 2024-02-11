@@ -10,7 +10,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const MySwal = withReactContent(Swal);
 
-const ItemCount = ({ idProd, optionId, size, optionPrecio, item, nameOptionalSize, quantity, stock }) => {
+const ItemCount = ({ id, optionId, size, optionPrecio, item, nameOptionalSize, quantity, stock }) => {
 
   const { cart, setCart, CartID, UserID } = useContext(CartContext);
 
@@ -23,7 +23,7 @@ const ItemCount = ({ idProd, optionId, size, optionPrecio, item, nameOptionalSiz
 
       // Guardar producto en el estado y localStorage
       const newProduct = {
-        _id: item._id || item.id,
+        _id: id || item.id,
         size: size,
         precio: item.precio,
         name: nameOptionalSize || item.nombre,

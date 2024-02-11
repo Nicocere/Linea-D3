@@ -30,6 +30,11 @@ const CartProvider = ({ children }) => {
     let CartIDStorage = localStorage.getItem("CartID", CartID);
     let UserStorage = localStorage.getItem("UserID", UserID);
 
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
+    const toggleCart = () => {
+        setIsCartOpen(!isCartOpen);
+    };
 
     const totalPrecio = () => {
         let acumulador = 0;
@@ -55,9 +60,10 @@ const CartProvider = ({ children }) => {
         setFinalPrice(total)
     }
 
-    const eliminarProd = async (_id, size, idOption) => {
+    const eliminarProd = async (_id, size, quantity) => {
+        console.log("que pasa ?", _id, size, quantity )
         try {
-            const productIndex = cart.findIndex(prod => prod.idOption === idOption && prod.size === size);
+            const productIndex = cart.findIndex(prod => prod._id === _id && prod.size === size);
 
             if (productIndex !== -1) {
                 if (cart[productIndex].quantity > 1) {
@@ -82,11 +88,11 @@ const CartProvider = ({ children }) => {
                         setCart([...cart]);
                     } else {
                         // Si se decide eliminar todos los productos o la cantidad iguala al stock
-                        const carritoFiltrado = cart.filter(prod => prod.idOption !== idOption && prod.size !== size);
+                        const carritoFiltrado = cart.filter(prod => prod.quantity !== quantity && prod.size !== size);
                         setCart(carritoFiltrado);
                     }
                 } else {
-                    const carritoFiltrado = cart.filter(prod => prod.idOption !== idOption && prod.size !== size);
+                    const carritoFiltrado = cart.filter(prod => prod.quantity !== quantity && prod.size !== size);
                     setCart(carritoFiltrado);
                 }
 
@@ -190,7 +196,9 @@ const CartProvider = ({ children }) => {
                 totalPriceLocation,
                 dolar,
                 finalPrice,
-                // updateCartStorage,
+                isCartOpen, 
+                setIsCartOpen,
+                toggleCart,
                 CartID,
                 UserID
             }}>

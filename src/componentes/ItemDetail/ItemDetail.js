@@ -34,7 +34,7 @@ const ItemDetail = ({ item }) => {
     },
   }));
 
-  const [sizeSelect, setSizeSelect] = useState(0)
+  const [sizeSelect, setSizeSelect] = useState('')
 
   const handleChangeSize = (size) => {
     console.log("prod index", size)
