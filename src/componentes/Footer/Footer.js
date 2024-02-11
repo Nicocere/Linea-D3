@@ -1,3 +1,5 @@
+
+import React from 'react'
 import estilos from './footer.module.css'
 import { NavLink } from 'react-router-dom'
 

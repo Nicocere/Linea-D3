@@ -3,6 +3,7 @@ import Main from './componentes/Main/Main';
 import Footer from './componentes/Footer/Footer';
 import { BrowserRouter } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import React from 'react'
 
 
 //<<<<---------- Reimportar todos los adicionales ------------->>>>

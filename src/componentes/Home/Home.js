@@ -1,3 +1,4 @@
+import React from 'react'
 import ItemListContainer from "../ItemListContainer/ItemListContainer"
 import CarouselComponent from "../Carousel/Carousel";
 import HomeCategories from "../HomeCategories/HomeCategories";

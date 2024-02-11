@@ -1,3 +1,4 @@
+import React from 'react'
 import './homeCategories.css'
 import conjunto from '../../assets/conjuntoLinea.jpeg'
 import equipo from '../../assets/equipoLinea.jpeg'

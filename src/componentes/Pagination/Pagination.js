@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import React from 'react'
 
 const Pagination = ({ info, setPage , category}) => {
 

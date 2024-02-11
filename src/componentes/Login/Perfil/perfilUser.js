@@ -5,6 +5,7 @@ import { baseDeDatos } from '../../../firebaseConfig.mjs';
 import useLogout from '../LogOut/LogOut';
 import { onAuthStateChanged } from '@firebase/auth';
 import { Navigate } from 'react-router-dom';
+import React from 'react'
 
 function PerfilUser() {
     const [userData, setUserData] = useState(null);
