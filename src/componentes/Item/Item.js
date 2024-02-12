@@ -4,7 +4,6 @@ import ItemCount from '../ItemCount/ItemCount'
 import { Button } from '@mui/material'
 
 const Item = ({ items }) => {
-  console.log("items", items)
 
   return (
     <div className="product-item">
@@ -24,13 +23,13 @@ const Item = ({ items }) => {
       </div>
 
       <ItemCount
-        id={items.id}
+        id={items.id || items._id}
         size={items?.size[1]}
         optionPrecio={items.precio}
         item={items}
       />
        { <Link to={`/detail/${items.id}`} className="link-producto">
-            <Button variant='text' size='small' sx={{ color:'black', margin:'10px',fontSize:'9.50px', '&:hover':{color:'grey'}}}>Ver más opciones del producto</Button>
+            <Button variant='text' size='small' sx={{ color:'black', margin:'10px',fontSize:'9.50px', '&:hover':{color:'grey'}}}>Ver opciones</Button>
           </Link>
       } 
     </div>

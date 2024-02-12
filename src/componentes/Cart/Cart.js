@@ -4,18 +4,24 @@ import { Link, useLocation } from 'react-router-dom';
 import Form from '../Form/Form';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { AppBar, Avatar, Button, IconButton, SwipeableDrawer, Toolbar, useMediaQuery, List, ListItem, ListItemText } from '@mui/material';
+import { AppBar, Avatar, Button, Paper, IconButton, SwipeableDrawer, Toolbar, useMediaQuery, List, ListItem, ListItemText } from '@mui/material';
 import { Typography } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-const MySwal = withReactContent(Swal);
+import MercadoPagoButton from '../MercadoPago/MercadoPago'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { green } from '@mui/material/colors'; // Importa el color verde de Material UI
 
+const MySwal = withReactContent(Swal);
 
 const Cart = () => {
 
-    const { cart, setCart, clearCart, eliminarProd, totalPrecio, priceDolar, dolar, isCartOpen, setIsCartOpen, toggleCart } = useContext(CartContext);
+    const { cart,finalPrice,  setCart, clearCart, eliminarProd, totalPrecio, priceDolar, dolar, isCartOpen, setIsCartOpen, toggleCart } = useContext(CartContext);
     const total = totalPrecio();
     const isSmallScreen = useMediaQuery('(max-width:750px)');
     const [showForm, setShowForm] = useState(false);
+    const [retiraEnLocal, setRetiraEnLocal] = useState(false);
+    const [showPayments, setShowPayments ] = useState(false);
+    const [selectRetirarEnLocal, setSelectRetirarEnLocal] = useState(false)
 
     const deleteAll = () => {
         return (
@@ -44,9 +50,25 @@ const Cart = () => {
 
 
 
-    const finishForm = () => {
+    const handleChangeForm = () => {
+        console.log("show form", showForm)
         setShowForm(!showForm);
+        if(showForm){
+            setShowPayments(false)
+            setSelectRetirarEnLocal(false)
+            setRetiraEnLocal(false);
+        }
     };
+
+    const handleChangeRetirarProducto = () => {
+        console.log(" retira en local", retiraEnLocal)
+        setRetiraEnLocal(!retiraEnLocal);
+    };
+
+    const handleFinishPayment = () => {
+        setShowPayments(!showPayments)
+        setSelectRetirarEnLocal(!selectRetirarEnLocal)
+    }
 
     let itemSelected = cart?.map((item) => {
         return { ...item }
@@ -73,11 +95,9 @@ const Cart = () => {
         );
     }
 
-    console.log("item selected", itemSelected)
 
     return (
         <>
-            <Typography variant='h6' sx={{ color: 'black' }}>Carrito de Compras</Typography>
             <div className='cart'>
                 {
                     pagoExitoso === 'true' || pagoPaypalExitoso === 'true' ? (
@@ -104,45 +124,112 @@ const Cart = () => {
                                 (
                                     <>
                                         {/* Carrito de compras */}
-                                        <SwipeableDrawer
-                                            anchor="right"
-                                            open={isCartOpen}
-                                            onClose={() => setIsCartOpen(false)}
-                                            onOpen={() => setIsCartOpen(true)}
-                                            onClick={toggleCart}
-                                        >
-                                            <Button sx={{ color: 'black', width:'50%' }} startIcon={<ArrowBackIosNewIcon />}>Carrito de compras</Button>
+                                   {
+                                    !showForm && 
+                                    <> 
+            <Typography variant='h6' sx={{ color: 'black', alignText:'center' }}>Carrito de Compras</Typography>
                                             <List>
                                                 {itemSelected.map((prod, indx) => (
-                                                    <ListItem key={indx}>
-                                                        <img className='imgInCart' src={prod.item.imagen} alt="imagen producto en carrito" />
-                                                        <ListItemText primary={prod.name} secondary={`Cantidad: ${prod.quantity}, Talle: ${prod.size}`} />
-                                                        <ListItemText primary={`Precio: $${prod.item.precio}`} />
-                                                        <button className='btn-eliminarProd' onClick={(event) => {eliminarProd(prod._id, prod.size,  prod.quantity); event.stopPropagation();}}>Eliminar</button>
+                                                    <ListItem key={indx} sx={{ paddingLeft:'5px', borderBottom:'1px solid silver' }} >
+                                                        <img style={{marginRight:'10px'}} className='imgInCart' src={prod.item.imagen} alt="imagen producto en carrito" />
+                                                        <ListItemText sx={{flex:'2'}} primary={prod.name} secondary={`Cantidad: ${prod.quantity}, Talle: ${prod.size}`} />
+                                                        <ListItemText sx={{flex:'1'}} primary={`Precio: $${prod.item.precio}`} />
+                                                        <button className='btn-eliminarProd' onClick={(event) => {eliminarProd(prod.id, prod.name , prod.item.precio, prod.size,  prod.quantity); event.stopPropagation();}}>Eliminar</button>
                                                     </ListItem>
                                                 ))}
                                             </List>
-                                            <Button color='error' size='small' variant='outlined' sx={{ alignSelf: 'center', width:'25%', margin:'15px' }}   onClick={(event) => { deleteAll(); event.stopPropagation(); }}>Eliminar Todo</Button>
+                                            <Button color='error' size='small' variant='outlined' sx={{ alignSelf: 'center', width:'fit-content', margin:'15px' }}   onClick={(event) => { deleteAll(); event.stopPropagation(); }}>Eliminar Todo</Button>
                                             <h3 className='totalPrecio'> Precio total: ${total}</h3>
 
-                                            <Button variant="contained" sx={{ background: 'linear-gradient(6deg, #625e5e, black)', width: '50%', alignSelf: 'center' }} onClick={finishForm}>Comprar</Button>
-                                        </SwipeableDrawer>
+                                         
+                                        <Button variant="contained" sx={{ background: 'linear-gradient(6deg, #625e5e, black)', width: 'fit-content', alignSelf: 'center', margin:'10px'   }} onClick={handleChangeForm}>Comprar 
+                                        </Button>
+                                        </>
+                                    }
 
                                         {/* Formulario */}
+                                        {
+                                            showForm &&
+                                            <>
+                                            <Button variant="contained" sx={{ background: 'linear-gradient(6deg, #625e5e, black)', width: 'fit-content', alignSelf: 'center' , margin:'10px'  }} onClick={handleChangeForm}>Volver al Carrito </Button>
 
-                                        <SwipeableDrawer
+
+                                            <Paper elevation={24}>
+                                            {   
+                                            !retiraEnLocal ?
+                                                
+                                            (
+                                                <>
+                                                <Paper elevation={24}>
+                                                <List>
+                                                {/* {itemSelected.map((prod, indx) => (
+                                                    <ListItem key={indx}>
+                                                <img className='imgInCart' src={prod.item.imagen} alt="imagen producto en carrito" /> */}
+                                                        <ListItemText primary={`${showPayments ? `Selecciono Retirar en Local` 
+                                                        :'Retira en Local'}`} secondary={`Cesar Diaz 1234 (Imperio Juniors)`} /> 
+                                                         {
+                                                            showPayments && <CheckCircleIcon sx={{ color: green[500] }} />
+                                                        }
+                                                        {
+                                                            showPayments ? null :
+                                                        <Button className='btn-eliminarProd' onClick={handleFinishPayment}>Retirar</Button>
+                                                        }
+                                                    {/* </ListItem> */}
+                                                {/* ))} */}
+                                            </List>
+
+                                            {
+                                                showPayments &&  <>
+                                                <h3 className='metodo-pago-title'>Seleccione un metodo de pago</h3>
+                                                <div className='mercadopago-div'>
+                                                    <MercadoPagoButton
+                                                        retiraEnLocal={selectRetirarEnLocal}
+                                                        finalPrice={total}
+                                                        title={cart[0].name}
+                                                        description={cart[0].descr}
+                                                        picture_url={cart[0].img}
+                                                        category_id={cart[0].tipo}
+                                                        quantity={cart[0].quantity}
+                                                        id={cart[0].id}
+                                                        size={cart[0].size}
+                                                        products={cart}
+                                                    />
+                                                </div>
+                                            </>
+                    
+                                            }
+                                                    </Paper>
+                                                <Button variant="contained" sx={{ background: 'linear-gradient(6deg, #625e5e, black)', width: '50%', alignSelf: 'center' , margin:'10px'  }}
+                                                 onClick={() => {handleChangeRetirarProducto();}}>Enviar a domicilio </Button>
+                                                </>
+                                                )
+
+                                                :
+                                   (   
+                                    <>
+                                            <Button variant="outlined" color='error' sx={{ color:'black', width: 'fit-content', alignSelf: 'center' , margin:'10px'  }} onClick={handleChangeRetirarProducto}>Retirar en el Local </Button>
+
+                                          <Form
+                                            itemSelected={itemSelected}
+                                            idCompra={paymentID}
+                                            clearCart={clearCart}
+                                            />
+                                            </>
+                                            )
+                                        }
+                                        </Paper>
+                                            </>
+                                        }
+
+                                        {/* <SwipeableDrawer
                                             anchor="right"
                                             open={showForm}  // Utiliza showForm para controlar la apertura y cierre del SwipeableDrawer
                                             onClose={() => setShowForm(false)}
                                             onOpen={() => setShowForm(true)}
                                         >
                                             <Button sx={{ color: 'black' ,width:'50%'}} startIcon={<ArrowBackIosNewIcon />} onClick={() => setShowForm(false)}>Volver al Carrito de compras</Button>
-                                            <Form
-                                                itemSelected={itemSelected}
-                                                idCompra={paymentID}
-                                                clearCart={clearCart}
-                                            />
-                                        </SwipeableDrawer>
+                                        
+                                        </SwipeableDrawer> */}
                                     </>
                                 ) :
                                 (
@@ -175,7 +262,7 @@ const Cart = () => {
                                                                 </td>
                                                                 <td>
                                                                     <button className='btn-eliminarProd'
-                                                                        onClick={() => eliminarProd(prod._id,
+                                                                        onClick={() => eliminarProd(prod.id,
                                                                             prod.item.size,
                                                                             prod.idOption,
                                                                             prod.quantity,

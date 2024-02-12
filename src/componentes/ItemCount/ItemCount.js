@@ -23,7 +23,7 @@ const ItemCount = ({ id, optionId, size, optionPrecio, item, nameOptionalSize, q
 
       // Guardar producto en el estado y localStorage
       const newProduct = {
-        _id: id || item.id,
+        id: id || item.id,
         size: size,
         precio: item.precio,
         name: nameOptionalSize || item.nombre,
@@ -34,10 +34,14 @@ const ItemCount = ({ id, optionId, size, optionPrecio, item, nameOptionalSize, q
         UserID: UserID
       };
       // Verifica si el producto ya está en el carrito y si el tamaño es el mismo
-      const existingProductIndex = cart.findIndex((product) =>
-        product.id === newProduct.id &&
-        product.size === newProduct.size
-      );
+      const existingProductIndex = cart.findIndex((product) =>{
+      console.log("prod", product)
+
+      return (  product.id === newProduct.id &&
+        product.size === newProduct.size ) && (product.precio === newProduct.precio &&
+          product.size === newProduct.size  ) && (product.precio === newProduct.precio &&
+            product.name === newProduct.name  )
+      });
 
       let updatedCart;
 

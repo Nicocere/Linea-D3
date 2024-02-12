@@ -39,7 +39,7 @@ const CartProvider = ({ children }) => {
     const totalPrecio = () => {
         let acumulador = 0;
         let acumuladorInUsd = 0
-        cart ?.forEach((prod) => {
+        cart?.forEach((prod) => {
             const precioInUsd = (prod.item.precio / dolar).toFixed(2)
 
             acumulador += prod.quantity * prod.item.precio
@@ -60,11 +60,11 @@ const CartProvider = ({ children }) => {
         setFinalPrice(total)
     }
 
-    const eliminarProd = async (_id, size, quantity) => {
-        console.log("que pasa ?", _id, size, quantity )
+    const eliminarProd = async (_id, name, precio, size, quantity) => {
         try {
-            const productIndex = cart.findIndex(prod => prod._id === _id && prod.size === size);
+            const productIndex = cart.findIndex(prod => (prod.precio === precio) && (prod.size === size) && prod.id === _id);
 
+            console.log("product index", productIndex)
             if (productIndex !== -1) {
                 if (cart[productIndex].quantity > 1) {
                     // Pregunta al usuario cuánta cantidad desea eliminar
@@ -80,39 +80,52 @@ const CartProvider = ({ children }) => {
                         }
                     });
 
-                    // Si el usuario presiona cancelar
-                    if (!quantityToRemove) return;
+                     // If the user cancels, do nothing
+                     if (!quantityToRemove) return;
 
-                    if (quantityToRemove < cart[productIndex].quantity) {
-                        cart[productIndex].quantity -= parseInt(quantityToRemove);
-                        setCart([...cart]);
-                    } else {
-                        // Si se decide eliminar todos los productos o la cantidad iguala al stock
-                        const carritoFiltrado = cart.filter(prod => prod.quantity !== quantity && prod.size !== size);
-                        setCart(carritoFiltrado);
-                    }
-                } else {
-                    const carritoFiltrado = cart.filter(prod => prod.quantity !== quantity && prod.size !== size);
-                    setCart(carritoFiltrado);
-                }
+                     // Update the quantity in the cart
+                     cart[productIndex].quantity -= parseInt(quantityToRemove);
+ 
+                     // If the remaining quantity is greater than zero, update the cart state
+                     if (cart[productIndex].quantity > 0) {
+                        console.log("esto pasa")
+                         setCart([...cart]);
+                     } else {
+                         // If the remaining quantity is zero, remove the product from the cart
+                         const updatedCart = cart.filter(prod => prod.id !== _id);
+                         console.log("esto pasa")
 
-                Swal.fire({
-                    title: 'Producto eliminado!',
-                    text: 'El producto ha sido eliminado de tu carrito.',
-                    icon: 'warning',
-                    confirmButtonText: 'Ok'
-                });
-            }
+                         setCart(updatedCart);
+                     }
+                 } else {
+                     // If there is only one quantity of the product, remove it from the cart
+                     const updatedCart = cart.filter(prod => prod.id !== _id);
+                     setCart(updatedCart);
+                 }
+ 
+                 // Show a success message
+                 Swal.fire({
+                     icon: 'warning',
+                     title: 'Producto eliminado!',
+                     text: 'El producto ha sido eliminado de tu carrito.',
+                     toast: true,
+                     position: 'bottom-right',
+                     showConfirmButton: false,
+                     timer: 2100,
+                     timerProgressBar: true,
+                     background: '#f3f3f3',
+                     iconColor: '#a30000'
+                 });
+             }
+         } catch (error) {
+             console.log("Ocurrió un error en el Contexto del Cart", error);
+         }
+     };
 
-        } catch (error) {
-            console.log("Ocurrió un error en el Contexto del Cart", error);
-        }
-    };
-
-
+     
     const cantidadProducto = (id) => {
-        const producto = cart ?.find((prod) => prod.id === id);
-        return producto ?.quantity;
+        const producto = cart?.find((prod) => prod.id === id);
+        return producto?.quantity;
     };
 
     const clearCart = async () => {
@@ -196,7 +209,7 @@ const CartProvider = ({ children }) => {
                 totalPriceLocation,
                 dolar,
                 finalPrice,
-                isCartOpen, 
+                isCartOpen,
                 setIsCartOpen,
                 toggleCart,
                 CartID,

@@ -855,12 +855,11 @@ textarea {
 }
 
 .cart {
-  display: 'block';
-  justify-content: 'center';
-  margin-top: '50px';
   background: #e5e5e5;
   border: 0.5px solid black;
-  margin-top: 80px;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  border-radius: 10px;
 }
 
 .cartVacio {
@@ -1521,7 +1520,7 @@ textarea {
 .metodo-pago-title {
   margin-bottom: 0px;
   width: 100%;
-  background: #fe6a838f;
+  background: black;
   padding: 5px 0px;
   color: white;
 }

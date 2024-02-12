@@ -16,7 +16,7 @@ const HomeCategories = () => {
                     <button>MUSCULOSAS</button>
                     <img src={camiseta} ></img>
                 </NavLink>
-                <div class="superposicion"></div>
+                <div className="superposicion"></div>
 
             </div>
             <div className="banner" >
@@ -24,7 +24,7 @@ const HomeCategories = () => {
                     <button>CONJUNTOS</button>
                     <img src={conjunto} ></img>
                 </NavLink>
-                <div class="superposicion"></div>
+                <div className="superposicion"></div>
 
             </div>
             <div className="banner" >
@@ -32,7 +32,7 @@ const HomeCategories = () => {
                     <button>EQUIPOS</button>
                     <img src={equipo} ></img>
                 </NavLink>
-                <div class="superposicion"></div>
+                <div className="superposicion"></div>
 
             </div>
         </div>
