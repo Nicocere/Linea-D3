@@ -11,7 +11,6 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
     const [isLoading, setIsLoading] = useState(true)
     const { prodId } = useParams()
-    console.log(prodId)
     const storageProducts = JSON.parse(localStorage.getItem('productos'));
 
 
@@ -38,7 +37,7 @@ const ItemDetailContainer = () => {
     }, [prodId]);
 
     return (
-        <div key={item.id} className="prodDetailContainer">
+        <div  className="prodDetailContainer">
             {/* {isLoading ? (
                 <>
                     <h2 className="loadDetailProd">Cargando Productos....</h2>

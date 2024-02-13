@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import estilosDetail from './ItemDetail.module.css';
 import './itemDetail.css';
-import { FormLabel, Radio, RadioGroup, Box, radioClasses, useTheme } from '@mui/material';
+import { FormLabel, Radio, RadioGroup, Box, radioClasses, useTheme, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 
 const ItemDetail = ({ item }) => {
@@ -37,7 +37,7 @@ const ItemDetail = ({ item }) => {
   const [sizeSelect, setSizeSelect] = useState('')
 
   const handleChangeSize = (size) => {
-    console.log("prod index", size)
+    console.log("prod index", item)
      setSizeSelect(size)
   }
 
@@ -62,10 +62,9 @@ const ItemDetail = ({ item }) => {
       <div className="detail-content">
         <h1>{item.nombre}</h1>
         <h2>${item.precio}</h2>
-        <p>Descripción del producto</p>
-        <h5>Talles disponibles: {item.talle}</h5>
-        <FormLabel id="product-size-attribute">Size</FormLabel>
-        <RadioGroup aria-labelledby="product-size-attribute" defaultValue="M" sx={{ gap: 2, mb: 2, flexDirection: 'row' }}>
+        <Typography variant='overline'>{item.descripcion}</Typography>
+        <FormLabel id="product-size-attribute">Talles:</FormLabel>
+        <RadioGroup aria-labelledby="product-size-attribute" defaultValue="M" sx={{ gap: 2, mb: 2, flexDirection: 'row', justifyContent:'center' }}>
           {['XS', 'S', 'M', 'L', 'XL'].map((size, index) => (
             <Box key={size} className={classes.radioBox}>
               <Radio

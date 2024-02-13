@@ -17,12 +17,13 @@ import EditProds from '../../admin/componentes/Productos/editProds';
 import Presupuestos from '../../Presupuestos/presupuestos';
 import EditBanner from '../../admin/componentes/Banners/editBanners';
 import AddBanners from '../../admin/componentes/Banners/addBanners';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const Main = () => {
 
   return (
     <main className='main'>
-
+      <ScrollToTop/>
       <Routes>
 
         <Route path='/' element={<Home />} />
