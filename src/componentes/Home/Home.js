@@ -2,6 +2,7 @@ import React from 'react'
 import ItemListContainer from "../ItemListContainer/ItemListContainer"
 import CarouselComponent from "../Carousel/Carousel";
 import HomeCategories from "../HomeCategories/HomeCategories";
+import HomeBanner from '../HomeBanner/HomeBanner';
 
 
 const Home = () => {
@@ -9,8 +10,9 @@ const Home = () => {
 
     return (
         <>
-            <CarouselComponent />
+        <HomeBanner/>
             <HomeCategories />
+            <CarouselComponent />
             <ItemListContainer />
         </>
     );
