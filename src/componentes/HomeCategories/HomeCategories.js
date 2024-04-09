@@ -1,8 +1,8 @@
 import React from 'react'
 import './homeCategories.css'
-import conjunto from '../../assets/conjuntoLinea.jpeg'
-import equipo from '../../assets/equipoLinea.jpeg'
-import camiseta from '../../assets/camisetaLinea.jpeg'
+import conjunto from '../../assets/conjuntos/conjuntoLinea.jpeg'
+import equipo from '../../assets/t-shirts/equipoLinea.jpeg'
+import camiseta from '../../assets/t-shirts/camisetaLinea.jpeg'
 import { NavLink } from 'react-router-dom';
 
 
