@@ -13,24 +13,26 @@ const HomeBanner = () => {
     const [index, setIndex] = useState(0);
     const isSmallScreen = useMediaQuery('(max-width:650px)');
 
-    // const [directions, setDirections] = useState([]);
+    const [bgAttachmenIOS, setBgAttachmenIOS] = useState(false);
 
-    // // Fetch direcciones
-    // const fetchDirections = async () => {
-    //     const directionsRef = collection(baseDeDatos, 'direcciones');
-    //     const orderedQuery = query(directionsRef, orderBy('name')); // Ordena por el campo 'nombre'
+    useEffect(() => {
+        function esiOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
 
-    //     const directionsSnapshot = await getDocs(orderedQuery);
-    //     const directionsData = [];
-    //     directionsSnapshot.forEach((doc) => {
-    //         directionsData.push({ id: doc.id, ...doc.data() });
-    //     });
-    //     setDirections(directionsData);
-    // };
+        function esAndroid() {
+            return /Android/.test(navigator.userAgent);
+        }
 
-    // useEffect(() => {
-    //     fetchDirections();
-    // }, []);
+        if (esiOS()) {
+            console.log("El usuario está en un dispositivo iOS.");
+            setBgAttachmenIOS(true)
+        } else if (esAndroid()) {
+            console.log("El usuario está en un dispositivo Android.");
+        } else {
+            console.log("El usuario no está en un dispositivo iOS ni Android.");
+        }
+    }, []);
 
 
     // Array de imágenes de fondo
@@ -95,7 +97,7 @@ const HomeBanner = () => {
             backgroundImage: `url(assets/Banner/aro-basket.jpg)`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center center',
-            backgroundAttachment: 'fixed',
+            backgroundAttachment: bgAttachmenIOS ? 'scroll' :'fixed',
             backgroundSize: 'cover',
             WebkitBackgroundSize: 'cover', // Prefijo específico para Safari
         }}>
