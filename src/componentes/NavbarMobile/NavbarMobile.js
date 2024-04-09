@@ -234,7 +234,7 @@ const NavbarMobile = () => {
                         }}>
                             <Paper sx={{
                                 // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                                marginBottom: '10px', backgroundImage: 'url("assets/imagenes/Banner/aro-basket.jpg")', backgroundSize: 'cover',
+                                marginBottom: '10px', backgroundImage: 'url("../assets/imagenes/Banner/aro-basket.jpg")', backgroundSize: 'cover',
                                 WebkitBackgroundSize: 'cover',
                             }}>
 
@@ -344,7 +344,7 @@ const NavbarMobile = () => {
 
                         <Paper sx={{
                             // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                            marginBottom: '10px', backgroundImage: 'url("assets/imagenes/Banner/balls-stars.png")', backgroundSize: 'cover',
+                            marginBottom: '10px', backgroundImage: 'url("../assets/imagenes/Banner/balls-stars.png")', backgroundSize: 'cover',
                             WebkitBackgroundSize: 'cover',
                         }}>
 
@@ -417,7 +417,7 @@ const NavbarMobile = () => {
 
                         <Paper sx={{
                             background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                            marginBottom: '10px', backgroundImage: 'url("assets/logo/LineaD3Logo.png")', backgroundSize: 'cover',
+                            marginBottom: '10px', backgroundImage: 'url("../assets/logo/LineaD3Logo.png")', backgroundSize: 'cover',
                             WebkitBackgroundSize: 'cover',
                         }}>
 
