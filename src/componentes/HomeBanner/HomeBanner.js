@@ -35,7 +35,7 @@ const HomeBanner = () => {
 
     // Array de imágenes de fondo
     const backgroundImages = [
-        '/assets/imagenes/Banner/aro-basket.jpg',
+        '/assets/Banner/aro-basket.jpg',
     ];
 
     // Función para obtener una imagen de fondo aleatoria
