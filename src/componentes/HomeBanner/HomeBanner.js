@@ -4,7 +4,6 @@ import style from './homeBanner.module.css';
 import { TypeAnimation } from 'react-type-animation';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import Typed from 'typed.js';
-import sunsetBasket from '../../assets/banner/sunsetBasquet.png'
 
 
 
@@ -36,7 +35,7 @@ const HomeBanner = () => {
 
     // Array de imágenes de fondo
     const backgroundImages = [
-        {sunsetBasket},
+        '/assets/imagenes/Banner/aro-basket.jpg',
     ];
 
     // Función para obtener una imagen de fondo aleatoria
