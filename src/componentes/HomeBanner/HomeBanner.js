@@ -92,7 +92,7 @@ const HomeBanner = () => {
         <div className={style.homeBanner}>
 
         <div className={style.divHomeBanner} style={{
-            backgroundImage: `url(${backgroundImage})`,
+            backgroundImage: `url(assets/imagenes/Banner/aro-basket.jpg)`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center center',
             backgroundAttachment: 'fixed',

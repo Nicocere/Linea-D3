@@ -229,25 +229,25 @@ const NavbarMobile = () => {
                     {/* Contenido adicional o enlaces relacionados con WhatsApp */}
                     {openDrawer && (
                         <div style={{
-                             display: 'flex', flexDirection: 'column',
+                            display: 'flex', flexDirection: 'column',
                             height: '100vh', justifyContent: 'space-between', color: 'white'
                         }}>
-                         <Paper sx={{
-                            // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                            marginBottom: '10px', backgroundImage: 'url("/assets/imagenes/Banner/aro-basket.jpg")', backgroundSize: 'cover',
-                            WebkitBackgroundSize: 'cover',
-                        }}>
-
-                            <Typography variant="subtitle1" sx={{
-                                fontSize: '1.25rem',
-                                fontWeight: '600', background: '#ffffff85', paddingTop: '14px',
-                                display: 'flex', alignItems: 'flex-end', margin: '85px 0 0', paddingLeft: '10px',
-                                justifyContent: 'space-between', borderBottom: '2px solid gold', flex: '0'
+                            <Paper sx={{
+                                // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
+                                marginBottom: '10px', backgroundImage: 'url("assets/imagenes/Banner/aro-basket.jpg")', backgroundSize: 'cover',
+                                WebkitBackgroundSize: 'cover',
                             }}>
-                                Menú
-                            </Typography>
 
-                        </Paper>
+                                <Typography variant="subtitle1" sx={{
+                                    fontSize: '1.25rem',
+                                    fontWeight: '600', background: '#ffffff85', paddingTop: '14px',
+                                    display: 'flex', alignItems: 'flex-end', margin: '85px 0 0', paddingLeft: '10px',
+                                    justifyContent: 'space-between', borderBottom: '2px solid gold', flex: '0'
+                                }}>
+                                    Menú
+                                </Typography>
+
+                            </Paper>
 
                             <div className='div-prods-SeccionMobile' >
                                 <NavLink className='seccionLi' to='/' > Inicio </NavLink>
@@ -268,7 +268,7 @@ const NavbarMobile = () => {
 
                             {/* SESION DE USUARIO */}
                             {currentUser && userData ? (
-                                <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '95px', justifyContent:'center' }}
+                                <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '95px', justifyContent: 'center' }}
                                     onClick={handleToggleSubMenuDrawer}>
 
                                     <Avatar sx={{
@@ -296,9 +296,19 @@ const NavbarMobile = () => {
                                     {openProfileDrawer && <SubMenuUsers userData={userData} />}
                                 </div>
                             ) : (
-                                <div>
+                                <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '95px', justifyContent: 'center' }}>
                                     <NavLink to="/login" style={{ textDecoration: 'none' }}>
-                                        <Typography variant='overline' sx={{ color: 'white', }}>
+                                        <Typography variant="subtitle1" sx={{
+                                            margin: 0,
+                                            fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                                            fontWeight: '700',
+                                            fontSize: ' 0.875rem',
+                                            lineHeight: '1.75',
+                                            letterSpacing: ' 0.02857em',
+                                            textTransform: 'uppercase',
+                                            textDecoration: 'none',
+                                            color: 'gold'
+                                        }}>
                                             Iniciar Sesión
                                         </Typography>
                                     </NavLink>
@@ -325,16 +335,16 @@ const NavbarMobile = () => {
             >
                 {/* Contenido del segundo slide (categorías) */}
                 {openProductsDrawer && (
-                <div style={{
-                    width: '300px', display: 'flex', flexDirection: 'column',
-                    background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                    height: '100vh', zIndex: '1000'
-                }}>
+                    <div style={{
+                        width: '300px', display: 'flex', flexDirection: 'column',
+                        background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
+                        height: '100vh', zIndex: '1000'
+                    }}>
 
 
                         <Paper sx={{
                             // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                            marginBottom: '10px', backgroundImage: 'url("/assets/imagenes/Banner/balls-stars.png")', backgroundSize: 'cover',
+                            marginBottom: '10px', backgroundImage: 'url("assets/imagenes/Banner/balls-stars.png")', backgroundSize: 'cover',
                             WebkitBackgroundSize: 'cover',
                         }}>
 
@@ -407,7 +417,7 @@ const NavbarMobile = () => {
 
                         <Paper sx={{
                             background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                            marginBottom: '10px', backgroundImage: 'url("/assets/logo/LineaD3Logo.png")', backgroundSize: 'cover',
+                            marginBottom: '10px', backgroundImage: 'url("assets/logo/LineaD3Logo.png")', backgroundSize: 'cover',
                             WebkitBackgroundSize: 'cover',
                         }}>
 
