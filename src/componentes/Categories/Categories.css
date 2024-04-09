@@ -46,6 +46,7 @@ color: white;
 .categories-navigation{
     display: flex;
     margin-left: 10px;
+    text-decoration: none;
 }
 
 .categories-navigation a{

@@ -4,8 +4,13 @@ import { useForm } from 'react-hook-form';
 import { CartContext } from '../../context/CartContext.js';
 import MercadoPagoButton from '../MercadoPago/MercadoPago'
 import Swal from 'sweetalert2';
+import CardPaymentMP from '../MercadoPago/PasarelaDePago/CardPayment.js';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import CreditCardTwoToneIcon from '@mui/icons-material/CreditCardTwoTone';
+import { Button, FormHelperText, TextField } from '@mui/material';
 
-const Form = ({ itemSelected }) => {
+
+const Form = ({ total }) => {
 
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const { finalPrice, locationValue, locationName, location, cart, dolar, priceDolar, setPriceDolar } = useContext(CartContext);
@@ -17,6 +22,19 @@ const Form = ({ itemSelected }) => {
 
     const [confirmationDone, setConfirmationDone] = useState(false);
     const [hasSelectedLocation, setHasSelectedLocation] = useState(false);
+
+    const [showMercadoPago, setShowMercadoPago] = useState(true);
+    const [showCardPayment, setShowCardPayment] = useState(false);
+
+    const handleMercadoPagoClick = () => {
+        setShowMercadoPago(true);
+        setShowCardPayment(false);
+    };
+
+    const handleCardPaymentClick = () => {
+        setShowMercadoPago(false);
+        setShowCardPayment(true);
+    };
 
     const onSubmit = (data) => {
 
@@ -236,45 +254,92 @@ const Form = ({ itemSelected }) => {
                     confirmationDone ? (
                         <>
                             <h3 className='metodo-pago-title'>Seleccione un metodo de pago</h3>
-                            <div className='mercadopago-div'>
-                                <p className='tarjetas'>Tarjeta Nacionales</p>
-                                <MercadoPagoButton
-                                    nombreDestinatario={watch('nombreDestinatario')}
-                                    apellidoDestinatario={watch('apellidoDestinatario')}
-                                    phoneDestinatario={watch('phoneDestinatario')}
-                                    mailComprador={watch('mailComprador')}
-                                    localidad={location}
-                                    nombreLocalidad={locationName}
-                                    precioLocalidad={locationValue}
-                                    calle={watch('calle')}
-                                    altura={watch('altura')}
-                                    piso={watch('piso')}
-                                    dedicatoria={saveDedicatoria}
-                                    nombreComprador={watch('nombreComprador')}
-                                    phoneComprador={watch('telefonoComprador')}
-                                    apellidoComprador={watch('apellidoComprador')}
-                                    fechaEnvio={watch('fechaEnvio')}
-                                    horarioEnvio={watch('selectHorario')}
-                                    // servicioPremium={isPremium}
-                                    // envioPremium={precioEnvioPremium}
-                                    finalPrice={finalPrice}
-                                    title={cart[0].name}
-                                    description={cart[0].descr}
-                                    picture_url={cart[0].img}
-                                    category_id={cart[0].tipo}
-                                    quantity={cart[0].quantity}
-                                    id={cart[0].id}
-                                    size={cart[0].size}
-                                    products={cart}
-                                />
-                            </div>
+                          
+                            {showMercadoPago && (
+                                            <Button size='small' variant='contained' color='error'  endIcon={<CreditCardTwoToneIcon/>} 
+                                            sx={{marginTop:'15px', width:'50%', alignSelf:'center'}}  onClick={handleCardPaymentClick}>Pagar con Tarjeta de Crédito / Débito</Button>
+                                        )}
+
+                                        {showCardPayment && (
+                                            <Button size='small' variant='contained' color='error'  endIcon={<AccountBoxIcon/>} 
+                                            sx={{marginTop:'15px', width:'50%', alignSelf:'center'}}  onClick={handleMercadoPagoClick}>Pagar con cuenta en Mercado Pago</Button>
+                                        )}
+
+                                        {showCardPayment && (
+
+                                            <div className='mercadopago-div'>
+                                                <h4 className='tarjetas'>Pagar con Tarjeta Nacionales</h4>
+                                                <span>Total a pagar: ${finalPrice}</span> 
+                                                <CardPaymentMP
+                                                    nombreDestinatario={watch('nombreDestinatario')}
+                                                    apellidoDestinatario={watch('apellidoDestinatario')}
+                                                    phoneDestinatario={watch('phoneDestinatario')}
+                                                    mailComprador={watch('mailComprador')}
+                                                    localidad={location}
+                                                    nombreLocalidad={locationName}
+                                                    precioLocalidad={locationValue}
+                                                    calle={watch('calle')}
+                                                    altura={watch('altura')}
+                                                    piso={watch('piso')}
+                                                    nombreComprador={watch('nombreComprador')}
+                                                    phoneComprador={watch('telefonoComprador')}
+                                                    apellidoComprador={watch('apellidoComprador')}
+                                                    fechaEnvio={watch('fechaEnvio')}
+                                                    horarioEnvio={watch('selectHorario')}
+                                                    finalPrice={finalPrice}
+                                                    title={cart[0].name}
+                                                    description={cart[0].descr}
+                                                    picture_url={cart[0].img}
+                                                    category_id={cart[0].tipo}
+                                                    quantity={cart[0].quantity}
+                                                    id={cart[0].id}
+                                                    size={cart[0].size}
+                                                    products={cart}
+                                                    />
+                                            </div>
+                                        )}
+
+
+                                        {showMercadoPago && (
+                                            <div className='mercadopago-div'>
+                                                <h4 className='tarjetas'>Pagar con Cuenta Mercado Pago</h4>
+                                                <span>Total a pagar: ${finalPrice}</span> 
+                                                <MercadoPagoButton
+                                                   nombreDestinatario={watch('nombreDestinatario')}
+                                                   apellidoDestinatario={watch('apellidoDestinatario')}
+                                                   phoneDestinatario={watch('phoneDestinatario')}
+                                                   mailComprador={watch('mailComprador')}
+                                                   localidad={location}
+                                                   nombreLocalidad={locationName}
+                                                   precioLocalidad={locationValue}
+                                                   calle={watch('calle')}
+                                                   altura={watch('altura')}
+                                                   piso={watch('piso')}
+                                                   dedicatoria={saveDedicatoria}
+                                                   nombreComprador={watch('nombreComprador')}
+                                                   phoneComprador={watch('telefonoComprador')}
+                                                   apellidoComprador={watch('apellidoComprador')}
+                                                   fechaEnvio={watch('fechaEnvio')}
+                                                   horarioEnvio={watch('selectHorario')}
+                                                   finalPrice={finalPrice}
+                                                   title={cart[0].name}
+                                                   description={cart[0].descr}
+                                                   picture_url={cart[0].img}
+                                                   category_id={cart[0].tipo}
+                                                   quantity={cart[0].quantity}
+                                                   id={cart[0].id}
+                                                   size={cart[0].size}
+                                                   products={cart}
+                                                    />
+                                            </div>
+                                        )}
                         </>
 
                     ) : hasSelectedLocation ? (
                         <>
                             {
                                 priceDolar ? <h2 className='totalPrecio'  >Total final: USD${finalPrice}</h2>
-                                    : <h2 className='totalPrecio'  >Total final: ${finalPrice.toLocaleString('es-AR')}</h2>
+                                    : <h2 className='totalPrecio'  >Total: ${finalPrice.toLocaleString('es-AR')}</h2>
                             }
                             <h1 className='alert-finalprice'> Antes de Finalizar la compra,
                         debe completar TODOS los campos.</h1>

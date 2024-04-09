@@ -70,7 +70,7 @@
   
   .fa-envelope {
     margin-right: 4%;
-    color: rgb(70, 0, 70);
+    color: white;
     font-size: x-large;
   }
   
@@ -88,7 +88,7 @@
   
   .fa-instagram {
     margin-right: 2%;
-    color: rgb(70, 0, 70);
+    color: white;
     font-size: x-large;
   }
   
@@ -106,7 +106,7 @@
       grid-column-gap: .5%;
       padding-top: 28px;
       color: rgb(255 255 255);
-      background: linear-gradient(180deg, rgb(60 27 32 / 91%), transparent);
+      background: linear-gradient(to right, rgb(15, 15, 15), black);
       flex-direction: column;
       font-size: xx-small;
       }

@@ -68,7 +68,6 @@ const NavBarTop = () => {
         };
 
         fetchData();
-        console.log("esto pasa pq existe user", user)
       } else {
         setCurrentUser(null);
       }
@@ -84,8 +83,10 @@ const NavBarTop = () => {
 
       <div className={style.divNav}>
 
+    <NavLink to='/'>
 
         <img className={style.imgNavBar} src={'../assets/logo/LineaD3Logo.png'} alt="logo lineaD3" />
+    </NavLink>
 
         <div className={style.sercherContainer} >
           <Searcher items={storageProducts} />
@@ -109,7 +110,7 @@ const NavBarTop = () => {
               }}>
                
                 <Avatar sx={{
-                  zIndex: '1200', background: 'yellow', margin: '3px', marginBottom: '1px', width: '25px',
+                  zIndex: '1200', background: 'gold', margin: '3px', marginBottom: '1px', width: '25px',
                    height: '25px', fontSize: '.80rem', transition: 'background .50s ease', color:'black'
                   , '&:hover': { background: '#f6a900' }
                 }}>
@@ -125,7 +126,7 @@ const NavBarTop = () => {
                   letterSpacing: ' 0.02857em',
                   textTransform: 'uppercase',
                   textDecoration: 'none',
-                  color: 'yellow',
+                  color: 'gold',
                 }} >{userData.username}
                 </Typography>
 
@@ -154,7 +155,7 @@ const NavBarTop = () => {
                   background: 'linear-gradient(to top, rgb(0 0 0), rgb(39 39 39))',
                   height: '100vh', padding: '0 14px 0',
                 }}>
-                  <Button variant='contained' color='error' size='small' sx={{
+                  <Button variant='text' color='error' size='small' sx={{
                     margin: 0, fontWeight: '600',
                     position: 'sticky', right: '15px', top: '100px'
                   }}

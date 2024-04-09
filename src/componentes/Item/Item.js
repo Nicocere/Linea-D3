@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount'
 import { Button } from '@mui/material'
 
@@ -9,10 +9,10 @@ const Item = ({ items }) => {
     <div className="product-item">
 
 
-      <Link to={`/detail/${items.id}`} className="link-producto">
+      <NavLink to={`/detail/${items.id}`} className="link-producto">
         <img src={items.imagen} alt="" />
-      </Link>
-
+      </NavLink>
+      <span style={{color:'silver', fontSize:'x-small'}}>Vendidos: {items.vendidos}</span>
       <h4 className="tituloProducto">{items.nombre}</h4>
       <h3>${items.precio}</h3>
       <div className="div-prod-details-indx">
@@ -22,16 +22,16 @@ const Item = ({ items }) => {
 
       </div>
 
+      { <NavLink to={`/detail/${items.id}`} className="link-producto">
+           <Button variant='text' size='small' sx={{ color:'black', margin:'10px',fontSize:'9.50px', '&:hover':{color:'grey'}}}>Ver opciones</Button>
+         </NavLink>
+     } 
       <ItemCount
         id={items.id || items._id}
         size={items?.size[1]}
         optionPrecio={items.precio}
         item={items}
       />
-       { <Link to={`/detail/${items.id}`} className="link-producto">
-            <Button variant='text' size='small' sx={{ color:'black', margin:'10px',fontSize:'9.50px', '&:hover':{color:'grey'}}}>Ver opciones</Button>
-          </Link>
-      } 
     </div>
   )
 }

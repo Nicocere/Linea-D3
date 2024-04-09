@@ -58,17 +58,37 @@ function PerfilUser() {
 
                         <p>Opciones de Administrador</p>
 
-                        <button onClick={handleNavigateToAddProds}>Agregar Productos</button>
-                        <button onClick={handleNavigateToAddBanners}>Editar Banners</button>
+                        <div className='div-admin-bts'>
 
-                        <button >Administrar Usuarios</button>
-                        <button >Cambiar / Crear Promociones</button>
-                        <button >Editar Perfil</button>
+                        <div style={{ flex: '1', mixWidth: '280px', margin:'10px', background:'linear-gradient(white 23%, silver 135%)',  }} className='div-admin-objets'>
+                            <p>Agregar o Editar Productos.</p>
+                            <button onClick={handleNavigateToAddProds}>Ver Productos</button>
+                        </div>
+
+                        <div style={{ flex: '1', maxWidth: '280px', margin:'10px', background:'linear-gradient(white 23%, silver 135%)',  }} className='div-admin-objets'>
+                            <p>Agregar o Editar Banners.</p>
+
+                            <button onClick={handleNavigateToAddBanners}>Ver Banners</button>
+                        </div>
+
+                        <div style={{ flex: '1', maxWidth: '280px', margin:'10px', background:'linear-gradient(white 23%, silver 135%)',  }} className='div-admin-objets'>
+                            <p>Administrar los Usuarios.</p>
+                            <button >Ver Usuarios</button>
+                        </div>
+                        <div style={{ flex: '1', maxWidth: '280px', margin:'10px', background:'linear-gradient(white 23%, silver 135%)',  }} className='div-admin-objets'>
+                            <p>Cambiar / Crear  Promociones.</p>
+                            <button >Ver Promociones</button>
+                        </div>
+                        <div style={{ flex: '1', maxWidth: '280px', margin:'10px', background:'linear-gradient(white 23%, silver 135%)',  }} className='div-admin-objets'>
+                            <p>Editar mi Perfil.</p>
+                            <button >Ver Perfil</button>
+                        </div>
+                        </div>
 
                     </div>
                 ) : (
-                        <div className='perfil-usuario'>Cargando...</div>
-                    )
+                    <div className='perfil-usuario'>Cargando...</div>
+                )
             }
         </>
     );

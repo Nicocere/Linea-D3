@@ -91,7 +91,7 @@ function Login() {
                                     , '&:hover':{background:'grey', color:'black'}}} type="submit">Iniciar Sesión</Button>
             </form>
 
-            <p>No estas registrado?. <a href={'http://localhost:3000/sigin'}>Regristrate aquí</a></p>
+            <p>No estas registrado?. <a className='registrarse' href={'/sigin'}>Registrate aquí</a></p>
         </div>
     );
 }

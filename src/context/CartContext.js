@@ -23,9 +23,9 @@ const CartProvider = ({ children }) => {
     const [location, setLocation] = useState({})
     const [locationName, setLocationName] = useState("")
 
-    //Cookies
-    const [CartID, setCartID] = useState();
-    const [UserID, setUserID] = useState()
+  // Cookies
+  const [CartID, setCartID] = useState(sessionStorage.getItem("CartID") || null);
+  const [UserID, setUserID] = useState(sessionStorage.getItem("UserID") || null);
 
     let CartIDStorage = localStorage.getItem("CartID", CartID);
     let UserStorage = localStorage.getItem("UserID", UserID);
@@ -47,10 +47,11 @@ const CartProvider = ({ children }) => {
         })
 
         if (priceDolar) {
-            return acumuladorInUsd
+            setFinalPrice(Number(acumuladorInUsd))
+            return Number(acumuladorInUsd)
         } else {
-
-            return acumulador //.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+            setFinalPrice(Number(acumulador))
+            return Number(acumulador) //.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
 
         }
     };
@@ -140,51 +141,50 @@ const CartProvider = ({ children }) => {
         }
     };
 
+
     useEffect(() => {
+    
         const fetchData = async () => {
             try {
-
-                const result = await axios.get('https://envioflores-backend.vercel.app/cookie', {
-                    params: {
-                        CartID: CartIDStorage ? JSON.parse(CartIDStorage) : CartIDStorage,
-                        UserID: UserStorage ? JSON.parse(UserStorage) : UserStorage
-                    }
-                });
-                setUserID(result.data.UserID);
-                setCartID(result.data.CartID);
-
-                // // const cartResult = await axios.get('http://localhost:8080/cart/cartVinculed', {
-                // const cartResult = await axios.get(`https://envioflores-backend.vercel.app/cart/cartVinculed`, {
-                //     params: {
-                //         CartID: result.data.CartID,
-                //         UserID: result.data.UserID
-                //     }
-                // });
-
-                // if (cartResult.data) {
-                //     // setCartVinculed(cartResult.data.cartVinculed)
-                //     // setCart(cartResult.data.prodsInCart);
+        
+                // Verificar si storedEncryptedCart es una cadena JSON válida antes de intentar analizarla
+                // if (!CartID || !UserID) {
+                //     console.log("No existe la Cookie, la creo.")
+                //     const result = await axios.get('https://envio-flores.rj.r.appspot.com/cookie', {
+                //         params: {
+                //             CartID: CartID,
+                //             UserID: UserID
+                //         }
+                //     });
+        
+                //     setUserID(result.data.UserID);
+                //     setCartID(result.data.CartID);
+                // } else {
+                //     console.log('Cookie creada.');
                 // }
             } catch (error) {
-                console.log("Error al obtener los datos", error);
+                console.log("Error al obtener los datos de cookies", error);
             }
         };
         fetchData();
-    }, [CartIDStorage, UserStorage]);
+    }, [CartID, UserID]);
+    
+
+    useEffect(() => {
+        if (UserID) {
+            sessionStorage.setItem("UserID", UserID);
+        }
+        if (CartID) {
+            sessionStorage.setItem("CartID", CartID);
+        }
+    }, [UserID, CartID]);
+
 
     useEffect(() => {
         // Guardo los datos de cart en el localStorage cada vez que cart cambie
         localStorage.setItem('carrito', JSON.stringify(cart));
     }, [cart]);
 
-    useEffect(() => {
-        if (UserID) {
-            localStorage.setItem("UserID", JSON.stringify(UserID));
-        }
-        if (CartID) {
-            localStorage.setItem("CartID", JSON.stringify(CartID));
-        }
-    }, [UserID, CartID]);
 
 
     return (

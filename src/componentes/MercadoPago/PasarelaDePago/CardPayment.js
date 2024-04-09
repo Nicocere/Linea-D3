@@ -1,24 +1,21 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
 import axios from 'axios'
-import { Wallet } from '@mercadopago/sdk-react'
-import { useContext, useState } from 'react';
-import { CartContext } from '../../context/CartContext';
-import { initMercadoPago } from '@mercadopago/sdk-react'
-import { FadeLoader } from "react-spinners";
+import { useContext, useEffect, useState } from 'react';
+import { CartContext } from '../../../context/CartContext';
+import { initMercadoPago } from '@mercadopago/sdk-react';
 import { CardPayment } from '@mercadopago/sdk-react';
-import { Button } from '@mui/material';
+
+import { FadeLoader } from "react-spinners";
+import React from 'react';
 
 initMercadoPago(process.env.REACT_APP_MERCADOPAGO_PUBLIC_KEY, {
   locale: 'es-AR'
 });
 
-const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDestinatario, mailComprador,
+const CardPaymentMP = ({ nombreDestinatario, apellidoDestinatario, phoneDestinatario, mailComprador,
   localidad, precioLocalidad, calle, altura, piso, dedicatoria, nombreComprador, phoneComprador, apellidoComprador, fechaEnvio,
   horarioEnvio, servicioPremium, envioPremium, finalPrice, title, description, picture_url, category_id,
-  quantity, id, size, products, retiraEnLocal }) => {
-
-  console.log("productos", products)
-  console.log("finalPrice", finalPrice)
+  quantity, id, size, products }) => {
 
   const { CartID, UserID, } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,11 +23,9 @@ const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDest
   const [processingMessage, setProcessingMessage] = useState('Procesando el pago, por favor espere...');
   const [isProcessing, setIsProcessing] = useState(false);
   const [isProcessingBackend, setIsProcessingBackend] = useState(false);
-  const [showWallet, setShowWallet] = useState(true);
 
 
   const items = products.map((prod) => ({
-
     id: prod.id,
     title: prod.name,
     description: prod.descr,
@@ -51,48 +46,26 @@ const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDest
     visual: {
       style: {
         customVariables: {
-          textPrimaryColor: "#000000",  // Negro
-          textSecondaryColor: "black",  // 
-          inputBackgroundColor: "#e9e9e9c7",  // Gris claro
-          formBackgroundColor: "white",  // Rosa claro
-          baseColor: "grey",  // Rosa oscuro
-          baseColorFirstVariant: "black",
-          baseColorSecondVariant: "#1b1b1b",
-          successColor: "darkorange",
+          textPrimaryColor: "gold",
+          textSecondaryColor: "#ac930a",
+          inputBackgroundColor: "#5f5f5fc7", // Gris claro
+          formBackgroundColor: "black", // 
+          baseColor: "#bd9f00 ", // Rojo oscuro
+          baseColorFirstVariant: "black", // Rojo oscuro
+          baseColorSecondVariant: "gold", // Verde oscuro
+          successColor: "gold", // Verde oscuro
           outlinePrimaryColor: "black",
-          formPadding: '',
-          errorColor: "red",  // 0Rojo
-          inputFocusedBorderWidth: "1px solid orange",  // Verde oscuro cuando enfocado
-          inputFocusedBoxShadow: "0 0 5px darkorange",  // Sombra verde oscuro cuando enfocado
-          inputErrorFocusedBoxShadow: "0 0 5px red",  // Sombra roja cuando hay un error
+          formPadding: "",
+          errorColor: "red", // Rojo
+          inputFocusedBorderWidth: "1px solid gold", // Verde oscuro cuando enfocado
+          inputFocusedBoxShadow: "0 0 5px gold", // Sombra verde oscuro cuando enfocado
+          inputErrorFocusedBoxShadow: "0 0 5px darkred", // Sombra roja cuando hay un error
+          
         }
       }
     },
     paymentMethods: {
       maxInstallments: 1,
-    }
-  }
-
-
-  const settings = {
-    texts: {
-      action: 'pay',
-      valueProp: 'security_safety',
-    },
-    visual: {
-      hideValueProp: false,
-      buttonBackground: 'black', // default, black, blue, white
-      valuePropColor: 'grey', // grey, white
-      buttonHeight: '48px', // min 48px - max free
-      borderRadius: '6px',
-      verticalPadding: '16px', // min 16px - max free
-      horizontalPadding: '0px', // min 0px - max free
-    },
-    checkout: {
-      theme: {
-        elementsColor: '#4287F5', // color hex code
-        headerColor: '#4287F5', // color hex code
-      },
     }
   }
 
@@ -103,13 +76,9 @@ const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDest
   if (servicioPremium) {
     shippingCost = precioLocalidad + envioPremium; // Asume que tienes un campo llamado "shippingCost" en datosEnvio
     shippingTitle = `Producto: ${title} + Servicio Premium`;
-  } else if (!servicioPremium || precioLocalidad) {
+  } else {
     shippingTitle = `Producto: ${title} + Costo de Envío`;
     shippingCost = precioLocalidad; // Asume que tienes un campo llamado "shippingCost" en datosEnvio
-  } else if (retiraEnLocal) {
-    shippingCost = 0
-    shippingTitle = `Producto: ${title} Sin costo de Envío`;
-
   }
 
   // Añadir el costo de envío como un ítem adicional
@@ -186,7 +155,7 @@ const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDest
       if (response.data.status === 'approved') {
         // Elimina el carrito del localStorage si la compra es aprobada
         localStorage.removeItem('cart');
-
+        
         // Redirige al usuario a la URL proporcionada por la API
         window.location.href = response.data.pagoExitoso;
       } else {
@@ -204,8 +173,8 @@ const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDest
 
 
   const onError = async (error) => {
-    console.log('Hubo un error al procesar la compra', error);
-    // window.cardPaymentBrickController.unmount()
+    console.log('Hubo un error al procesar la compra',error);
+    window.cardPaymentBrickController.unmount()
     setErrorMessage('Hubo un error al procesar la compra, inténtelo de nuevo.');
   };
 
@@ -216,7 +185,6 @@ const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDest
 
   return (
     <div>
-
       {isLoading && (
         <div className="spinner-container">
           <p className="loadMP">Cargando...</p>
@@ -224,16 +192,34 @@ const MercadoPagoButton = ({ nombreDestinatario, apellidoDestinatario, phoneDest
         </div>
       )}
 
+      {isProcessingBackend && (
+        <div className="spinner-container">
+          <p className="loadMP">{processingMessage}</p>
+          <FadeLoader loading={isProcessingBackend} className="fadeLoader" color="gold" />
+        </div>
+      )}
 
-      <Wallet
-        customization={settings}
-        initialization={{ redirectMode: "modal" }}
-        onSubmit={onSubmit}
-        onReady={() => setIsLoading(false)} // <-- Desactivar el spinner cuando Brick esté listo
-        onError={onError}
-      />
+
+      {errorMessage && (
+        <div style={{ color: 'red', marginTop: '10px' }}>
+          {errorMessage}
+        </div>
+      )}
+
+      {!isProcessingBackend && (
+        <div id="walletBrick_container">
+          <CardPayment
+            customization={customization}
+            initialization={initialization}
+            onSubmit={onSubmit}
+            onReady={onReady}
+            onError={onError}
+          />
+        </div>
+      )}
+
     </div>
-  )
+  );
 };
 
-export default MercadoPagoButton;
+export default CardPaymentMP;

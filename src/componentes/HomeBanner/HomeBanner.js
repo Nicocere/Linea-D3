@@ -35,8 +35,6 @@ const HomeBanner = () => {
 
     // Array de imágenes de fondo
     const backgroundImages = [
-        '/assets/imagenes/Banner/basketballs_on_the_court_at_night_with_STARS_AND.png',
-        '/assets/imagenes/Banner/balls-night.jpg',
         '/assets/imagenes/Banner/aro-basket.jpg',
     ];
 
@@ -61,7 +59,14 @@ const HomeBanner = () => {
     useEffect(() => {
         const prefixTexts = [
             "Envios a domicilio en Capital Federal",
-            "Envios a domicilio en Buenos Aires"
+            "Envios a domicilio en Buenos Aires",
+            "Envios a domicilio a Todo el País",
+            "Envios a domicilio en Cordoba",
+            "Envios a domicilio en Santa Cruz",
+            "Envios a domicilio en Formosa",
+            "Envios a domicilio en Mendoza",
+            "Envios a domicilio en Tucuman",
+
         ];
 
         const allTexts = [...prefixTexts,];
@@ -107,16 +112,16 @@ const HomeBanner = () => {
 
 
             <div className={style.divTypography} style={{ padding: '0 20px', }}>
-                {/* <TypeAnimation
+                <TypeAnimation
 
                     preRenderFirstString={true}
 
                     sequence={[
 
-                        ` Nuestra florería online ofrece las mejores flores a domicilio. 
-                          Realizá tu compra online en tres simples pasos, y aboná con cualquier 
-                          medio de pago al finalizar.` ,
+                        ` Nos especializamos en ser la empresa con la entrega más rapida del País, en menos de 25 dias REALES
+                        realizaremos y enviaremos tu pedido. Somos la tienda N°1 en venta de ropa extra large` ,
                         1000,
+                        
                     ]}
                     wrapper="span"
                     speed={50}
@@ -129,7 +134,7 @@ const HomeBanner = () => {
                     }}
                     className={style.typography}
                     repeat={Infinity}
-                /> */}
+                />
 
             </div>
         </div>

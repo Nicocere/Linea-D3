@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
+import { Avatar, Button, SwipeableDrawer, Typography, useMediaQuery ,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, } from '@mui/material';
 
 function AddProds() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
@@ -14,13 +15,7 @@ function AddProds() {
     const [isLoading, setIsLoading] = useState(false)
     const [products, setProducts] = useState([]);
     const [imageFile, setImageFile] = useState(null);
-
-
-    const handleNavigateToEdit = (productId) => {
-        navigate(`/admin/editProds/${productId}`);
-
-    }
-
+    const [showAddNewProd, setShowAddNewProd] = useState(false)
     const [productData, setProductData] = useState({
         nombre: '',
         precio: '',
@@ -48,6 +43,14 @@ function AddProds() {
         }
     };
 
+    const handleNavigateToEdit = (productId) => {
+        navigate(`/admin/editProds/${productId}`);
+
+    }
+
+    const handleShowAddNewProd = () => {
+        setShowAddNewProd(!showAddNewProd)
+    }
     const onSubmit = async (e) => {
 
         setIsLoading(true)
@@ -166,140 +169,150 @@ function AddProds() {
     return (
         < div className='div-add-edit-prods'>
 
+            <Button variant='text' color='error' onClick={() => navigate(-1)}>Volver atrás</Button>
             <div className='perfil-usuario-btns'>
-                <button onClick={() => navigate(-1)}>Volver atrás</button>
-                <button >Administrar Usuarios</button>
-                <button >Cambiar / Crear Promociones</button>
-                <button >Editar Perfil</button>
+                <Button >Administrar Usuarios</Button>
+                <Button >Cambiar / Crear Promociones</Button>
+                <Button >Editar Perfil</Button>
             </div>
-            
+
             <div className='div-addProd' >
                 <h3>Agregar Nuevos Productos</h3>
+                <Button variant={showAddNewProd ? 'outlined' : 'contained'} style={{ color: 'gold', backgroundColor: showAddNewProd ? '' : 'black', borderColor: 'gold', marginBottom: '10px' }} onClick={handleShowAddNewProd}>
+                    {showAddNewProd ? 'NO Agregar Nuevo Producto ' : 'Agregar Producto Nuevo'}</Button>
 
-                <form className='form-addProd' onSubmit={handleSubmit(onSubmit)}>
-                    <label> Nombre del producto </label>
-                    <input
-                        {...register("nombreProd", { required: true })}
-                        value={productData.nombre}
-                        name="nombreProd"
+                {
+                    showAddNewProd &&
+                    <>
 
-                        onChange={e => setProductData({ ...productData, nombre: e.target.value })}
-                        placeholder="Nombre del producto"
-                    />
-                    {errors.nombreProd && <p className='message-error' > El nombre del producto es requerido</p>}
+                        <form className='form-addProd' onSubmit={handleSubmit(onSubmit)}>
+                            <label> Nombre del producto </label>
+                            <input
+                                {...register("nombreProd", { required: true })}
+                                value={productData.nombre}
+                                name="nombreProd"
 
-                    <label> Categoria </label>
-                    <input
-                        {...register("categoria", { required: true })}
-                        value={productData.categoria}
-                        name="categoria"
+                                onChange={e => setProductData({ ...productData, nombre: e.target.value })}
+                                placeholder="Nombre del producto"
+                            />
+                            {errors.nombreProd && <p className='message-error' > El nombre del producto es requerido</p>}
 
-                        onChange={e => setProductData({ ...productData, categoria: e.target.value })}
-                        placeholder="Categoria del producto"
-                    />
-                    {errors.categoria && <p className='message-error' > la categoria del producto es requerida</p>}
+                            <label> Categoria </label>
+                            <input
+                                {...register("categoria", { required: true })}
+                                value={productData.categoria}
+                                name="categoria"
 
-
-
-                    <label> Precio del producto </label>
-                    <input
-                        {...register("precioProd", { required: true })}
-                        value={productData.precio}
-                        name="precioProd"
-
-                        onChange={e => setProductData({ ...productData, precio: e.target.value })}
-                        placeholder="Precio del producto"
-                    />
-                    {errors.precioProd && <p className='message-error' > El precio del producto es requerido</p>}
-
-                    <label> Descripción del producto </label>
-                    <textarea
-                        {...register("descrProd", { required: true })}
-                        value={productData.descripcion}
-                        name="descrProd"
-                        onChange={e => setProductData({ ...productData, descripcion: e.target.value })}
-                        placeholder="Descripción del producto"
-                    />
-                    {errors.descrProd && <p className='message-error' > Agregue una descripcion del producto</p>}
+                                onChange={e => setProductData({ ...productData, categoria: e.target.value })}
+                                placeholder="Categoria del producto"
+                            />
+                            {errors.categoria && <p className='message-error' > la categoria del producto es requerida</p>}
 
 
-                    <label> Stock </label>
-                    <input
-                        {...register("stock", { required: true })}
-                        value={productData.stock}
-                        name="stock"
-                        type='number'
-                        onChange={e => setProductData({ ...productData, stock: e.target.value })}
-                        placeholder="Stock del producto"
-                    />
-                    {errors.stock && <p className='message-error' > Agregue un Stock al producto</p>}
+
+                            <label> Precio del producto </label>
+                            <input
+                                {...register("precioProd", { required: true })}
+                                value={productData.precio}
+                                name="precioProd"
+
+                                onChange={e => setProductData({ ...productData, precio: e.target.value })}
+                                placeholder="Precio del producto"
+                            />
+                            {errors.precioProd && <p className='message-error' > El precio del producto es requerido</p>}
+
+                            <label> Descripción del producto </label>
+                            <textarea
+                                {...register("descrProd", { required: true })}
+                                value={productData.descripcion}
+                                name="descrProd"
+                                onChange={e => setProductData({ ...productData, descripcion: e.target.value })}
+                                placeholder="Descripción del producto"
+                            />
+                            {errors.descrProd && <p className='message-error' > Agregue una descripcion del producto</p>}
 
 
-                    <label> Talle del producto </label>
-                    <input
-                        {...register("talle", { required: true })}
-                        value={productData.talle}
-                        name="talle"
-                        onChange={e => setProductData({ ...productData, talle: e.target.value })}
-                        placeholder="Talle del producto"
-                    />
-                    {errors.talle && <p className='message-error' > Agregue un talle al producto</p>}
+                            <label> Stock </label>
+                            <input
+                                {...register("stock", { required: true })}
+                                value={productData.stock}
+                                name="stock"
+                                type='number'
+                                onChange={e => setProductData({ ...productData, stock: e.target.value })}
+                                placeholder="Stock del producto"
+                            />
+                            {errors.stock && <p className='message-error' > Agregue un Stock al producto</p>}
 
 
-                    <label> Imagen </label>
-                    <input
-                        {...register("imagenProd", { required: true })}
-                        type="file"
-                        name="imagenProd"
-                        onChange={e => handleFileChange(e)}
-                    />
-                    {errors.imagenProd && <p className='message-error' > Debe agregar una Imagen</p>}
+                            <label> Talle del producto </label>
+                            <input
+                                {...register("talle", { required: true })}
+                                value={productData.talle}
+                                name="talle"
+                                onChange={e => setProductData({ ...productData, talle: e.target.value })}
+                                placeholder="Talle del producto"
+                            />
+                            {errors.talle && <p className='message-error' > Agregue un talle al producto</p>}
 
 
-                    {
-                        isLoading ? (
-                            <div className="spinner">
-                                Agregando Nuevo Producto, aguarde....
-                                <FadeLoader color="black" />
-                            </div>
-                        ) : <button className='add-prod-btn black-btn' type="submit">Agregar Producto</button>
-                    }
-                </form>
+                            <label> Imagen </label>
+                            <input
+                                {...register("imagenProd", { required: true })}
+                                type="file"
+                                name="imagenProd"
+                                onChange={e => handleFileChange(e)}
+                            />
+                            {errors.imagenProd && <p className='message-error' > Debe agregar una Imagen</p>}
+
+
+                            {
+                                isLoading ? (
+                                    <div className="spinner">
+                                        Agregando Nuevo Producto, aguarde....
+                                        <FadeLoader color="black" />
+                                    </div>
+                                ) : <Button className='add-prod-btn black-btn' type="submit">Agregar Producto</Button>
+                            }
+                        </form>
+                    </>
+                }
             </div>
+
 
 
             <div>
                 <h3>Editar / Eliminar Productos</h3>
-                <table className="products-table">
-                    <thead className="thead-table">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Descripción</th>
-                            <th>Imagen</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {products.map(product => (
-                            <tr key={product.id}>
-                                <td className="td-tbody">{product.nombre}</td>
-                                <td className="td-tbody">{product.precio}</td>
-                                <td className="td-tbody">{product.descripcion}</td>
-                                <td className="td-tbody"><img src={product.imagen} alt={product.nombre} width="50" /></td>
-                                <td className="td-tbody">
-                                    <div className='btns-table'>
-                                        <button className="btn-table-edit" onClick={() => handleNavigateToEdit(product.id)}>Editar</button>
-
-                                        {/* <button className="btn-table-edit" onClick={() => updateProduct(product.id, product)}>Editar</button> */}
-                                        <button className="btn-table-delete" onClick={() => deleteProduct(product.id)}>Eliminar</button>
-                                    </div>
-
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <TableContainer component={Paper}>
+            <Table className="products-table" aria-label="products table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Nombre</TableCell>
+                        <TableCell>Precio</TableCell>
+                        <TableCell>Descripción</TableCell>
+                        <TableCell>Imagen</TableCell>
+                        <TableCell>Acciones</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {products.map((product) => (
+                        <TableRow key={product.id}>
+                            <TableCell>{product.nombre}</TableCell>
+                            <TableCell>{product.precio}</TableCell>
+                            <TableCell>{product.descripcion}</TableCell>
+                            <TableCell>
+                                <img src={product.imagen} alt={product.nombre} width="50" />
+                            </TableCell>
+                            <TableCell>
+                                <div className='btns-table'>
+                                    <Button variant='contained' size='small' onClick={() => handleNavigateToEdit(product.id)}>Editar</Button>
+                                    <Button variant='text' color='error' size='small' onClick={() => deleteProduct(product.id)}>Eliminar</Button>
+                                </div>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
             </div>
 
         </ div>

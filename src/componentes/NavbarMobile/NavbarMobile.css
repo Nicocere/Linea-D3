@@ -64,7 +64,8 @@ color: white;
     display: flex;
     flex-direction: column;
     height: 100vh;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 30px 14px 0;
 }
 
 .div-prods-SeccionMobile a {
@@ -80,6 +81,7 @@ color: white;
     text-transform: uppercase;
     text-decoration: none;
     transition: all .25s ease-in-out;
+    padding: 15px 5px;
 }
 
 

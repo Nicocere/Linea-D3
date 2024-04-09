@@ -11,7 +11,8 @@
 }
 
 .swal2-container {
-  z-index: 9999 !important; /* Ajusta el valor según sea necesario */
+  z-index: 9999 !important;
+  /* Ajusta el valor según sea necesario */
 }
 
 
@@ -165,6 +166,7 @@ button {
 .main {
   background-size: contain;
   padding: 0 6% 0 6%;
+  min-height: 75vh;
 }
 
 /* --------------------------------------ADMINISTRADOR ------------------ */
@@ -175,6 +177,18 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.registrarse {
+  color: gold;
+  text-decoration: none;
+  padding: 5px;
+  border: none;
+  transition: border .44s ease-out;
+}
+
+.registrarse:hover {
+  border: 1px solid gold;
 }
 
 .input-group {
@@ -190,21 +204,46 @@ button {
 }
 
 .perfil-usuario {
-  padding: 150px;
+  padding: 20px;
+  min-height: 80vh;
+}
+
+.div-admin-bts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .perfil-usuario button {
   background: black;
-  padding: 10px;
+  padding: 10px 30px;
   margin-bottom: 10px;
   color: white;
+  border-radius: 5px;
   cursor: pointer;
   width: -moz-fit-content;
   width: fit-content;
   transition: all 0.4s ease-in-out;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   margin: 1rem;
+}
+
+.div-admin-objets {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 250px;
+  border: '1px solid #00000029';
+  border-radius: 0px;
+  transition: all .42s ease-in-out;
+}
+
+.div-admin-objets:hover {
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .perfil-usuario button:hover {
@@ -241,13 +280,21 @@ button {
 }
 
 
+.div-addProd{
+  background: linear-gradient(white 23%, silver 135%);
+  margin-bottom: 50px;
+}
+
 .form-addProd {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  padding: 20px 0;
   text-align: justify;
+  border-radius: 3px;
 }
-.banner-title{
+
+.banner-title {
   margin: 0;
 }
 
@@ -271,8 +318,23 @@ textarea {
   width: 50%;
 }
 
+.products-table {
+  margin: 10px 0 120px;
+}
+
 .thead-table {
-  background: rgba(128, 128, 128, 0.553);
+  background: rgba(0, 0, 0, 0.95);
+  color: gold;
+  box-shadow: -1px 5px 8px 0 #5c5c5c;
+  margin-bottom: 10px;
+}
+
+.thead-table th {
+  padding: 10px;
+}
+
+.t-body {
+  margin-top: 10px;
 }
 
 .td-tbody {
@@ -280,32 +342,26 @@ textarea {
   font-family: monospace;
 }
 
+.td-tbody img {
+  width: 150px;
+  height: 150px;
+}
+
+.tr-body {
+  transition: background-color .24s ease-in-out;
+  height: 125px;
+}
+
+.tr-body:hover {
+  background-color: rgba(255, 255, 255, 0.58);
+}
+
 .btns-table {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.btn-table-delete {
-  margin: 5px;
-  background: darkred;
-  color: white;
-  transition: background .4s;
-}
-
-.btn-table-delete:hover {
-  background: rgb(214, 1, 1);
-}
-
-.btn-table-edit {
-  margin: 5px;
-  background: rgba(0, 0, 219, 0.763);
-  color: white;
-  transition: background .4s;
-
-}
-
-.btn-table-edit:hover {
-  background: darkblue;
-}
 
 /* --------------------------------------------------------------- */
 
@@ -321,7 +377,7 @@ textarea {
   transition: background .24s ease-in-out;
 }
 
-.cart-widget-container:hover{
+.cart-widget-container:hover {
   background: silver;
 }
 
@@ -333,13 +389,16 @@ textarea {
   position: relative;
   /* Esto permitirá posicionar absolutamente el submenú en relación con este elemento. */
 }
-.div-seccionProds{
+
+.div-seccionProds {
   width: min-content;
   display: flex;
 }
-.div-seccions{
+
+.div-seccions {
   display: flex;
 }
+
 .submenu {
   display: none;
   position: absolute;
@@ -347,23 +406,24 @@ textarea {
   top: 100%;
   left: 0;
   background-color: black;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   z-index: 1;
   transition: all 1s ease-in-out;
   border-radius: 0px 1px 18px 18px;
 
 }
 
-.submenu a{
+.submenu a {
 
   color: white;
   padding: 20px;
   transition: all 1s;
   text-decoration: none;
-  border: rgba(255, 255, 255, 0.401) 1px solid;
+  border: rgba(255, 255, 255, 0.121) 1px solid;
+  border-top: 1px solid black !important;
 }
 
-.submenu a:hover{
+.submenu a:hover {
   background-color: white;
   color: black;
   padding: 20px;
@@ -399,6 +459,7 @@ textarea {
   flex-direction: column;
   width: fit-content;
 }
+
 .buscador-div input {
   width: 100%;
   height: 25px;
@@ -408,6 +469,7 @@ textarea {
   border-radius: 6px;
   transition: all 1s;
 }
+
 .buscador-div input:hover {
 
   background: rgba(0, 0, 0, 0.687);
@@ -895,7 +957,7 @@ textarea {
 
 }
 
-.products .listadeproductos{
+.products .listadeproductos {
   padding-left: 50px;
 }
 
@@ -907,7 +969,11 @@ textarea {
 }
 
 .product-item {
-  width: calc(25% - 20px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  max-width: 250px;
   margin-bottom: 40px;
   box-sizing: border-box;
   border-radius: 5px;
@@ -921,7 +987,7 @@ textarea {
   /* box-shadow: 5px -4px 7px 1px rgba(0, 0, 0, 0.47);
   text-decoration: none;
   padding: 5px;*/
-  background: #f0f0f0; 
+  background: #f0f0f0;
 }
 
 .tituloProducto {
@@ -1653,19 +1719,21 @@ textarea {
 
 @media screen and (max-width: 750px) {
 
-.main{
-  padding: 0 3px;
-}
-.products .listadeproductos{
-  padding-left: 5px;
-}
-.product-item{
-  width: 180px;
-}
+  .main {
+    padding: 0 3px;
+  }
 
-.div-header-dinamic {
-  height: 75px;
-}
+  .products .listadeproductos {
+    padding-left: 5px;
+  }
+
+  .product-item {
+    width: 180px;
+  }
+
+  .div-header-dinamic {
+    height: 75px;
+  }
 
 }
 

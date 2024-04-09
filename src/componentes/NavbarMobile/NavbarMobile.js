@@ -10,13 +10,12 @@ import { doc, getDoc } from 'firebase/firestore';
 import useLogout from '../Login/LogOut/LogOut';
 import './NavbarMobile.css'
 import menuMobile from '../../assets/menu-mobile-w.svg'
-import { AppBar, Avatar, Button, IconButton, SwipeableDrawer, Toolbar, Typography, useMediaQuery } from '@mui/material';
+import { AppBar, Avatar, Button, IconButton, SwipeableDrawer, Toolbar, Typography, useMediaQuery, Paper } from '@mui/material';
 import styled from '@emotion/styled';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { SubMenuUsers } from '../SubMenuUsers/SubMenuUsers';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
-
 
 const NavbarMobile = () => {
 
@@ -205,8 +204,10 @@ const NavbarMobile = () => {
 
                     </CustomizedToolbar>
                 </CustomizedAppBar>
-
             </>
+
+
+            {/* MENU GENERAL */}
             <SwipeableDrawer
                 anchor="left"
                 open={openDrawer}
@@ -220,7 +221,7 @@ const NavbarMobile = () => {
                     role="presentation"
                     onKeyDown={handleToggleDrawer(false)}
                     style={{
-                        width: '250px',
+                        width: '310px',
                         background: 'linear-gradient(to right, #0f0f0f, black)',
                         height: '100vh',
                     }}
@@ -228,16 +229,25 @@ const NavbarMobile = () => {
                     {/* Contenido adicional o enlaces relacionados con WhatsApp */}
                     {openDrawer && (
                         <div style={{
-                            padding: '0 14px 0', display: 'flex', flexDirection: 'column',
+                             display: 'flex', flexDirection: 'column',
                             height: '100vh', justifyContent: 'space-between', color: 'white'
                         }}>
-                            <Typography variant="subtitle1" sx={{
-                                margin: 0, fontWeight: '600', color: 'white',
-                                position: 'relative', top: '60px', borderBottom: '2px solid silver'
-                            }}>
+                         <Paper sx={{
+                            // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
+                            marginBottom: '10px', backgroundImage: 'url("/assets/imagenes/Banner/aro-basket.jpg")', backgroundSize: 'cover',
+                            WebkitBackgroundSize: 'cover',
+                        }}>
 
+                            <Typography variant="subtitle1" sx={{
+                                fontSize: '1.25rem',
+                                fontWeight: '600', background: '#ffffff85', paddingTop: '14px',
+                                display: 'flex', alignItems: 'flex-end', margin: '85px 0 0', paddingLeft: '10px',
+                                justifyContent: 'space-between', borderBottom: '2px solid gold', flex: '0'
+                            }}>
                                 Menú
                             </Typography>
+
+                        </Paper>
 
                             <div className='div-prods-SeccionMobile' >
                                 <NavLink className='seccionLi' to='/' > Inicio </NavLink>
@@ -258,12 +268,12 @@ const NavbarMobile = () => {
 
                             {/* SESION DE USUARIO */}
                             {currentUser && userData ? (
-                                <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '15px' }}
+                                <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '95px', justifyContent:'center' }}
                                     onClick={handleToggleSubMenuDrawer}>
 
                                     <Avatar sx={{
-                                        bgcolor: '#140459', marginRight: '5px', width: '25px',
-                                        height: '25px', fontSize: '.80rem'
+                                        bgcolor: 'gold', marginRight: '5px', width: '25px',
+                                        height: '25px', fontSize: '.80rem', color: 'black'
                                     }}>
                                         {userData.username.charAt(0).toUpperCase()}
                                     </Avatar>
@@ -277,7 +287,7 @@ const NavbarMobile = () => {
                                         letterSpacing: ' 0.02857em',
                                         textTransform: 'uppercase',
                                         textDecoration: 'none',
-                                        color: '#140459'
+                                        color: 'gold'
                                     }}>
 
                                         {userData.username}
@@ -287,8 +297,8 @@ const NavbarMobile = () => {
                                 </div>
                             ) : (
                                 <div>
-                                    <NavLink to="/login" style={{textDecoration:'none'}}>
-                                        <Typography variant='overline' sx={{color:'white', }}>
+                                    <NavLink to="/login" style={{ textDecoration: 'none' }}>
+                                        <Typography variant='overline' sx={{ color: 'white', }}>
                                             Iniciar Sesión
                                         </Typography>
                                     </NavLink>
@@ -315,31 +325,42 @@ const NavbarMobile = () => {
             >
                 {/* Contenido del segundo slide (categorías) */}
                 {openProductsDrawer && (
-                    <div style={{
-                        width: '250px',
-                        background: 'linear-gradient(to right, #0f0f0f, black)',
-                        padding: '0 14px 0',
-                    }}>
+                <div style={{
+                    width: '300px', display: 'flex', flexDirection: 'column',
+                    background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
+                    height: '100vh', zIndex: '1000'
+                }}>
 
-                        <Typography variant="subtitle1" sx={{
-                            margin: 0, fontWeight: '600', color: 'white',
-                            position: 'relative', top: '60px', borderBottom: '2px solid silver'
+
+                        <Paper sx={{
+                            // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
+                            marginBottom: '10px', backgroundImage: 'url("/assets/imagenes/Banner/balls-stars.png")', backgroundSize: 'cover',
+                            WebkitBackgroundSize: 'cover',
                         }}>
-                            Productos
-                        </Typography>
+
+                            <Typography variant="subtitle1" sx={{
+                                fontSize: '1.25rem',
+                                fontWeight: '600', background: '#ffffff85', paddingTop: '14px',
+                                display: 'flex', alignItems: 'flex-end', margin: '85px 0 0', paddingLeft: '10px',
+                                justifyContent: 'space-between', borderBottom: '2px solid gold', flex: '0'
+                            }}>
+                                Productos
+                            </Typography>
+
+                        </Paper>
 
 
                         <Button
-                            variant='outlined'
+                            variant='text'
                             size='small'
-                            color='error'
                             sx={{
+                                color: 'darkred',
+                                width: '50%',
                                 margin: 0,
                                 fontWeight: '600',
-                                fontSize: '10px',
+                                fontSize: '15px',
                                 position: 'relative',
-                                top: '75px',
-                                zIndex: 1300
+
                             }}
                             onClick={handleVolverAtras} // Cambio aquí
                         >
@@ -361,8 +382,11 @@ const NavbarMobile = () => {
                     </div>
                 )
                 }
+
+
             </SwipeableDrawer >
 
+            {/* MENU LATERAL USUARIOS */}
 
             <SwipeableDrawer
                 anchor="left"
@@ -375,38 +399,58 @@ const NavbarMobile = () => {
             >
                 {openProfileDrawer && (
                     <div style={{
-                        width: '250px', display: 'flex', flexDirection: 'column',
-                        background: 'linear-gradient(to top, rgb(20, 4, 89) , rgb(3 0 34))',
-                        height: '100vh', padding: '0 14px 0'
+                        width: '300px', display: 'flex', flexDirection: 'column',
+                        background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
+                        height: '100vh', zIndex: '1000'
                     }}>
 
-                        <Typography variant="subtitle1" sx={{
-                            margin: 0, fontWeight: '600',
-                            position: 'relative', top: '60px', borderBottom: '2px solid white', color: 'white',
+
+                        <Paper sx={{
+                            background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
+                            marginBottom: '10px', backgroundImage: 'url("/assets/logo/LineaD3Logo.png")', backgroundSize: 'cover',
+                            WebkitBackgroundSize: 'cover',
                         }}>
-                            Menu de Usuario
-                        </Typography>
+
+
+                            <Typography variant="subtitle1" sx={{
+                                fontSize: '1.25rem',
+                                fontWeight: '600', background: '#ffffff85', paddingTop: '14px',
+                                display: 'flex', alignItems: 'flex-end', margin: '85px 0 0', paddingLeft: '10px',
+                                justifyContent: 'space-between', borderBottom: '2px solid gold', flex: '0'
+                            }}>
+                                Menu de Usuario
+                            </Typography>
+
+                        </Paper>
 
                         <Button
-                            variant='contained'
+                            variant='text'
                             size='small'
-                            color='error'
                             sx={{
+                                color: 'darkred',
                                 width: '50%',
                                 margin: 0,
                                 fontWeight: '600',
-                                fontSize: '10px',
+                                fontSize: '15px',
                                 position: 'relative',
-                                top: '120px',
-                                zIndex: 1300
+
                             }}
                             onClick={handleVolverAtras} // Cambio aquí
                         >
                             Volver atrás
                         </Button>
-                        <div className='div-users'>
-                            <Button variant='contained' size='small' sx={{ margin: '10px' }} startIcon={<AccountBoxIcon />} onClick={handleProfileNavigation}>Ir a mi perfil</Button>
-                            <Button variant='contained' size='small' sx={{ margin: '10px' }} startIcon={<DisabledByDefaultIcon />} onClick={logout}>Cerrar Sesión</Button>
+                        <div className='div-users' style={{ marginTop: '100px', padding: '0 10px' }}>
+                            <Button variant='contained' size='small' sx={{
+                                color: 'black',
+                                margin: '10px', padding: '12px 33px', background: 'gold', transition: 'background .55s ease-in-out',
+                                '&:hover': { background: 'none', boxShadow: '0px 3px 1px -2px rgb(0 0 0 / 50%), 0px 2px 2px 0px rgb(0 0 0 / 56%), 0px 1px 5px 0px rgb(35 56 4)' }
+                            }} startIcon={<AccountBoxIcon />} onClick={handleProfileNavigation}>Ir a mi perfil</Button>
+
+                            <Button variant='contained' size='small' sx={{
+                                color: 'black',
+                                margin: '10px', padding: '12px 33px', background: 'gold', transition: 'background .55s ease-in-out',
+                                '&:hover': { background: 'none', boxShadow: '0px 3px 1px -2px rgb(0 0 0 / 50%), 0px 2px 2px 0px rgb(0 0 0 / 56%), 0px 1px 5px 0px rgb(35 56 4)' }
+                            }} startIcon={<DisabledByDefaultIcon />} onClick={logout}>Cerrar Sesión</Button>
                         </div>
                     </div>
                 )}
