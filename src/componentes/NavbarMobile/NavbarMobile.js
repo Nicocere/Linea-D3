@@ -232,9 +232,9 @@ const NavbarMobile = () => {
                             display: 'flex', flexDirection: 'column',
                             height: '100vh', justifyContent: 'space-between', color: 'white'
                         }}>
-                            <Paper sx={{
+                            <Paper className='fondo-menu' sx={{
                                 // background: 'linear-gradient(to right, rgb(15, 15, 15), black)',
-                                marginBottom: '10px', backgroundImage: 'url("../assets/imagenes/Banner/aro-basket.jpg")', backgroundSize: 'cover',
+                                marginBottom: '10px', backgroundImage: 'url("./assets/imagenes/Banner/aro-basket.jpg")', backgroundSize: 'cover',
                                 WebkitBackgroundSize: 'cover',
                             }}>
 

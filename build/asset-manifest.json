@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.04348936.css",
+    "main.js": "/static/js/main.c2986ae2.js",
+    "static/media/camisetaLinea.jpeg": "/static/media/camisetaLinea.232334499f1fc019495d.jpeg",
+    "static/media/equipoLinea.jpeg": "/static/media/equipoLinea.1fc0e63a02860f375d0c.jpeg",
+    "static/media/conjuntoLinea.jpeg": "/static/media/conjuntoLinea.e4d2c5aa0b9fea578b27.jpeg",
+    "static/media/fondo-textura.jpg": "/static/media/fondo-textura.2486c92379a81c25ffb5.jpg",
+    "index.html": "/index.html",
+    "static/media/menu-mobile-w.svg": "/static/media/menu-mobile-w.966c54b12cfc0216df8aa038dd797934.svg",
+    "main.04348936.css.map": "/static/css/main.04348936.css.map",
+    "main.c2986ae2.js.map": "/static/js/main.c2986ae2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04348936.css",
+    "static/js/main.c2986ae2.js"
+  ]
+}
