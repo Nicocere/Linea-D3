@@ -284,13 +284,13 @@ function AddProds() {
                 <h3>Editar / Eliminar Productos</h3>
                 <TableContainer component={Paper}>
             <Table className="products-table" aria-label="products table">
-                <TableHead>
+                <TableHead sx={{ background: 'linear-gradient(to bottom, #161616, #363636)', boxShadow: '0 0 12px 3px black',color:'white' }}>
                     <TableRow>
-                        <TableCell>Nombre</TableCell>
-                        <TableCell>Precio</TableCell>
-                        <TableCell>Descripción</TableCell>
-                        <TableCell>Imagen</TableCell>
-                        <TableCell>Acciones</TableCell>
+                        <TableCell style={{ minWidth: 75, fontWeight: '700', textTransform: 'uppercase', color: 'white' }}>Nombre</TableCell>
+                        <TableCell style={{ minWidth: 75, fontWeight: '700', textTransform: 'uppercase', color: 'white' }}>Precio</TableCell>
+                        <TableCell style={{ minWidth: 75, fontWeight: '700', textTransform: 'uppercase', color: 'white' }}>Descripción</TableCell>
+                        <TableCell style={{ minWidth: 75, fontWeight: '700', textTransform: 'uppercase', color: 'white' }}>Imagen</TableCell>
+                        <TableCell style={{ minWidth: 75, fontWeight: '700', textTransform: 'uppercase', color: 'white' }}>Acciones</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

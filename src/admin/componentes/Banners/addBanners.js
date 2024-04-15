@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
 import CarouselComponent from '../../../componentes/Carousel/Carousel';
+import { Avatar, Button, SwipeableDrawer, Typography, useMediaQuery ,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, } from '@mui/material';
 
 function AddBanners() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
@@ -16,7 +17,14 @@ function AddBanners() {
     const [banners, setBanners] = useState([]);
     const [imageFile, setImageFile] = useState(null);
     
-    
+    const [showAddNewBanner, setShowAddNewProd] = useState(false)
+    const [showEditPrincipalText, setShowEditPrincipalText] = useState(false)
+
+
+    const handleShowAddNewProd = () => {
+        setShowAddNewProd(!showAddNewBanner)
+    }
+
     const handleNavigateToEdit = (productId) => {
         navigate(`/admin/edit/banners/${productId}`);
         
@@ -165,16 +173,21 @@ function AddBanners() {
             <div className='div-addProd' >
                 <h3>Agregar Nuevos Banners</h3>
 
+                <Button variant={showAddNewBanner ? 'outlined' : 'contained'} style={{ color: 'gold', backgroundColor: showAddNewBanner ? '' : 'black', borderColor: 'gold', marginBottom: '10px' }} onClick={handleShowAddNewProd}>
+                    {showAddNewBanner ? 'NO Agregar Nuevo Banner ' : 'Agregar Banner Nuevo'}</Button>
+
+{
+    showAddNewBanner &&
                 <form className='form-addProd' onSubmit={handleSubmit(onSubmit)}>
                     <label> Nombre del Banner </label>
                     <input
                         {...register("nombreProd", { required: true })}
                         value={bannerData.nombre}
                         name="nombreProd"
-
+                        
                         onChange={e => setBannerData({ ...bannerData, nombre: e.target.value })}
                         placeholder="Nombre del producto"
-                    />
+                        />
                     {errors.nombreProd && <p className='message-error' > El nombre del producto es requerido</p>}
 
 
@@ -184,7 +197,7 @@ function AddBanners() {
                         type="file"
                         name="imagenProd"
                         onChange={e => handleFileChange(e)}
-                    />
+                        />
                     {errors.imagenProd && <p className='message-error' > Debe agregar una Imagen</p>}
 
 
@@ -197,6 +210,7 @@ function AddBanners() {
                         ) : <button className='add-prod-btn black-btn' type="submit">Agregar Banner</button>
                     }
                 </form>
+        }
             </div>
 
                 <div>

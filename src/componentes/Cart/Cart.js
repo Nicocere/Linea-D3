@@ -22,8 +22,8 @@ const Cart = () => {
     const total = totalPrecio();
     const isSmallScreen = useMediaQuery('(max-width:750px)');
     const [showForm, setShowForm] = useState(false);
-    const [retiraEnLocal, setRetiraEnLocal] = useState(false);
     const [showPayments, setShowPayments] = useState(false);
+    const [retiraEnLocal, setRetiraEnLocal] = useState(false);
     const [selectRetirarEnLocal, setSelectRetirarEnLocal] = useState(false)
     const [showMercadoPago, setShowMercadoPago] = useState(true);
     const [showCardPayment, setShowCardPayment] = useState(false);
